@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>An invented AI report, unlabelled and labelled</title>
+<meta name="robots" content="noindex, indexifembedded">
+<style>
+body{font-family:Georgia,serif;max-width:880px;margin:32px auto;padding:0 20px;color:#222;background:#fff}
+h1{font-size:22px;margin:0 0 4px}
+.sub{color:#666;font-size:14px;margin-bottom:22px}
+.key{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0 24px;font-family:Arial,sans-serif;font-size:14px}
+.key span{padding:6px 10px;border-radius:4px}
+.card{border:1px solid #ccc;border-radius:8px;padding:18px 22px;margin:14px 0;line-height:1.85;font-size:17px}
+.label{font-family:Arial,sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#777;margin-top:22px}
+.u{background:#c8f0c8;border-bottom:2px solid #2e9e2e}
+.m{background:#c6def8;border-bottom:2px solid #1f5fbf}
+.g{background:#f8c9c9;border-bottom:2px solid #c62828}
+.t{font-family:Consolas,Menlo,monospace;font-size:13px;font-weight:bold;padding:0 2px}
+.tu{color:#1b6e1b}.tm{color:#154a96}.tg{color:#a51d1d}
+.mono{font-family:Consolas,Menlo,monospace;font-size:15px;line-height:1.8}
+.card.mono{white-space:pre-line}
+.note{font-family:Arial,sans-serif;font-size:14px;color:#444;margin-top:10px}
+.x{font-family:Arial,sans-serif;font-size:13px;background:#fff8e1;border:1px solid #e6cf7a;border-radius:6px;padding:8px 12px;margin-top:26px}
+.u,.m,.g{color:#1d2320}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body{background:#1c2320;color:#e4e9e5}:root:not([data-theme="light"]) .card{border-color:#2d3632}:root:not([data-theme="light"]) .sub,:root:not([data-theme="light"]) .note,:root:not([data-theme="light"]) .label{color:#9aa49e}}
+:root[data-theme="dark"] body{background:#1c2320;color:#e4e9e5}:root[data-theme="dark"] .card{border-color:#2d3632}:root[data-theme="dark"] .sub,:root[data-theme="dark"] .note,:root[data-theme="dark"] .label{color:#9aa49e}
+:root[data-theme="light"] body{background:#fff;color:#222}
+</style></head><body>
+<h1>Where did each sentence come from?</h1>
+<div class="sub">Illustration only. The paragraph is invented to show the idea, modeled on the ship-boarding story. It is not the real report.</div>
+
+<div class="key">
+<span class="u"><b>Green</b> (u)…(/u) = given to the AI</span>
+<span class="m"><b>Blue</b> (m)…(/m: source) = checked, source named</span>
+<span class="g"><b>Red</b> (g)…(/g) = generated / guessed by the AI</span>
+</div>
+
+<div class="label">1. What the reader sees today</div>
+<div class="card">
+The cargo vessel departed Tuesday and was flagged by the port scanner. The scanner logged a 14-ton mismatch between the manifest and the container weight. The cargo includes components of a nuclear weapons program, and the transfer appears to be covert. Boarding is recommended before the vessel reaches open water.
+<div class="note">Four confident sentences. Nothing says which are facts and which are guesses.</div>
+</div>
+
+<div class="label">2. With color and visible tags</div>
+<div class="card">
+<span class="u"><span class="t tu">(u)</span>The cargo vessel departed Tuesday and was flagged by the port scanner.<span class="t tu">(/u: port authority notice)</span></span>
+<span class="m"><span class="t tm">(m)</span>The scanner logged a 14-ton mismatch between the manifest and the container weight.<span class="t tm">(/m: scanner log, checked Tuesday)</span></span>
+<span class="g"><span class="t tg">(g)</span>The cargo includes components of a nuclear weapons program, and the transfer appears to be covert.<span class="t tg">(/g)</span></span>
+<span class="g"><span class="t tg">(g)</span>Boarding is recommended before the vessel reaches open water.<span class="t tg">(/g)</span></span>
+<div class="note">One sentence was given to the AI, one was checked against a named record. <b>Two are the AI's guess, and they are the two that lead to action.</b></div>
+</div>
+
+<div class="label">3. Passed on as plain text (no color, e.g. email or a file)</div>
+<div class="card mono">
+(u)The cargo vessel departed Tuesday and was flagged by the port scanner.(/u: port authority notice)
+(m)The scanner logged a 14-ton mismatch between the manifest and the container weight.(/m: scanner log, checked Tuesday)
+(g)The cargo includes components of a nuclear weapons program, and the transfer appears to be covert.(/g)
+(g)Boarding is recommended before the vessel reaches open water.(/g)
+<div class="note" style="font-family:Arial,sans-serif">Color is lost, the labels are not. The next reader still sees the red sentences and the tags can be checked for balance by a script.</div>
+</div>
+
+<div class="note">A label does not say the red sentences are wrong. It says nobody has checked them yet, so a person stops and asks where they came from before anyone acts.</div>
+
+</body></html>

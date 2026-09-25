@@ -14,7 +14,7 @@
 
 **Status: early findings, September 2026.** Small tests, mostly on one model family. Published so other people can test it, break it and make it better.
 
-**Site:** https://jzesbaugh.github.io/evidentiality-framework/
+**Site:** https://jzesbaugh.github.io/Evidentiality-Framework/
 
 ## Start here
 

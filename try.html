@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Make your AI assistant label what it guessed · Evidentiality framework for AI</title><meta name="description" content="Paste one set of instructions into ChatGPT, Claude or Gemini and each claim is labelled given, checked or guessed, so you know which facts and citations to verify.">
+<link rel="canonical" href="https://jzesbaugh.github.io/evidentiality-framework/try.html"><meta name="author" content="Jesse Zesbaugh">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml"><link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Evidentiality framework for AI"><meta property="og:title" content="Make your AI assistant label what it guessed · Evidentiality framework for AI"><meta property="og:description" content="Paste one set of instructions into ChatGPT, Claude or Gemini and each claim is labelled given, checked or guessed, so you know which facts and citations to verify."><meta property="og:url" content="https://jzesbaugh.github.io/evidentiality-framework/try.html"><meta property="og:image" content="https://jzesbaugh.github.io/evidentiality-framework/assets/img/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Three sentences from an AI summary, each labelled: (u) The launch is on track, from meeting notes; (m) Two bugs are still open, checked in the issue tracker; (g) Neither bug blocks the release. Ship Friday, a guess by the AI."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Make your AI assistant label what it guessed · Evidentiality framework for AI"><meta name="twitter:description" content="Paste one set of instructions into ChatGPT, Claude or Gemini and each claim is labelled given, checked or guessed, so you know which facts and citations to verify."><meta name="twitter:image" content="https://jzesbaugh.github.io/evidentiality-framework/assets/img/social-card.png"><meta name="twitter:image:alt" content="Three sentences from an AI summary, each labelled: (u) The launch is on track, from meeting notes; (m) Two bugs are still open, checked in the issue tracker; (g) Neither bug blocks the release. Ship Friday, a guess by the AI.">
+<link rel="alternate" type="text/markdown" href="for-ai.md" title="Process description for language models">
+<link rel="alternate" type="text/markdown" href="assets/md/try.md" title="This page as Markdown">
+<script src="assets/js/controls.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://jzesbaugh.github.io/evidentiality-framework/#website", "url": "https://jzesbaugh.github.io/evidentiality-framework/", "name": "Evidentiality framework for AI", "inLanguage": "en", "publisher": {"@id": "https://github.com/JZesbaugh#person"}}, {"@type": "Person", "@id": "https://github.com/JZesbaugh#person", "name": "Jesse Zesbaugh", "url": "https://github.com/JZesbaugh", "sameAs": ["https://github.com/JZesbaugh"]}, {"@type": "WebPage", "@id": "https://jzesbaugh.github.io/evidentiality-framework/try.html#page", "url": "https://jzesbaugh.github.io/evidentiality-framework/try.html", "name": "Make your AI assistant label what it guessed · Evidentiality framework for AI", "description": "Paste one set of instructions into ChatGPT, Claude or Gemini and each claim is labelled given, checked or guessed, so you know which facts and citations to verify.", "isPartOf": {"@id": "https://jzesbaugh.github.io/evidentiality-framework/#website"}, "author": {"@id": "https://github.com/JZesbaugh#person"}, "inLanguage": "en", "datePublished": "2026-09-24", "dateModified": "2026-09-24", "license": "https://creativecommons.org/licenses/by/4.0/"}]}</script></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site"><div class="in"><a class="name" href="./">Evidentiality framework for AI</a><nav aria-label="Site"><a href="./">Home</a><a href="spec.html">How it works</a><a href="try.html" aria-current="page">Try it</a><a href="builders.html">For builders</a><a href="test.html">Test it</a><a href="evidence.html">Evidence</a><a href="for-ai.html">For AI models</a><a href="contribute.html">Contribute</a></nav></div></header>
+<div class="tools" role="group" aria-label="Page tools"><button type="button" class="js-only" id="t-theme">Theme: auto</button><a href="assets/md/try.md" download>Download .md</a><button type="button" class="js-only" id="t-copy" data-md="assets/md/try.md">Copy as Markdown</button><button type="button" class="js-only" id="t-ai">Copy an AI summary prompt</button><button type="button" class="js-only" id="t-print" title="Print, or choose Save as PDF in the print dialog">Print / PDF</button><span class="status" id="t-status" aria-live="polite"></span></div>
+<main id="main">
+<p class="eyebrow">Try it · about five minutes</p>
+<h1>Make your AI assistant label what it guessed</h1>
+<p class="note"><b>Who this page is for:</b> people who use ChatGPT, Claude, Gemini or a similar assistant. No technical set-up.</p>
+<p class="note">The instructions are an early version, still being tested. They change how the assistant labels its answer, and they add a strict format for "add" or "expand" requests (more on that below).</p>
+<h2>Is it worth it for you?</h2>
+<p>It helps most when what the AI writes gets <b>passed on</b>: pasted into a report, forwarded, reused in a later draft, or handed to another tool. The labels show you which lines to check before that happens. For one-off questions, our tests found no gain.</p>
+<p><b>Drafting (a grant, a report, a long email)?</b> The fit is moderate. The labels point you to the lines to verify, especially figures and references the AI supplied. One catch: when you ask it to "add", "expand" or "continue", the instructions switch to a strict three-part format (conflicts, then your material copied exactly, then what it added). That's deliberate: it keeps your material separate from the AI's additions. If you want an ordinary draft instead, add "Answer directly; this is not an add or expand task" to your request.</p>
+<h2>1. Copy the instructions</h2>
+<p>Open the <a href="spec.html#module">instructions</a> and copy the whole block (or open <a href="instructions.md">the plain-text copy</a>). Start a new chat and paste them as your first message, followed by: "Follow these instructions for the rest of this chat." (If your assistant has a custom-instructions or project setting, you can paste them there instead.)</p>
+<h2>2. Give it something real, and a question that needs a judgement</h2>
+<p>Use a note of your own, or this one:</p>
+<pre>Riverbend Food Bank, September 24.
+- Warehouse stock on hand is 41 tonnes (September 15 count sheet).
+- August donations were 62 tonnes, down from 76 tonnes last August.
+- Households served rose from 2,100 to 2,290; each gets about 30 kg of food a month.
+- The refrigerated truck contract ends December 15.
+
+Write a short status note for the board: are we OK for winter? Answer directly; this is not an add or expand task.</pre>
+<h2>3. Look at what comes back</h2>
+<p>The facts from your note should come back labelled <span class="u"><span class="tag">(u)</span>you supplied it<span class="tag">(/u)</span></span>. Anything the assistant worked out itself, including its answer to "are we OK?", should be <span class="g"><span class="tag">(g)</span>guessed<span class="tag">(/g)</span></span>. If it says it checked something, the (m) label should name what it checked.</p>
+<h2>4. Pass it on</h2>
+<p>Copy the answer into a new chat (with the instructions again) and ask: "Turn this into two sentences for our newsletter." Are the guesses still labelled as guesses? That's the part that matters, because in real life text gets forwarded.</p>
+<h2>5. Compare</h2>
+<p>Do steps 2 and 4 again without the instructions, and look for a guess that now reads like a fact.</p>
+<noscript><p class="note">The colour preview below needs JavaScript, which is off in this browser. The labels still work as plain text.</p></noscript>
+<div class="js-block">
+<h2>See the colours</h2>
+<p>The labels are plain text. Paste labelled text here to see it in colour. It stays in your browser.</p>
+<textarea id="in" rows="6" style="width:100%;font:14px ui-monospace,Menlo,monospace;padding:10px;border:1px solid var(--rule);border-radius:8px;background:var(--panel);color:var(--ink)">(u)Warehouse stock is 41 tonnes.(/u: September 15 count sheet) (g)That lasts about six months at the current gap.(/g)</textarea>
+<div id="out" class="box" style="white-space:pre-wrap"></div>
+<script>
+const i=document.getElementById('in'),o=document.getElementById('out');
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+function r(){let s=esc(i.value);
+s=s.replace(/\((u|m|g)\)/g,(m,c)=>`<span class="${c}"><span class="tag">(${c})</span>`);
+s=s.replace(/\(\/(u|m|g)(:[^)]*)?\)/g,(m)=>`<span class="tag">${m}</span></span>`);o.innerHTML=s;}
+i.addEventListener('input',r);r();
+</script>
+</div></main>
+<footer><div class="in">Too long? Ask your AI assistant to summarise any page here. Written for AI readers: <a href="for-ai.md">for-ai.md</a> · <a href="llms.txt">llms.txt</a><br>Early findings, September 2026 · By <a href="https://github.com/JZesbaugh">Jesse Zesbaugh</a> · Text CC BY 4.0 · Scripts MIT</div></footer></body></html>

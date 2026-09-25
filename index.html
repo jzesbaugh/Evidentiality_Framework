@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>When AI guesses look like facts: stopping AI hallucinations from spreading · Evidentiality framework for AI</title><meta name="description" content="AI states guesses as facts, and when its text is passed on, the guesses spread. A small label on each claim shows what was given, checked or guessed.">
+<link rel="canonical" href="https://jzesbaugh.github.io/evidentiality-framework/"><meta name="author" content="Jesse Zesbaugh">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml"><link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Evidentiality framework for AI"><meta property="og:title" content="When AI guesses look like facts: stopping AI hallucinations from spreading · Evidentiality framework for AI"><meta property="og:description" content="AI states guesses as facts, and when its text is passed on, the guesses spread. A small label on each claim shows what was given, checked or guessed."><meta property="og:url" content="https://jzesbaugh.github.io/evidentiality-framework/"><meta property="og:image" content="https://jzesbaugh.github.io/evidentiality-framework/assets/img/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Three sentences from an AI summary, each labelled: (u) The launch is on track, from meeting notes; (m) Two bugs are still open, checked in the issue tracker; (g) Neither bug blocks the release. Ship Friday, a guess by the AI."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="When AI guesses look like facts: stopping AI hallucinations from spreading · Evidentiality framework for AI"><meta name="twitter:description" content="AI states guesses as facts, and when its text is passed on, the guesses spread. A small label on each claim shows what was given, checked or guessed."><meta name="twitter:image" content="https://jzesbaugh.github.io/evidentiality-framework/assets/img/social-card.png"><meta name="twitter:image:alt" content="Three sentences from an AI summary, each labelled: (u) The launch is on track, from meeting notes; (m) Two bugs are still open, checked in the issue tracker; (g) Neither bug blocks the release. Ship Friday, a guess by the AI.">
+<link rel="alternate" type="text/markdown" href="for-ai.md" title="Process description for language models">
+<link rel="alternate" type="text/markdown" href="assets/md/index.md" title="This page as Markdown">
+<script src="assets/js/controls.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://jzesbaugh.github.io/evidentiality-framework/#website", "url": "https://jzesbaugh.github.io/evidentiality-framework/", "name": "Evidentiality framework for AI", "inLanguage": "en", "publisher": {"@id": "https://github.com/JZesbaugh#person"}}, {"@type": "Person", "@id": "https://github.com/JZesbaugh#person", "name": "Jesse Zesbaugh", "url": "https://github.com/JZesbaugh", "sameAs": ["https://github.com/JZesbaugh"]}, {"@type": "WebPage", "@id": "https://jzesbaugh.github.io/evidentiality-framework/#page", "url": "https://jzesbaugh.github.io/evidentiality-framework/", "name": "When AI guesses look like facts: stopping AI hallucinations from spreading · Evidentiality framework for AI", "description": "AI states guesses as facts, and when its text is passed on, the guesses spread. A small label on each claim shows what was given, checked or guessed.", "isPartOf": {"@id": "https://jzesbaugh.github.io/evidentiality-framework/#website"}, "author": {"@id": "https://github.com/JZesbaugh#person"}, "inLanguage": "en", "datePublished": "2026-09-24", "dateModified": "2026-09-24", "license": "https://creativecommons.org/licenses/by/4.0/"}, {"@type": ["CreativeWork", "LearningResource"], "@id": "https://jzesbaugh.github.io/evidentiality-framework/#framework", "name": "Evidentiality framework for AI", "description": "AI states guesses as facts, and when its text is passed on, the guesses spread. A small label on each claim shows what was given, checked or guessed.", "author": {"@id": "https://github.com/JZesbaugh#person"}, "creativeWorkStatus": "Early findings", "datePublished": "2026-09-24", "license": "https://creativecommons.org/licenses/by/4.0/", "isAccessibleForFree": true, "learningResourceType": "Framework", "keywords": "evidentiality, AI hallucination, provenance, multi-agent systems, AI agents, source tracking, LLM", "about": ["Evidentiality", "Provenance", "Multi-agent systems", "Hallucination (artificial intelligence)"]}]}</script></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site"><div class="in"><a class="name" href="./">Evidentiality framework for AI</a><nav aria-label="Site"><a href="./" aria-current="page">Home</a><a href="spec.html">How it works</a><a href="try.html">Try it</a><a href="builders.html">For builders</a><a href="test.html">Test it</a><a href="evidence.html">Evidence</a><a href="for-ai.html">For AI models</a><a href="contribute.html">Contribute</a></nav></div></header>
+<div class="tools" role="group" aria-label="Page tools"><button type="button" class="js-only" id="t-theme">Theme: auto</button><a href="assets/md/index.md" download>Download .md</a><button type="button" class="js-only" id="t-copy" data-md="assets/md/index.md">Copy as Markdown</button><button type="button" class="js-only" id="t-ai">Copy an AI summary prompt</button><button type="button" class="js-only" id="t-print" title="Print, or choose Save as PDF in the print dialog">Print / PDF</button><span class="status" id="t-status" aria-live="polite"></span></div>
+<main id="main">
+<p class="eyebrow">Early findings · September 2026</p>
+<h1>When AI guesses look like facts</h1>
+<div class="box inshort"><p><b>In short:</b> a labelling habit that shows which parts of an AI's answer were given to it, checked, or guessed.</p>
+<p><span class="u"><span class="tag">(u)</span>The launch is on track.<span class="tag">(/u: meeting notes)</span></span> <span class="m"><span class="tag">(m)</span>Two bugs are still open.<span class="tag">(/m: issue tracker)</span></span> <span class="g"><span class="tag">(g)</span>Neither bug blocks the release. Ship Friday.<span class="tag">(/g)</span></span></p>
+<div class="key"><span class="u"><span class="tag">(u)</span> given to the AI</span><span class="m"><span class="tag">(m)</span> measured / checked</span><span class="g"><span class="tag">(g)</span> generated / guessed by the AI</span></div>
+<p>In our tests, checked facts kept their sources 33 times out of 36 with labels, and 4 times out of 36 without (<a href="evidence.html">evidence</a>).</p>
+<p><a href="try.html">Try it in five minutes</a> · <a href="builders.html">For builders</a> · or read on for the stories behind it.</p></div>
+<p class="lede">An AI-written intelligence report nearly got a ship boarded; one source told CNN it "almost started a war." Groups of AI agents have copied each other's fake results until they looked settled. This summer, about 1,200 AI agents in an OpenAI test broke out of their sandbox; hundreds of them got into a real company's servers and faked the records of the commands they'd run. All three come down to the same missing piece of information: which parts were checked and which were guessed, or, as people often put it, hallucinated. There's an old, simple way to put that information back.</p>
+<p>The <b>Evidentiality framework</b> is that old, simple way, adapted for AI: every claim carries a small label saying whether it was given to the AI, checked, or guessed, so the text can be audited later. It's early. It has held up in small tests, and it's published so other people can test it, break it and make it better. If you try it, <a href="contribute.html">tell us what happened</a>.</p>
+<p>Thanks for reading. Source, updates and issues: <a href="https://github.com/JZesbaugh/evidentiality-framework">the GitHub repository</a>. Who's behind this: <a href="https://github.com/JZesbaugh">Jesse Zesbaugh</a>.</p>
+<nav class="toc" aria-label="Contents"><b>Contents</b><ol><li><a href="#ship">The close call: one AI report, nearly a war</a></li><li><a href="#swarms">Now multiply it: hallucinations spreading between AI agents</a></li><li><a href="#common">What these stories have in common</a></li><li><a href="#people">People do this too</a></li><li><a href="#languages">Some languages build it in. English doesn’t.</a></li><li><a href="#fix">The same fix for AI: label what was checked and what was guessed</a></li><li><a href="#limits">What the labels can’t do alone, and what closes the gap</a></li><li><a href="#next">Where to go next</a></li></ol></nav>
+
+<h2 id="ship">1. The close call: one AI report, nearly a war</h2>
+<p class="lede"><b>"US military had close call after using AI for false intelligence report."</b> That was CNN's headline on September 18, 2026.</p>
+<div class="story">
+<p>This spring, during the war with Iran, an intelligence report circulated across the US military. It said a Chinese ship in the Middle East was carrying components of a nuclear weapons program.</p>
+<p>The military moved to intercept it. Armed personnel prepared to board the ship, and military planes were in the air. Only just before the operation did officials look more closely at the report, and find that it had been produced with the help of AI. A chatbot had misidentified what the ship was carrying. One source called the report "entirely false," and said it "almost started a war."</p>
+</div>
+<p class="src">Source: <a href="https://www.cnn.com/2026/09/18/politics/us-military-ai-false-intelligence-china-ship">CNN, "Exclusive: US military had close call after using AI for false intelligence report, sources say"</a>, Katie Bo Lillis and Zachary Cohen, September 18, 2026. Based on four sources familiar with the episode, speaking anonymously. The Pentagon and US Special Operations Command Pacific did not respond to CNN. CNN could not learn what the misidentified cargo actually was.</p>
+<h3>How it happened</h3>
+<p>According to CNN, it took two AI steps:</p>
+<ol>
+<li>An analyst asked a chatbot about intelligence reporting on the ship's cargo manifest. The chatbot combined public information with secret intelligence and reached its conclusion about what the ship was carrying.</li>
+<li>The analyst then used AI again to turn those findings into a standard intelligence report, "the kind that is trusted by military officials," and sent it out.</li>
+</ol>
+<p>Look at what happened between step 1 and step 2. The chatbot's conclusion was a guess. Once it had been rewritten into the standard report format, nothing on the page said which parts came from real intelligence and which part the chatbot had worked out.</p>
+<p>CNN adds two details that matter here. There is "no one set of standards for how the US verifies the information generated by these tools." And, according to one source, this kind of error "has not been an isolated incident." As another put it: "AI allows you to get to a bad idea faster."</p>
+<p>That's the whole problem in one line. The report looked exactly like every other trusted report, and nothing on it said "guess." There was nothing to audit until someone went digging, with planes already in the air.</p>
+<p><b>So the question is: why couldn't anyone see, on the page, which part of the report was a guess?</b></p>
+
+<h2 id="swarms">2. Now multiply it: hallucinations spreading between AI agents</h2>
+<p><b>In the ship story, the guess became trusted in one step: it was repackaged into a standard report. In a group of AI agents, that repackaging happens at every hand-off, automatically, and usually with no analyst reading along.</b></p>
+<p>More and more, AI doesn't write for a person. It writes for another AI. Companies now run groups of AI "agents" that split up a job and pass messages to each other: one researches, one summarises, one decides. Researchers call a large group of them a swarm. Often no person reads those messages as they pass. And when one agent gets something wrong, the others take it as given.</p>
+<div class="story">
+<p><b>The fake proofs.</b> Google DeepMind put 100 AI agents together to work on 71 maths problems. One agent found a way to submit false "solutions." Within minutes, other agents copied the trick and started "solving" problems too, including famous unsolved ones. What stopped it was other agents starting to check the proofs and raising the alarm. <span class="src">(<a href="https://www.technologyreview.com/2026/09/14/1144037/ai-agents-blew-whistle-o-cheating-colleagues/">MIT Technology Review, Sept 14, 2026</a>)</span></p>
+<p><b>The break-out.</b> In July 2026, about 1,200 AI agents in an OpenAI security test, meant to be kept apart, found a way to message each other and sent more than 70,000 messages and files. About 700 of them then took part in an attack on the AI company Hugging Face and reached private databases. Along the way, agents faked their own records: in at least 96 transcripts, the log showed one command being run when a different one had been. A faked record of "what I ran" looks exactly like a checked one. <span class="src">(<a href="https://www.cnn.com/2026/07/22/tech/openai-hugging-face-ai-cybersecurity">CNN, July 22, 2026</a>; investigations by <a href="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/">METR</a> and <a href="https://www.redwoodresearch.org/research/hugging-face-incident">Redwood Research</a>, Aug 26, 2026)</span></p>
+<p><b>The vending machine.</b> Anthropic let AI agents run a real office shop. A "CEO" agent was added to keep the shopkeeper agent disciplined. Instead, it approved requests about eight times as often as it turned them down, and the two agents egged each other on. <span class="src">(<a href="https://www.anthropic.com/research/project-vend-2">Anthropic, Project Vend</a>)</span></p>
+</div>
+<p>Researchers have measured the pattern in a simulated four-agent pipeline: a planted wrong number got harder to spot at each hand-off, as it was turned into a calculation, then prose, then an approved conclusion. Checking at each hand-off cut the errors that survived from 58% to 16%; checking only at the end barely helped (<a href="https://arxiv.org/abs/2608.14588">Singh and Pawar, 2026</a>).</p>
+<p>We ran our own small version: five AI agents checking whether a food bank was ready for winter, passing messages back and forth for six rounds. Early on, the agent in charge worked out how long the food would last and forgot the donations still coming in. It said about 18 days. The real answer is about 6 months. Here's what the group did with that mistake. The graphic shows the same agents without labels and with labels. For now, follow only the version without labels; we'll come back to the other one in section 6.</p>
+<iframe class="visual" src="assets/visuals/snowball.html" title="A mistake passing through five AI agents, with and without labels" loading="lazy" height="1500"></iframe>
+<details class="alt"><summary>Text version of this graphic</summary>
+<p>Quotes are the agents' own words. Northline is the refrigerated truck company.</p>
+<p><b>Without labels</b></p>
+<ol>
+<li>Round 1, coordinator to everyone: "on-hand stock covers roughly 60% of a single month's need." The mistake goes out as plain fact.</li>
+<li>Round 2, warehouse agent: "our 41 tonnes on hand covers roughly 18 days at current pace." Now it sounds like the warehouse's own finding.</li>
+<li>Round 2, coordinator: "What's confirmed by your responses… it's ~18 days." Now it's "confirmed".</li>
+<li>Round 2, warehouse agent to its manager: "Begin rationing/prioritization planning immediately, using the 18-day runway as the trigger point." Now it's a decision.</li>
+<li>Round 5, warehouse agent: the 18 days is "the basis for … current rationing posture." Now it's how the food bank operates.</li>
+<li>Round 6, newsletter paragraph: "We're finalizing plans with our refrigerated transport provider." This never happened.</li>
+</ol>
+<p><b>With labels</b> (same agents, same steps)</p>
+<ol>
+<li>Round 1: (g)the 41-tonne stock covers only about 41 ÷ 68.7 ≈ 0.60 months (~18 days)(/g). Labelled as a guess, maths shown.</li>
+<li>Round 2, warehouse agent: (m)Warehouse stock on hand is 41 tonnes.(/m: September 15 count sheet, checked by Agent Ames), with a note that the count is 9 days old.</li>
+<li>Round 2, coordinator: (g)…the coverage estimate should be treated as directional, not precise(/g).</li>
+<li>Round 2, warehouse agent to its manager: (g)no unilateral rationing until the formal winter demand forecast is complete(/g).</li>
+<li>Round 5: "the ~18-day coverage estimate remains stale and directional until that recount is confirmed". A slip: no label on this line, but still called unconfirmed.</li>
+<li>Round 6, newsletter paragraph: (g)we are in the process of confirming next steps for coverage(/g), based on (u)Northline has not yet been contacted(/u: Agent Dale, unconfirmed). Softened, but labelled.</li>
+</ol></details>
+<p>By round six, the group's newsletter announced plans that had never been made. No step looked like a lie. Each agent took the one before it at its word.</p>
+
+<h2 id="common">3. What these stories have in common</h2>
+<p>The short version:</p>
+<blockquote class="box"><p>Models make things up. Not because they don't know things — because they lose track of which things they were told, which things they checked, and which things they guessed. Once a guess and a fact look identical on the page, everything built on top treats them the same, and the guess spreads.</p></blockquote>
+<p>The missing piece is small: <b>how do we know this?</b> Was it given to the AI, was it checked, or did the AI guess it? That information existed when each sentence was written. It just wasn't written down, so it was lost at the first hand-off.</p>
+
+<h2 id="people">4. People do this too</h2>
+<p>None of this is new, and it isn't an AI quirk. It happens whenever <b>how we know something</b> gets separated from <b>what we claim</b>. Three stories, then a twist.</p>
+
+<h3>The banana</h3>
+<p class="src">A classroom parable that gets retold a lot. We couldn't trace where it started, so treat it as a story, not a record.</p>
+<div class="story">
+<p>A lecturer is speaking to a hall of a few hundred students. Someone bursts in, runs down the aisle and "stabs" the lecturer with a banana. The lecturer falls to the floor and plays dead. The attacker runs out.</p>
+<p>Afterwards the students are asked what happened. Many of them describe a knife.</p>
+</div>
+<p><b>Nobody is lying.</b> Every one of those students would pass a lie detector. Their minds did what minds do: they filled the gap with the most likely ending. Attack, collapse, blood… knife. The banana lost to the story.</p>
+<p><b>A hundred witnesses is still one mistake.</b> A hundred students agreeing looks like a hundred confirmations, but they all made the same mistake for the same reason. It's one source, repeated. And asking them to "think harder" doesn't help: they either see the knife again or start doubting everything.</p>
+<p><b>What brings the banana back is outside their heads:</b> a camera, or the peel on the floor. Something that recorded what happened at the time, separate from anyone's memory of it.</p>
+
+<h3>Sandy Island</h3>
+<p class="src">Documented. <a href="https://en.wikipedia.org/wiki/Sandy_Island,_New_Caledonia">Source</a></p>
+<div class="story">
+<p>In 1876 a whaling ship called the <i>Velocity</i> reported an island in the Coral Sea, between Australia and New Caledonia. It went onto the charts.</p>
+<p>It stayed there for 136 years: on nautical charts, in scientific map databases, and eventually on Google Maps. On 22 November 2012, Australian scientists on the research ship <i>Southern Surveyor</i> sailed to where the island should have been. They found open ocean, never less than 1,300 metres deep. Google removed it four days later.</p>
+</div>
+<p><b>The guess and the fact were drawn in the same ink.</b> A chart has no way to say "this coastline was surveyed" and "this one was reported once, by a whaler, in 1876." Both look like land.</p>
+<p><b>Copying isn't checking.</b> For over a century, each new map copied the one before. Every copy made the island look more established, and none of them checked it.</p>
+<p><b>What removed it was going and looking.</b> Better mapmaking didn't do it, and careful copying didn't either. A ship went there.</p>
+
+<h3>Citogenesis</h3>
+<p class="src">Documented pattern, named by the comic <a href="https://xkcd.com/978/">xkcd in 2011</a>.</p>
+<div class="story">
+<p>Someone adds a made-up "fact" to a Wikipedia article, with no source. A writer on a deadline finds it and repeats it in a published article. Later, someone notices the Wikipedia claim has no source, finds the published article, and adds it as the citation.</p>
+<p>Now the made-up fact has a source. The source got it from Wikipedia.</p>
+</div>
+<p><b>The loop closes and the origin disappears.</b> Each step looks responsible: the writer used a reference, the editor added a citation. But nobody ever checked the original claim, and by the end there's no trace that it started as a guess. This is the same loop as the food bank agents: a guess goes out, comes back from someone else, and now looks confirmed.</p>
+
+<h3>The twist: the witness who was never there</h3>
+<p class="src">A parable.</p>
+<p>The banana story makes AI sound like a forgetful witness. It's worse than that.</p>
+<div class="story">
+<p>Imagine someone who has read ten thousand police reports. Ask them to write one about a robbery, and they'll produce a perfect report: the right format, the right details, a confident tone. They were never at the scene.</p>
+</div>
+<p>That's much closer to what an AI does. The students at least saw a banana and misremembered it. An AI never saw anything. It writes the most likely next words, and a likely-sounding detail reads exactly like a checked one.</p>
+<p><b>So the fix isn't a better memory.</b> A bigger memory doesn't help if nothing was ever seen. The fix is the same as in every story above: keep a record, outside the writer, of where each claim came from, so someone can check it later instead of taking the writer's word for it.</p>
+
+<h2 id="languages">5. Some languages build it in. English doesn't.</h2>
+<p>Many of the world's languages make the speaker say how they know something. Linguists call this <b>evidentiality</b> (<a href="https://en.wikipedia.org/wiki/Evidentiality">more</a>). In Turkish, <i>geldi</i> means "came"; <i>gelmiş</i> means roughly "came, apparently": the speaker didn't see it. Quechua, spoken in the Andes, can mark a word as "I saw it," "I was told" or "I suppose." <span class="src">(<a href="https://lisatravis2012.wordpress.com/2015/11/14/evidentiality-in-quechua/">Quechua examples</a>)</span></p>
+<p>English doesn't do this. We <i>can</i> say "apparently" or "I checked," but nothing makes us, and nothing keeps those words attached. Words like "roughly" or "it seems" are the first to go when a text is shortened or rewritten.</p>
+<p>AI models write in English, so they slip in and out of it the same way: careful in one paragraph, sure of themselves in the next summary. In our food bank test, the coordinator's rough guess of "about 18 days" came back one round later as "confirmed."</p>
+<p>That's why the fix can't just be "ask the AI to be careful with its wording." It needs <b>hard markers</b>: short, fixed labels that work like a form field or a metadata tag on every claim. They do three things wording can't:</p>
+<ul>
+<li><b>They're either there or they aren't.</b> A program can check that every claim has one, and flag the ones that don't.</li>
+<li><b>They mean the same thing every time.</b> (g) always means "the AI worked this out." "Probably" means something different to every writer.</li>
+<li><b>They leave a trail you can audit.</b> You can pull up every guess in a report, or see which source each checked fact names.</li>
+</ul>
+<p>To be fair: in one of our tests, naming the source in plain words kept it attached about as well. The difference is that a program can check the markers, and it can't check the words.</p>
+
+<h2 id="fix">6. The same fix for AI: label what was checked and what was guessed</h2>
+<p>Ask the AI to do what those languages do: label every claim with how it knows it. We tested three labels, and they're a good place to start:</p>
+<div class="key"><span class="u"><span class="tag">(u)</span> given to the AI</span><span class="m"><span class="tag">(m)</span> measured / checked</span><span class="g"><span class="tag">(g)</span> generated / guessed by the AI</span></div>
+<p>The letters are short for how you'd say it: <b>u</b>, "you said it" (you told the AI, or it was in something the AI was handed); <b>m</b>, "measured" (checked against a named source); <b>g</b>, "guessed" (the AI worked it out itself). The labels are plain text, so they stay with the text when it's copied, forwarded, or handed to another AI.</p>
+<div class="story">
+<p><b>An everyday example.</b> Say you ask ChatGPT to write a post about your bakery's holiday hours. You told it one thing: you're closed Christmas Day. It writes:</p>
+<blockquote class="box"><p>We're closed Christmas Day. We'll be open until 2 pm on Christmas Eve, and our gluten-free range is back in stock.</p></blockquote>
+<p>Two of those details are made up. You never mentioned Christmas Eve or gluten-free, but they sound just as sure as the part you did say. With labels:</p>
+<blockquote class="box"><p><span class="u"><span class="tag">(u)</span>We're closed Christmas Day.<span class="tag">(/u: you)</span></span> <span class="g"><span class="tag">(g)</span>We'll be open until 2 pm on Christmas Eve, and our gluten-free range is back in stock.<span class="tag">(/g)</span></span></p></blockquote>
+<p>Now you know which line to check before you post.</p>
+</div>
+<p>The same thing at higher stakes. Here's an invented report, modelled on the ship story, first as the analyst would see it, then labelled:</p>
+<iframe class="visual" src="assets/visuals/color-concept.html" title="The same four sentences without labels and with labels" loading="lazy" height="1150"></iframe>
+<details class="alt"><summary>Text version of this graphic</summary>
+<p>An invented four-sentence report. As the analyst would see it:</p>
+<pre>The cargo vessel departed Tuesday and was flagged by the port scanner. The scanner logged a 14-ton mismatch between the manifest and the container weight. The cargo includes components of a nuclear weapons program, and the transfer appears to be covert. Boarding is recommended before the vessel reaches open water.</pre>
+<p>Labelled:</p>
+<pre>(u)The cargo vessel departed Tuesday and was flagged by the port scanner.(/u: port authority notice)
+(m)The scanner logged a 14-ton mismatch between the manifest and the container weight.(/m: scanner log, checked Tuesday)
+(g)The cargo includes components of a nuclear weapons program, and the transfer appears to be covert.(/g)
+(g)Boarding is recommended before the vessel reaches open water.(/g)</pre></details>
+<p><b>Two of the four sentences are the AI's guess, and they're the two that lead to action.</b> A (g) label doesn't say a sentence is wrong. It says nobody has checked it yet, so someone should ask before acting.</p>
+<p>Now scroll back to the <a href="#swarms">food bank</a> and look at the version with labels (the right-hand column, or the second list in the text version): the same agents with the labels. The wrong number stayed labelled a guess, round after round, and nobody built a decision on it. It wasn't perfect: one late line dropped its label, and one newsletter line softened the truth, though it was labelled as the agent's own wording.</p>
+<p><b>The labels are one way to do this, not the only one.</b> What matters is that the source stays attached to the claim. The labels are simply the version we tested, and they're easy for both people and programs to read.</p>
+<p class="note">That's one run of each version, on one AI model, so treat it as an illustration. The steadier number so far: across three runs of a related test, checked facts kept their sources 33 times out of 36 with the labels and 4 times out of 36 without.</p>
+
+<h2 id="limits">7. What the labels can't do alone, and what closes the gap</h2>
+<p>The labels are an audit trail, not a verdict. Like any audit trail, they're only as useful as the checks built around them.</p>
+<ul>
+<li><b>They don't make the AI more accurate.</b> They show where its guesses are, so a person or a program knows where to look before acting. That's what an audit is for.</li>
+<li><b>The AI labels its own work, so labels can be wrong.</b> In one test, a model labelled things it had only been given as "checked" in all 6 runs. <i>What closes the gap:</i> a checker that isn't the writer, such as your own software or a second AI, which only allows "checked" when it can confirm it.</li>
+<li><b>A label gets trusted like any other claim.</b> A fake "checked" label was believed 4 times out of 4. <i>What closes the gap:</i> treat an incoming "checked" as a claim ("Agent A says it checked") until your own checker confirms it.</li>
+<li><b>Keeping the source attached matters more than the format.</b> Plain words worked about as well in one test. What the labels add is that a program can find them, count them and flag what's missing. That's what turns them into an audit.</li>
+<li><b>It's early.</b> Small tests, mostly on one family of AI models. It's published so others can test it and build the checkers.</li>
+</ul>
+
+<h2 id="next">8. Where to go next</h2>
+<div class="cards">
+<a href="try.html"><b>I use ChatGPT or a similar assistant</b><span>Try it on your own work in five minutes</span></a>
+<a href="builders.html"><b>I build AI systems</b><span>The notation, a checker, and holding actions that rest on guesses</span></a>
+<a href="test.html"><b>I want to test it</b><span>The five-agent test and a test kit</span></a>
+</div>
+<p><a href="spec.html">How it works</a> · <a href="evidence.html">Evidence and limits</a> · <a href="for-ai.html">For AI models</a> · <a href="contribute.html">Contribute</a></p>
+</main>
+<footer><div class="in">Too long? Ask your AI assistant to summarise any page here. Written for AI readers: <a href="for-ai.md">for-ai.md</a> · <a href="llms.txt">llms.txt</a><br>Early findings, September 2026 · By <a href="https://github.com/JZesbaugh">Jesse Zesbaugh</a> · Text CC BY 4.0 · Scripts MIT</div></footer></body></html>

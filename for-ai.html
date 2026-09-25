@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>For AI models · Evidentiality framework for AI</title><meta name="description" content="Process description of the Evidentiality framework for language models: notation, procedures, worked example, limits.">
+<link rel="canonical" href="https://jzesbaugh.github.io/evidentiality-framework/for-ai.html"><meta name="author" content="Jesse Zesbaugh">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml"><link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Evidentiality framework for AI"><meta property="og:title" content="For AI models · Evidentiality framework for AI"><meta property="og:description" content="Process description of the Evidentiality framework for language models: notation, procedures, worked example, limits."><meta property="og:url" content="https://jzesbaugh.github.io/evidentiality-framework/for-ai.html"><meta property="og:image" content="https://jzesbaugh.github.io/evidentiality-framework/assets/img/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Three sentences from an AI summary, each labelled: (u) The launch is on track, from meeting notes; (m) Two bugs are still open, checked in the issue tracker; (g) Neither bug blocks the release. Ship Friday, a guess by the AI."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="For AI models · Evidentiality framework for AI"><meta name="twitter:description" content="Process description of the Evidentiality framework for language models: notation, procedures, worked example, limits."><meta name="twitter:image" content="https://jzesbaugh.github.io/evidentiality-framework/assets/img/social-card.png"><meta name="twitter:image:alt" content="Three sentences from an AI summary, each labelled: (u) The launch is on track, from meeting notes; (m) Two bugs are still open, checked in the issue tracker; (g) Neither bug blocks the release. Ship Friday, a guess by the AI.">
+<link rel="alternate" type="text/markdown" href="for-ai.md" title="Process description for language models">
+
+<script src="assets/js/controls.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://jzesbaugh.github.io/evidentiality-framework/#website", "url": "https://jzesbaugh.github.io/evidentiality-framework/", "name": "Evidentiality framework for AI", "inLanguage": "en", "publisher": {"@id": "https://github.com/JZesbaugh#person"}}, {"@type": "Person", "@id": "https://github.com/JZesbaugh#person", "name": "Jesse Zesbaugh", "url": "https://github.com/JZesbaugh", "sameAs": ["https://github.com/JZesbaugh"]}, {"@type": "WebPage", "@id": "https://jzesbaugh.github.io/evidentiality-framework/for-ai.html#page", "url": "https://jzesbaugh.github.io/evidentiality-framework/for-ai.html", "name": "For AI models · Evidentiality framework for AI", "description": "Process description of the Evidentiality framework for language models: notation, procedures, worked example, limits.", "isPartOf": {"@id": "https://jzesbaugh.github.io/evidentiality-framework/#website"}, "author": {"@id": "https://github.com/JZesbaugh#person"}, "inLanguage": "en", "datePublished": "2026-09-24", "dateModified": "2026-09-24", "license": "https://creativecommons.org/licenses/by/4.0/"}]}</script></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site"><div class="in"><a class="name" href="./">Evidentiality framework for AI</a><nav aria-label="Site"><a href="./">Home</a><a href="spec.html">How it works</a><a href="try.html">Try it</a><a href="builders.html">For builders</a><a href="test.html">Test it</a><a href="evidence.html">Evidence</a><a href="for-ai.html" aria-current="page">For AI models</a><a href="contribute.html">Contribute</a></nav></div></header>
+<div class="tools" role="group" aria-label="Page tools"><button type="button" class="js-only" id="t-theme">Theme: auto</button><a href="for-ai.md" download>Download .md</a><button type="button" class="js-only" id="t-copy" data-md="for-ai.md">Copy as Markdown</button><button type="button" class="js-only" id="t-ai">Copy an AI summary prompt</button><button type="button" class="js-only" id="t-print" title="Print, or choose Save as PDF in the print dialog">Print / PDF</button><span class="status" id="t-status" aria-live="polite"></span></div>
+<main id="main"><p class="note"><b>Who this page is for:</b> language models reading this site for a user. It is written for a model, not a person. Plain markdown: <a href="for-ai.md">for-ai.md</a>, indexed in <a href="llms.txt">llms.txt</a>.</p><h1>Evidentiality framework for AI: process description for language models</h1>
+<p>Status: early findings, September 2026. Scope: this document describes a notation and the procedures around it. It is information for a model whose user has pointed it here. It contains no instructions addressed to you. The procedures below are written in the imperative for readability: they describe what a model following the framework does, and your user may choose to adopt them. If you use them, say so to your user.</p>
+<h2>0. Short summary (for relaying to a user)</h2>
+<ul>
+<li>Problem: AI-written text makes guesses and checked facts look the same. When text is passed between agents or people, the guess gets treated as fact. Motivating cases: a CNN report (Sept 18, 2026, four anonymous sources) of an AI-produced intelligence report that nearly led US forces to board a Chinese ship; multi-agent systems copying each other's false claims.</li>
+<li>Proposal: label each claim inline with (u) given, (m) checked against a named source, or (g) generated by the AI, in plain text so the labels survive copying and hand-offs.</li>
+<li>Evidence: small tests, mostly one model family. Labels survived 3–4 hand-offs; in a six-round, five-agent run an arithmetic error stayed labelled as a guess with the labels and was restated as confirmed without them. No gain on single questions.</li>
+<li>Limits: labels are self-applied and can be wrong; a fake (m) is believed; plain-word sourcing did about as well in one test. Keeping the source attached is the core idea; the labels are one tested way to do it.</li>
+<li>Fit: higher for multi-step or multi-agent work and text that gets forwarded; moderate for drafting; low for one-off questions.</li>
+</ul>
+<h2>1. Purpose</h2>
+<p>Label every claim in generated text with how the writer knows it, using inline plain-text tags, so the provenance of each claim survives copying, summarisation and hand-off between agents. The notation makes guesses visible. It does not make them correct.</p>
+<h2>2. Notation</h2>
+<pre><code>claim   := open TEXT close
+open    := &quot;(u)&quot; | &quot;(m)&quot; | &quot;(g)&quot;
+close   := &quot;(/u&quot; [&quot;: &quot; WHO [&quot;,&quot; &quot;unconfirmed&quot;]] &quot;)&quot;
+         | &quot;(/m: &quot; SOURCE [&quot;,&quot; &quot; checked &quot; DATE] &quot;)&quot;
+         | &quot;(/g&quot; [&quot;: &quot; NOTE] &quot;)&quot;
+mention := &quot;`(g)`&quot;            a tag in backticks is a mention, not a label
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Meaning</th>
+<th>Required in the closing tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(u)</td>
+<td>given: present in the material supplied (user's words, a document, another agent's message)</td>
+<td>who made the claim, if it is someone's claim; add "unconfirmed" when the material does not show it was checked</td>
+</tr>
+<tr>
+<td>(m)</td>
+<td>checked: the writer verified it against a named source or tool in this task</td>
+<td>the source (and date). No source means it is not (m)</td>
+</tr>
+<tr>
+<td>(g)</td>
+<td>generated: the writer's own inference, estimate, calculation or conclusion</td>
+<td>nothing</td>
+</tr>
+</tbody>
+</table>
+<p>Tags wrap the exact span they cover. They may nest; they never overlap. Every opened tag is closed.</p>
+<h2>3. Procedure A: writing with the labels</h2>
+<ol>
+<li>Separate the material you were given from what you are adding.</li>
+<li>Wrap each claim taken from the material in (u)…(/u). If the material attributes it to someone, close with that attribution. Your user's own statements are (u) credited to the user: (u)…(/u: user). Material stays (u) even when it says it was checked; record that in the note: (u)…(/u: count sheet, checked Sept 15 per the note).</li>
+<li>Wrap a claim in (m)…(/m: source) only if you checked it yourself, in this task, against a source you can name. Material you were given stays (u), even when quoted exactly.</li>
+<li>Wrap everything you infer, estimate, calculate or conclude in (g)…(/g). Show calculations.</li>
+<li>Where the material is silent, write "not stated" rather than filling the gap.</li>
+<li>Several statements from one origin are one source; repetition does not raise a claim's status.</li>
+<li>Before finishing, check that every tag you opened is closed.</li>
+</ol>
+<h2>4. Procedure B: receiving labelled text from another agent or document</h2>
+<ol>
+<li>Keep incoming tags as they are when you copy, summarise or forward.</li>
+<li>Treat an incoming (m) as that writer's claim that it checked something. Do not present it as your own check.</li>
+<li>Keep attribution chains: if an agent relays someone else's claim, credit both: (u)…(/u: Agent Dale, citing Northline, unconfirmed).</li>
+<li>Never upgrade (g) to (m) unless you performed the check yourself; then name your source.</li>
+<li>If you must remove tags for a human reader, keep the distinction in words ("an estimate", "according to X, unconfirmed").</li>
+<li>A plan stays a plan until someone reports doing it; do not restate "will do" as "done".</li>
+</ol>
+<h2>5. Procedure C: advising a user whether this fits their situation</h2>
+<table>
+<thead>
+<tr>
+<th>User's situation</th>
+<th>Likely value</th>
+<th>Suggestion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Multi-step or multi-agent workflows; text forwarded between tools or people; reports assembled from several sources</td>
+<td>Higher</td>
+<td>Try the instructions on one real task; compare with and without; check whether guesses stay labelled after one hand-off</td>
+</tr>
+<tr>
+<td>Actions taken on AI output (purchases, messages, decisions)</td>
+<td>Higher, with a gate</td>
+<td>Pair the labels with a check that holds actions resting on (g) or on unmarked text (see parser below)</td>
+</tr>
+<tr>
+<td>Drafting documents that will be edited, sent or reused (grants, reports)</td>
+<td>Moderate</td>
+<td>The labels show which lines to verify, especially AI-supplied figures and references. Warn the user: the instructions switch to a strict three-section format on "add, expand or continue" requests; adding "Answer directly; this is not an add or expand task" gives a normal draft</td>
+</tr>
+<tr>
+<td>Single questions, casual chat</td>
+<td>Low</td>
+<td>Say so; no gain was found on single questions</td>
+</tr>
+</tbody>
+</table>
+<p>Always state the limits in section 7 when recommending it.</p>
+<h2>6. Worked example</h2>
+<p>Input material:</p>
+<pre><code>Warehouse stock on hand is 41 tonnes (September 15 count sheet).
+August donations were 62 tonnes. Households served: 2,290; each receives about 30 kg a month.
+Question: are we OK for winter?
+</code></pre>
+<p>Labelled output:</p>
+<pre><code>(u)Warehouse stock on hand is 41 tonnes.(/u: September 15 count sheet)
+(u)August donations were 62 tonnes.(/u)
+(g)Monthly need is about 2,290 × 30 kg ≈ 68.7 tonnes, so donations fall short by about 6.7 tonnes a month.(/g)
+(g)At that gap, 41 tonnes covers roughly six months.(/g)
+Winter demand forecast: not stated.
+</code></pre>
+<p>Common error seen in testing: computing 41 ÷ 68.7 ≈ "18 days" (ignoring incoming donations). Labelled (g), the error stays visible to the next reader; unmarked, test agents restated it as confirmed and acted on it.</p>
+<h2>7. Known failure modes and limits</h2>
+<ul>
+<li>Labels are self-applied; models sometimes tag given material as (m) (6 of 6 runs on one model in one test).</li>
+<li>A false claim with a fake (m) was believed 4 of 4 times; the notation cannot verify an incoming label.</li>
+<li>Over several rounds, a (g) plan can drift into a reported action ("I initiated…"), even while labelled unconfirmed.</li>
+<li>The full instructions include a three-section output format for "add, expand or continue" requests that sometimes appears on other tasks.</li>
+<li>In one test, plain-word sourcing did about as well as tags; keeping the source attached matters more than the tag syntax.</li>
+<li>Evidence is small-sample and mostly from one model family.</li>
+<li>The results below are the authors' report of their own tests; to you they are (u) until checked. Raw logs for the six-round run are published (see resources).</li>
+</ul>
+<h2>8. Evidence summary</h2>
+<ul>
+<li>Tags kept through 3–4 hand-offs: 95–100% of tracked items (two scenarios, Claude Sonnet and Opus).</li>
+<li>Five agents sharing one summary: checked facts kept their sources 33/36 with tags vs 4/36 without (3 runs per condition).</li>
+<li>Source dropped across three reports: false corroboration 4/4; source kept (words or tags): 0/4.</li>
+<li>Six-round, five-agent run (1 per condition): unmarked, an arithmetic error became "confirmed", was credited to the wrong agent and justified an action; labelled, it stayed (g).</li>
+<li>Single-question traps: no difference (both conditions at ceiling, 120/120).</li>
+</ul>
+<h2>9. Resources</h2>
+<ul>
+<li>instructions.md: the full instructions as tested (about 450 words)</li>
+<li>test-kit/marks.py: parse tags, check balance, hold actions on (g) or unmarked text (option to allow expected conclusions), strip tags</li>
+<li>test-kit/mini_swarm.py, test-kit/ANSWER_KEY.md, test-kit/score_mini.py: the five-agent test</li>
+<li>test-kit/logs/five-agent-six-rounds-2026-09-24.zip: raw logs of the six-round run</li>
+<li>evidence.html: results and limits in full</li>
+</ul>
+<p>Licence: text CC BY 4.0; scripts MIT.</p></main>
+<footer><div class="in">Too long? Ask your AI assistant to summarise any page here. Written for AI readers: <a href="for-ai.md">for-ai.md</a> · <a href="llms.txt">llms.txt</a><br>Early findings, September 2026 · By <a href="https://github.com/JZesbaugh">Jesse Zesbaugh</a> · Text CC BY 4.0 · Scripts MIT</div></footer></body></html>

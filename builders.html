@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Stopping hallucinations spreading between AI agents · Evidentiality framework for AI</title><meta name="description" content="Provenance labels that survive hand-offs between AI agents, plus a fail-closed gate that holds actions built on unchecked claims. Grammar and parser included.">
+<link rel="canonical" href="https://jzesbaugh.github.io/evidentiality-framework/builders.html"><meta name="author" content="Jesse Zesbaugh">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml"><link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Evidentiality framework for AI"><meta property="og:title" content="Stopping hallucinations spreading between AI agents · Evidentiality framework for AI"><meta property="og:description" content="Provenance labels that survive hand-offs between AI agents, plus a fail-closed gate that holds actions built on unchecked claims. Grammar and parser included."><meta property="og:url" content="https://jzesbaugh.github.io/evidentiality-framework/builders.html"><meta property="og:image" content="https://jzesbaugh.github.io/evidentiality-framework/assets/img/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Three sentences from an AI summary, each labelled: (u) The launch is on track, from meeting notes; (m) Two bugs are still open, checked in the issue tracker; (g) Neither bug blocks the release. Ship Friday, a guess by the AI."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Stopping hallucinations spreading between AI agents · Evidentiality framework for AI"><meta name="twitter:description" content="Provenance labels that survive hand-offs between AI agents, plus a fail-closed gate that holds actions built on unchecked claims. Grammar and parser included."><meta name="twitter:image" content="https://jzesbaugh.github.io/evidentiality-framework/assets/img/social-card.png"><meta name="twitter:image:alt" content="Three sentences from an AI summary, each labelled: (u) The launch is on track, from meeting notes; (m) Two bugs are still open, checked in the issue tracker; (g) Neither bug blocks the release. Ship Friday, a guess by the AI.">
+<link rel="alternate" type="text/markdown" href="for-ai.md" title="Process description for language models">
+<link rel="alternate" type="text/markdown" href="assets/md/builders.md" title="This page as Markdown">
+<script src="assets/js/controls.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://jzesbaugh.github.io/evidentiality-framework/#website", "url": "https://jzesbaugh.github.io/evidentiality-framework/", "name": "Evidentiality framework for AI", "inLanguage": "en", "publisher": {"@id": "https://github.com/JZesbaugh#person"}}, {"@type": "Person", "@id": "https://github.com/JZesbaugh#person", "name": "Jesse Zesbaugh", "url": "https://github.com/JZesbaugh", "sameAs": ["https://github.com/JZesbaugh"]}, {"@type": "WebPage", "@id": "https://jzesbaugh.github.io/evidentiality-framework/builders.html#page", "url": "https://jzesbaugh.github.io/evidentiality-framework/builders.html", "name": "Stopping hallucinations spreading between AI agents · Evidentiality framework for AI", "description": "Provenance labels that survive hand-offs between AI agents, plus a fail-closed gate that holds actions built on unchecked claims. Grammar and parser included.", "isPartOf": {"@id": "https://jzesbaugh.github.io/evidentiality-framework/#website"}, "author": {"@id": "https://github.com/JZesbaugh#person"}, "inLanguage": "en", "datePublished": "2026-09-24", "dateModified": "2026-09-24", "license": "https://creativecommons.org/licenses/by/4.0/"}, {"@type": "SoftwareSourceCode", "name": "marks.py", "programmingLanguage": "Python", "codeRepository": "https://jzesbaugh.github.io/evidentiality-framework/test-kit/", "license": "https://opensource.org/licenses/MIT", "author": {"@id": "https://github.com/JZesbaugh#person"}}]}</script></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site"><div class="in"><a class="name" href="./">Evidentiality framework for AI</a><nav aria-label="Site"><a href="./">Home</a><a href="spec.html">How it works</a><a href="try.html">Try it</a><a href="builders.html" aria-current="page">For builders</a><a href="test.html">Test it</a><a href="evidence.html">Evidence</a><a href="for-ai.html">For AI models</a><a href="contribute.html">Contribute</a></nav></div></header>
+<div class="tools" role="group" aria-label="Page tools"><button type="button" class="js-only" id="t-theme">Theme: auto</button><a href="assets/md/builders.md" download>Download .md</a><button type="button" class="js-only" id="t-copy" data-md="assets/md/builders.md">Copy as Markdown</button><button type="button" class="js-only" id="t-ai">Copy an AI summary prompt</button><button type="button" class="js-only" id="t-print" title="Print, or choose Save as PDF in the print dialog">Print / PDF</button><span class="status" id="t-status" aria-live="polite"></span></div>
+<main id="main">
+<p class="eyebrow">For builders</p>
+<h1>Stopping hallucinations spreading between AI agents</h1>
+<p class="note"><b>Who this page is for:</b> engineers building multi-step or multi-agent AI systems.</p>
+<h2>What it is, technically</h2>
+<p>A system prompt (<a href="spec.html#module">the instructions</a>, about 450 words) that asks the model to wrap each claim in an inline provenance label, so in a multi-agent pipeline every hand-off carries where each claim came from. Paired with a gate, it gives you a human-in-the-loop approval point exactly where an action rests on something unchecked. There's no model change, no schema and no extra service. Because the labels are plain text inside the prose, they survive the things that strip metadata: copying, summarising, pasting into email, and handing text to another agent.</p>
+<h2>The notation</h2>
+<pre>claim   := open text close
+open    := "(u)" | "(m)" | "(g)"
+close   := "(/u" [": " note] ")" | "(/m: " source ["," date] ")" | "(/g" [": " note] ")"
+          -- labels may nest, never overlap; (m) must name a source
+mention := "`(g)`"   -- a label in backticks is only mentioned, not applied</pre>
+<h2>Parse, check, and gate</h2>
+<p>The labels only help if something reads them. The simplest useful control: before an agent takes an action, parse its reasoning and hold the action if any of it is labelled (g), <b>if any sentence carries no label at all</b>, or if the labels don't balance. It fails closed: a model that forgets to label its text doesn't get through. That also means it holds anything containing a conclusion, since a conclusion is (g); that's the point where a person or a checker should look. Pass <code>allow_guesses=True</code> where conclusions are expected. List numbers, bullets, headings and table pipes are ignored; words inside backticks still count as claims. Known limit: a lettered list written "(a) … (g)" is read as labels. <code>strip()</code> removes the labels for readers who don't want them. This file is in the <a href="test-kit/marks.py">test kit</a> (MIT); it keeps its original name, <code>marks.py</code>, from before the site settled on "labels".</p>
+<pre>&quot;&quot;&quot;Parse evidentiality labels ((u)/(m)/(g), called &quot;marks&quot; in earlier versions), check they balance, and gate actions on unchecked claims. MIT licence.&quot;&quot;&quot;
+import re
+
+# Opening (u)/(m)/(g); closing (/u), (/m: note), allowing one level of parentheses inside a note.
+TOKEN = re.compile(r&quot;`[^`\n]*`|\((u|m|g)\)|\(/(u|m|g)(?::\s*((?:[^()]|\([^()]*\))*))?\)&quot;, re.IGNORECASE)
+
+MARK_ONLY = re.compile(r&quot;\(/?(?:u|m|g)(?::[^)]*)?\)&quot;, re.IGNORECASE)
+# List numbers, bullets, quote markers and table pipes are layout, not claims.
+FORMAT = re.compile(r&quot;^\s*(?:[-*+•]|\d+[.)]|&gt;|\|)\s*|\s*\|\s*$&quot;)
+
+def parse(text):
+    &quot;&quot;&quot;Return (spans, problems). Each span: dict(mark, text, note, start, end).&quot;&quot;&quot;
+    spans, problems, stack = [], [], []
+    for t in TOKEN.finditer(text):
+        if t.group(0).startswith(&quot;`&quot;):
+            continue                                    # a mention in backticks, not a mark
+        if t.group(1):
+            stack.append((t.group(1).lower(), t.start(), t.end()))
+            continue
+        mark, note = t.group(2).lower(), (t.group(3) or &quot;&quot;).strip()
+        if not stack or stack[-1][0] != mark:
+            problems.append(f&quot;closing ({mark}) at {t.start()} doesn&#x27;t match an open tag&quot;)
+            continue
+        _, outer_start, inner_start = stack.pop()
+        spans.append({&quot;mark&quot;: mark, &quot;text&quot;: text[inner_start:t.start()].strip(), &quot;note&quot;: note,
+                      &quot;start&quot;: outer_start, &quot;end&quot;: t.end()})
+    problems += [f&quot;({m}) opened at {pos} never closed&quot; for m, pos, _ in stack]
+    for s in spans:
+        if s[&quot;mark&quot;] == &quot;m&quot; and not s[&quot;note&quot;]:
+            problems.append(f&quot;checked claim with no source: {s[&#x27;text&#x27;][:60]!r}&quot;)
+    return spans, problems
+
+def unmarked(text, spans):
+    &quot;&quot;&quot;Text outside every mark (ignoring punctuation, whitespace and backtick mentions).&quot;&quot;&quot;
+    covered = sorted((s[&quot;start&quot;], s[&quot;end&quot;]) for s in spans)
+    out, pos = [], 0
+    for a, b in covered:
+        if a &gt; pos:
+            out.append(text[pos:a])
+        pos = max(pos, b)
+    out.append(text[pos:])
+    # A backtick mention of a mark is not a claim, but other words in backticks are.
+    rest = re.sub(r&quot;`([^`\n]*)`&quot;, lambda b: MARK_ONLY.sub(&quot; &quot;, b.group(1)), &quot;&quot;.join(out))
+    lines = [FORMAT.sub(&quot;&quot;, ln) for ln in rest.split(&quot;\n&quot;) if not re.match(r&quot;\s*#{1,6}\s&quot;, ln)]  # headings are labels
+    parts = [p.strip() for ln in lines for p in re.split(r&quot;(?&lt;=[.!?])\s+&quot;, ln)]
+    return [p for p in parts if re.search(r&quot;[A-Za-z]&quot;, p)]
+
+def gate(text, allow_guesses=False):
+    &quot;&quot;&quot;Fail closed: allow an action only if every claim is marked, the marks balance, and nothing is (g).
+
+    By design this holds any text containing a conclusion, because a conclusion is (g). Use it at the
+    point where an action would be taken, and send held items to a person or a checker. Pass
+    allow_guesses=True where conclusions are expected; guesses are then listed but don&#x27;t block.
+    Known limit: a lettered list written &quot;(a) … (g)&quot; is read as marks; use &quot;a.&quot; or backticks instead.
+    &quot;&quot;&quot;
+    spans, problems = parse(text)
+    loose = unmarked(text, spans)
+    if loose:
+        problems.append(f&quot;unmarked text: {loose[0][:60]!r}&quot; + (f&quot; (+{len(loose)-1} more)&quot; if len(loose) &gt; 1 else &quot;&quot;))
+    guesses = [s[&quot;text&quot;] for s in spans if s[&quot;mark&quot;] == &quot;g&quot;]
+    return {&quot;allow&quot;: not problems and (allow_guesses or not guesses), &quot;problems&quot;: problems, &quot;unchecked&quot;: guesses}
+
+def strip(text):
+    &quot;&quot;&quot;Remove the marks for a human reader who doesn&#x27;t want them (keeps the words).&quot;&quot;&quot;
+    return re.sub(r&quot;\s{2,}&quot;, &quot; &quot;, TOKEN.sub(lambda t: t.group(0) if t.group(0).startswith(&quot;`&quot;) else &quot;&quot;, text)).strip()
+
+if __name__ == &quot;__main__&quot;:
+    demo = (&quot;(u)Stock is 41 tonnes.(/u: warehouse manager) &quot;
+            &quot;(m)Donations were 62 tonnes in August.(/m: donor ledger, checked Sept 20) &quot;
+            &quot;(g)Stock lasts about 18 days.(/g)&quot;)
+    print(gate(demo))
+</pre>
+<p>Running the demo prints <code>{'allow': False, 'problems': [], 'unchecked': ['Stock lasts about 18 days.']}</code>: the action is held because it depends on a guess.</p>
+<h2>Limits you should design around</h2>
+<ul>
+<li><b>The instructions also include an output format.</b> For requests to add to or continue a document, the instructions ask for three sections (CONFLICTS / FROM THE RECORD / ADDED). It sometimes appears on other tasks too, which can break downstream parsers. Add "Answer directly; this is not an add or expand task" where you don't want it.</li>
+<li><b>Cost not measured.</b> We haven't measured the extra tokens or latency.</li>
+<li><b>The model labels its own work.</b> A model can put (m) on a guess. Don't trust incoming (m) labels for anything consequential; have the application or a second model apply (m) only to what it can actually verify.</li>
+<li><b>A label you receive is a claim.</b> An (m) from another agent means that agent says it checked. Treat it as that.</li>
+<li><b>Most multi-agent failures aren't about facts.</b> Coordination and task-following problems are more common (<a href="https://arxiv.org/abs/2503.13657">Cemri et al., 2025</a>). This addresses the factual part only.</li>
+<li><b>Check early.</b> In a simulated four-agent pipeline, checks at each hand-off cut planted errors that survived from 58% to 16%, and a check at the first hand-off alone caught about three quarters; checking only at the end barely helped (<a href="https://arxiv.org/abs/2608.14588">Singh and Pawar, 2026</a>).</li>
+</ul>
+<h2>Who already does this</h2>
+<p>Keeping "what we know" separate from "what we concluded" is old practice in fields where mistakes are costly. The framework borrows the idea, not the machinery:</p>
+<ul>
+<li><b>US intelligence analysis.</b> The analytic standards directive, <a href="https://archive.dni.gov/files/documents/ICD/ICD-203.pdf">ICD 203</a> (2015), requires that analysis "properly distinguishes between underlying intelligence information and analysts' assumptions and judgments" and "properly describes quality and credibility of underlying sources." The ship report is what happens when that line disappears.</li>
+<li><b>Source grading.</b> Military and police intelligence often grade each report twice: how reliable the source is (A to F) and how credible the information is (1 to 6). It's usually called the <a href="https://en.wikipedia.org/wiki/Admiralty_code">Admiralty code</a>, or the NATO system.</li>
+<li><b>Data provenance.</b> Standards such as <a href="https://www.w3.org/TR/prov-overview/">W3C PROV</a> record where data came from and what was done to it, as metadata beside the data.</li>
+</ul>
+<p>The difference here is where the record lives: inside the sentence, in plain text, so it survives being copied, summarised and handed to another AI, which is where metadata usually gets lost. One naming clash to watch: in US classification markings, "(U)" at the start of a paragraph means <i>unclassified</i>. If you work with classified material, rename the labels.</p></main>
+<footer><div class="in">Too long? Ask your AI assistant to summarise any page here. Written for AI readers: <a href="for-ai.md">for-ai.md</a> · <a href="llms.txt">llms.txt</a><br>Early findings, September 2026 · By <a href="https://github.com/JZesbaugh">Jesse Zesbaugh</a> · Text CC BY 4.0 · Scripts MIT</div></footer></body></html>

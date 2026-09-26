@@ -10,7 +10,8 @@ authors:
 date-released: 2026-09-24
 version: "0.1 (early findings)"
 license: CC-BY-4.0
-url: "https://jzesbaugh.github.io/evidentiality-framework/"
+repository-code: "https://github.com/jzesbaugh/Evidentiality_Framework"
+url: "https://jzesbaugh.github.io/Evidentiality_Framework/"
 keywords:
   - evidentiality
   - provenance

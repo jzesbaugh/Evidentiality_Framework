@@ -20,10 +20,13 @@
 
 | You are… | Go to |
 |---|---|
-| Curious what problem this solves | [Home](https://jzesbaugh.github.io/evidentiality-framework/): the ship that nearly got boarded, AI agents copying each other's fake results |
-| Using ChatGPT, Claude or similar | [Try it](https://jzesbaugh.github.io/evidentiality-framework/try.html): five minutes, no set-up |
-| Building AI pipelines or agents | [For builders](https://jzesbaugh.github.io/evidentiality-framework/builders.html) and [`test-kit/marks.py`](test-kit/marks.py) |
-| Wanting to check or extend the results | [Test it](https://jzesbaugh.github.io/evidentiality-framework/test.html), [Evidence](https://jzesbaugh.github.io/evidentiality-framework/evidence.html), [raw logs](test-kit/logs/) |
+| New to this | [Home](https://jzesbaugh.github.io/Evidentiality_Framework/): two stories, a ship and an AI swarm, then the fix; [the labels](https://jzesbaugh.github.io/Evidentiality_Framework/labels.html); [why language matters](https://jzesbaugh.github.io/Evidentiality_Framework/language.html) |
+| Using ChatGPT, Claude or similar | [How to Get Your AI to Label Its Answers](https://jzesbaugh.github.io/Evidentiality_Framework/try.html): five minutes, no set-up |
+| Testing one model | [Test 1: one chat, nine models](https://jzesbaugh.github.io/Evidentiality_Framework/check.html) |
+| Testing hand-offs in an AI swarm | [Test 2: the spoke and wheel test](https://jzesbaugh.github.io/Evidentiality_Framework/spoke-and-wheel.html), [raw logs](test-kit/logs/) |
+| Building AI pipelines or agents | [Building with the labels](https://jzesbaugh.github.io/Evidentiality_Framework/builders.html), [`instructions-working.md`](instructions-working.md) and [`test-kit/marks.py`](test-kit/marks.py) |
+| Wanting the formal version | [Working paper draft](paper/evidentiality_research_paper_draft.md) (not peer reviewed) |
+| Wanting to build on it | [Take this and build something better](https://jzesbaugh.github.io/Evidentiality_Framework/contribute.html) |
 | An AI model reading for a user | [`for-ai.md`](for-ai.md) and [`llms.txt`](llms.txt) |
 
 ## The instructions (current version)
@@ -33,15 +36,23 @@
 ## Repository layout
 
 ```
-index.html … contribute.html, 404.html   the site (generated; edit src/pages.py instead)
+index.html, labels.html, language.html,  the site (generated; edit src/pages.py instead)
+try.html,
+check.html, spoke-and-wheel.html,
+builders.html, contribute.html, 404.html
+spec.html, test.html, evidence.html     redirects from old addresses (generated)
 for-ai.md, llms.txt                      for AI readers (hand-written)
-instructions.md                          the instructions, current version
+instructions.md                          the instructions, current version (full)
+instructions-chat.md                     the chat version, used on the Try it page
+instructions-working.md                  the version used day to day (adds (d)); not the tested version
+paper/                                   working paper draft (not peer reviewed)
 robots.txt, sitemap.xml                  crawler rules, sitemap (sitemap generated)
 assets/css, assets/js                    styles and page controls
-assets/visuals/                          the two graphics
+assets/img/                              social card, icons, AI-generated posters and animations (captioned as such)
+assets/img/steps/                        step pictures, one per step (AI-generated illustrations); see its README
 assets/md/                               each page as Markdown (generated)
-test-kit/                                five-agent test, parser, answer key, raw logs
-src/                                     build.py (generator) and pages.py (page content)
+test-kit/                                spoke and wheel test, parser, answer key, raw logs
+src/                                     build.py (generator), pages.py (page content), visuals.py (diagrams)
 COMPONENTS.md                            every file, its role, size and hash (generated)
 ```
 
@@ -51,13 +62,14 @@ COMPONENTS.md                            every file, its role, size and hash (ge
 pip install markdown markdownify
 # edit src/pages.py (page text), for-ai.md, instructions.md, llms.txt or assets/
 python3 src/build.py
+DRAFT=1 python3 src/build.py   # preview: shows a placeholder where a step picture is still missing
 ```
 
 The build rewrites the HTML pages, `assets/md/`, `sitemap.xml`, the `Sitemap:` line in `robots.txt`, and `COMPONENTS.md`. The site address lives in one place: `BASE_URL` at the top of `src/build.py`. Record each change in `CHANGELOG.md`.
 
 ## Publishing (GitHub Pages)
 
-1. Push this folder to a repository named `evidentiality-framework` (or change `BASE_URL` and rebuild).
+1. This folder is the repository `jzesbaugh/Evidentiality_Framework`. If the name or domain changes, change `BASE_URL` in `src/build.py` and rebuild.
 2. Settings → Pages → Deploy from a branch → `main`, folder `/ (root)`.
 3. Optional custom domain: set it in Settings → Pages (this writes a `CNAME` file), point DNS at GitHub (subdomain: CNAME to `jzesbaugh.github.io`; apex: GitHub's A/AAAA records), turn on Enforce HTTPS once the certificate is issued, verify the domain in your GitHub account settings, then change `BASE_URL` in `src/build.py` and rebuild.
 4. Check the live site with JavaScript off, and fetch it with a tool that doesn't run JavaScript.
@@ -66,8 +78,8 @@ The build rewrites the HTML pages, `assets/md/`, `sitemap.xml`, the `Sitemap:` l
 
 - Every page has a description, a canonical link and structured data (schema.org JSON-LD). `sitemap.xml` lists every page.
 - `llms.txt` and `for-ai.md` give AI tools a map and a plain-language process description. Each page also links its Markdown version.
-- **robots.txt on a project site:** crawlers only read `robots.txt` at the root of a host. At `jzesbaugh.github.io/evidentiality-framework/` this file is not read; a copy has to live in the `jzesbaugh.github.io` user-site repository, or the site needs its own domain. Until then, submit `sitemap.xml` directly in Google Search Console and Bing Webmaster Tools.
-- Social preview tags (Open Graph, Twitter card) are waiting on a preview image.
+- **robots.txt on a project site:** crawlers only read `robots.txt` at the root of a host. At `jzesbaugh.github.io/Evidentiality_Framework/` this file is not read; a copy has to live in the `jzesbaugh.github.io` user-site repository, or the site needs its own domain. Until then, submit `sitemap.xml` directly in Google Search Console and Bing Webmaster Tools.
+- Each article also carries schema.org `HowTo` data built from its parts and steps.
 
 ## Licence
 

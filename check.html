@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Test 1: Watch an AI Label Its Own Answer · Evidentiality framework for AI</title><meta name="description" content="Test 1 of the Evidentiality framework: one AI, one chat, the food bank note. The instructions we used, and the labelled answer that came back.">
+<link rel="canonical" href="https://jzesbaugh.github.io/Evidentiality_Framework/check.html"><meta name="author" content="Jesse Zesbaugh">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml"><link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Evidentiality framework for AI"><meta property="og:title" content="Test 1: Watch an AI Label Its Own Answer · Evidentiality framework for AI"><meta property="og:description" content="Test 1 of the Evidentiality framework: one AI, one chat, the food bank note. The instructions we used, and the labelled answer that came back."><meta property="og:url" content="https://jzesbaugh.github.io/Evidentiality_Framework/check.html"><meta property="og:image" content="https://jzesbaugh.github.io/Evidentiality_Framework/assets/img/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Three sentences from an AI summary, each labelled: (u) The launch is on track, from meeting notes; (m) Two bugs are still open, checked in the issue tracker; (g) Neither bug blocks the release. Ship Friday, a guess by the AI."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Test 1: Watch an AI Label Its Own Answer · Evidentiality framework for AI"><meta name="twitter:description" content="Test 1 of the Evidentiality framework: one AI, one chat, the food bank note. The instructions we used, and the labelled answer that came back."><meta name="twitter:image" content="https://jzesbaugh.github.io/Evidentiality_Framework/assets/img/social-card.png"><meta name="twitter:image:alt" content="Three sentences from an AI summary, each labelled: (u) The launch is on track, from meeting notes; (m) Two bugs are still open, checked in the issue tracker; (g) Neither bug blocks the release. Ship Friday, a guess by the AI.">
+<link rel="alternate" type="text/markdown" href="for-ai.md" title="Process description for language models">
+<link rel="alternate" type="text/markdown" href="assets/md/check.md" title="This page as Markdown">
+<script src="assets/js/controls.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://jzesbaugh.github.io/Evidentiality_Framework/#website", "url": "https://jzesbaugh.github.io/Evidentiality_Framework/", "name": "Evidentiality framework for AI", "inLanguage": "en", "publisher": {"@id": "https://github.com/JZesbaugh#person"}}, {"@type": "Person", "@id": "https://github.com/JZesbaugh#person", "name": "Jesse Zesbaugh", "url": "https://github.com/JZesbaugh", "sameAs": ["https://github.com/JZesbaugh"]}, {"@type": "WebPage", "@id": "https://jzesbaugh.github.io/Evidentiality_Framework/check.html#page", "url": "https://jzesbaugh.github.io/Evidentiality_Framework/check.html", "name": "Test 1: Watch an AI Label Its Own Answer · Evidentiality framework for AI", "description": "Test 1 of the Evidentiality framework: one AI, one chat, the food bank note. The instructions we used, and the labelled answer that came back.", "isPartOf": {"@id": "https://jzesbaugh.github.io/Evidentiality_Framework/#website"}, "author": {"@id": "https://github.com/JZesbaugh#person"}, "inLanguage": "en", "datePublished": "2026-09-24", "dateModified": "2026-09-26", "license": "https://creativecommons.org/licenses/by/4.0/"}]}</script></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site"><div class="in"><a class="name" href="./">Evidentiality framework for AI</a><nav aria-label="Site"><a href="./">Home</a><a href="labels.html">The labels</a><a href="language.html">Language</a><a href="try.html">Try it</a><a href="check.html" aria-current="page">Test 1: one chat</a><a href="spoke-and-wheel.html">Test 2: swarm</a><a href="builders.html">For builders</a><a href="contribute.html">Build on it</a><a href="for-ai.html">For AI</a></nav></div></header>
+<div class="tools" role="group" aria-label="Page tools"><button type="button" class="js-only" id="t-theme">Theme: auto</button><a href="assets/md/check.md" download>Download .md</a><button type="button" class="js-only" id="t-copy" data-md="assets/md/check.md">Copy as Markdown</button><button type="button" class="js-only" id="t-ai">Copy an AI summary prompt</button><button type="button" class="js-only" id="t-print" title="Print, or choose Save as PDF in the print dialog">Print / PDF</button><span class="status" id="t-status" aria-live="polite"></span></div>
+<main id="main">
+<p class="eyebrow">Test 1 · one chat</p>
+<h1>Test 1: Watch an AI Label Its Own Answer</h1>
+<p class="lede">Does an AI actually label its own answer? Here’s one run: the instructions, the note from <a href="./#foodbank">story 2</a>, and what came back.</p>
+
+<h2 id="instructions">1. The instructions we gave it</h2>
+<p>This is the text we pasted in first, exactly as tested. Copy it if you want to try the same thing. (For everyday chat, the shorter <a href="try.html#setup">chat version</a> works better.)</p>
+<pre class="copyblock"># Evidentiality framework: the instructions (first public version)
+
+You mark where your claims come from, and you do not let a guess become a fact.
+
+**Marks — open/close tags in parentheses around the exact span they cover:**
+- **(u)…(/u)** it is in the material you were given. A claim made by someone inside that material is still their claim: close it with who made it and its status, (u)…(/u: &lt;who&gt;, unconfirmed), unless the material shows it was checked.
+- **(m)…(/m: source, checked date)** you checked it against a source or tool. The closing tag names the source. No source, no (m).
+- **(g)…(/g)** your own inference, estimate, or guess.
+
+**Tagging applies to everything you write, in any task: drafting, reformatting, summarizing, forwarding, recommending.** Close every tag you open, and check before you finish that none is left open. Tags may nest but never overlap; split a span that is part given and part yours. When you copy, reformat, summarize or pass text on, keep its tags exactly; a span is re-tagged only when a check confirms it (g→m). If tags ever have to be removed, the wording must carry the same distinction: a guess stays worded as a guess, a claim stays attributed to whoever made it.
+
+**Rules:**
+1. A (g) stays (g). Repetition, reuse, or time never make it a fact. Only a check does.
+2. Something stated as settled is not settled until you find it in the material.
+3. If the material doesn&#x27;t say it, write &quot;not stated.&quot; Don&#x27;t fill the gap.
+4. Several statements from one origin are one source.
+5. If a question assumes something, check it is in the material first.
+
+**When asked to add, expand, or continue, your complete answer is EXACTLY these three sections, in this order, and nothing else:**
+
+CONFLICTS — SET ASIDE:
+Quote any two statements in the material that cannot both be true. If there are none, write &quot;None found.&quot; Statements listed here are set aside: nothing in your additions may use, mention, or plan around them.
+
+FROM THE RECORD:
+Copy every line of the material exactly as given, starting with the title line. Do not fix, drop, merge, or reword anything — except a statement listed under CONFLICTS — SET ASIDE: write `[set aside — see CONFLICTS]` in its place.
+
+ADDED — NOT IN THE RECORD:
+One claim per line, in this form:
+(g)&lt;claim&gt;(/g) — based on: &lt;the record line it comes from, or &quot;assumption&quot;&gt;
+A claim may not be based on any statement listed under CONFLICTS — SET ASIDE. If you calculate a number, show the calculation.
+
+Stop after the last ADDED line. Do not write a summary, a merged version, a final version, or anything else.
+</pre>
+
+<h2 id="note">2. The note and the question</h2>
+<pre>Riverbend Food Bank, September 24.
+- Warehouse stock on hand is 41 tonnes (September 15 count sheet).
+- August donations were 62 tonnes, down from 76 tonnes last August.
+- Households served rose from 2,100 to 2,290; each gets about 30 kg of food a month.
+- The refrigerated truck contract ends December 15.
+
+Write a short status note for the board: are we OK for winter?
+Answer directly; this is not an add or expand task.</pre>
+
+<h2 id="answer">3. What came back</h2>
+<p>Claude Opus, one run, September 24, 2026. Trimmed for length; the labels are exactly as it wrote them.</p>
+<div class="box runout">Short answer: <span class="g"><span class="tag">(g)</span>We are not safely set for winter. On current trends we have a few months of cushion, not a full season, and the refrigerated truck is an unresolved gap.<span class="tag">(/g)</span></span>
+
+What the record shows
+- <span class="u"><span class="tag">(u)</span>Warehouse stock on hand is 41 tonnes (September 15 count sheet)<span class="tag">(/u)</span></span>
+- <span class="u"><span class="tag">(u)</span>August donations were 62 tonnes, down from 76 tonnes last August<span class="tag">(/u)</span></span>
+- <span class="u"><span class="tag">(u)</span>Households served rose from 2,100 to 2,290; each gets about 30 kg of food a month<span class="tag">(/u)</span></span>
+- <span class="u"><span class="tag">(u)</span>The refrigerated truck contract ends December 15<span class="tag">(/u)</span></span>
+
+What it implies (my estimates)
+- Monthly need: <span class="g"><span class="tag">(g)</span>2,290 households × 30 kg ≈ 68.7 tonnes a month, up from about 63 tonnes (2,100 × 30 kg)<span class="tag">(/g)</span></span>
+- Monthly gap: <span class="g"><span class="tag">(g)</span>68.7 t needed − 62 t donated ≈ 6.7 tonnes a month short, if August is a typical month<span class="tag">(/g)</span></span>
+- How long stock lasts: <span class="g"><span class="tag">(g)</span>41 t ÷ 6.7 t a month ≈ 6 months, which would carry us to around March, if donations and demand stay flat<span class="tag">(/g)</span></span>
+
+Risks and unknowns
+- Truck: <span class="g"><span class="tag">(g)</span>after December 15 we may lose our cold-chain capacity in the middle of winter.<span class="tag">(/g)</span></span> Whether the contract will be renewed is not stated.
+- Not stated in the record: September donations; expected winter demand; how much of the 41 t is perishable.
+
+Recommended actions
+- <span class="g"><span class="tag">(g)</span>Start renewing or replacing the truck contract now.<span class="tag">(/g)</span></span>
+- <span class="g"><span class="tag">(g)</span>Get the September donation figures and a fresh stock count before the next meeting.<span class="tag">(/g)</span></span></div>
+
+<h2 id="notice">4. What to notice</h2>
+<ul>
+<li>Everything from the note came back <span class="u"><span class="tag">(u)</span>given<span class="tag">(/u)</span></span>.</li>
+<li>Every sum, and the answer to “are we OK?”, came back <span class="g"><span class="tag">(g)</span>generated<span class="tag">(/g)</span></span>, with the maths shown. It got the right answer, about six months.</li>
+<li>Where the note was silent, it wrote “not stated” instead of filling the gap.</li>
+<li>No (m) at all: it didn’t look anything up, so it didn’t claim to have checked anything.</li>
+</ul>
+<p>We ran the same thing once on nine AI models. Five labelled like this, or close to it. Some slipped: they labelled their own sums as (u), or switched into the instructions’ document format instead of answering.</p>
+<details class="alt"><summary>All nine models</summary><div class="tw"><table><caption>Full instructions, one run per model</caption><tr><th>Model</th><th>Answered normally?</th><th>Labels right?</th><th>What we saw</th></tr>
+<tr><td>Claude Opus</td><td>Yes</td><td>Yes</td><td>Got “about 6 months” right</td></tr>
+<tr><td>Claude Sonnet</td><td>Yes</td><td>Yes</td><td>Made the 18-day mistake, labelled (g); one line unlabelled</td></tr>
+<tr><td>Claude Haiku</td><td>Yes</td><td>Mostly</td><td>Labelled its own calculation (u)</td></tr>
+<tr><td>GPT-5.6 Luna</td><td>Yes</td><td>Mostly</td><td>Labelled a number it computed (u)</td></tr>
+<tr><td>Gemma 4 31B</td><td>Yes</td><td>Yes</td><td>Clean</td></tr>
+<tr><td>GPT-5.4 mini</td><td><b>No</b>: switched to the three-part format</td><td>—</td><td>Copied the format’s template text word for word</td></tr>
+<tr><td>Mistral Small 4</td><td><b>No</b>: three-part format</td><td>—</td><td>A one-line answer</td></tr>
+<tr><td>gpt-oss 120B</td><td>Yes</td><td><b>No labels</b></td><td></td></tr>
+<tr><td>Gemini Flash-Lite</td><td><b>No</b>: three-part format</td><td>—</td><td>Never answered the question</td></tr></table></div>
+<div class="tw"><table><caption>Chat version (the one on Try it), rerun on three models; gpt-oss 120B not yet</caption><tr><th>Model</th><th>Answered normally?</th><th>Labels right?</th><th>What we saw</th></tr>
+<tr><td>GPT-5.4 mini</td><td>Yes</td><td>Yes</td><td>Clean</td></tr>
+<tr><td>Mistral Small 4</td><td>Yes</td><td>Mostly</td><td>Invented a source name in a closing tag; some sentences unlabelled</td></tr>
+<tr><td>Gemini Flash-Lite</td><td>Yes</td><td>Over-labelled</td><td>Labelled its own framing sentences (u); wouldn’t give a conclusion</td></tr>
+<tr><td>gpt-oss 120B</td><td colspan="3">Not rerun yet</td></tr></table></div>
+<p class="src">September 24, 2026. One run per model. Claude models were run from the command line; the others through Duck.ai (no account) and Gemini signed out. Scored by us against the key above.</p></details>
+<p>That’s one chat. What happens when AI agents pass the answer to each other is <a href="spoke-and-wheel.html">Test 2</a>.</p>
+<p class="nextup"><b>Next:</b> <a href="try.html">Try it yourself</a> · <a href="spoke-and-wheel.html">Test 2: the swarm</a></p>
+</main>
+<footer><div class="in">Too long? Ask your AI assistant to summarise any page here. Written for AI readers: <a href="for-ai.md">for-ai.md</a> · <a href="llms.txt">llms.txt</a><br>Early findings, September 2026 · By <a href="https://github.com/JZesbaugh">Jesse Zesbaugh</a> · Text CC BY 4.0 · Scripts MIT</div></footer></body></html>

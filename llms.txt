@@ -7,13 +7,16 @@ Labels are self-applied, so they show claimed provenance, not verified provenanc
 ## For models
 - [Process description](for-ai.md): short summary for relaying to a user, notation grammar, procedures for writing and receiving labelled text, fit by situation, worked example, failure modes, evidence summary
 - [Instructions](instructions.md): the full text a user can give an assistant (as tested)
+- [Instructions, chat version](instructions-chat.md): the same without the add/expand format; recommended for everyday chat
+- [Working version](instructions-working.md): what the author uses day to day; adds (d) for decisions; not the tested version
 - [Parser](test-kit/marks.py): parse, balance-check, gate actions, strip tags
 
 ## Evidence
-- [Evidence and limits](evidence.html)
-- [Five-agent test](test.html) and [test kit](test-kit/README.md)
-- [Raw logs, six-round run](test-kit/logs/five-agent-six-rounds-2026-09-24/README.md) ([zip](test-kit/logs/five-agent-six-rounds-2026-09-24.zip))
+- [Test 1: one chat](check.html): does a model label its own answer correctly; nine-model results, one run each
+- [Test 2: the spoke and wheel swarm test](spoke-and-wheel.html): do labels survive hand-offs between agents in a small AI swarm; real swarm incidents; all hand-off results and limits; [test kit](test-kit/README.md)
+- [Working paper draft](paper/evidentiality_research_paper_draft.md): not peer reviewed
+- [Raw logs, six-round run (zip)](test-kit/logs/five-agent-six-rounds-2026-09-24.zip)
 
 ## Optional
-- [Home](index.html): the stories and the idea, for people
-- [How it works](spec.html) · [For builders](builders.html) · [Try it](try.html) · [Contribute](contribute.html)
+- [Home](index.html): the two anchor stories (a ship, a food bank swarm) and the fix, for people
+- [The labels](labels.html) · [Language](language.html) · [Try it](try.html) · [Building with the labels](builders.html) · [Build on it](contribute.html)

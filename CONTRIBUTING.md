@@ -18,7 +18,7 @@ Open an issue with:
 - **A checker that isn't the writer.** Can an application or a second model apply or verify "checked"?
 - **Marks or instructions?** Run the test with the instructions but without the marks.
 - **Other models.** Almost all runs so far used one model family.
-- **Rates, not examples.** Enough runs of the five-agent test to report how often drift happens.
+- **Rates, not examples.** Enough runs of the spoke and wheel test to report how often drift happens.
 - **Fixes to the instructions.** See "Known issues" on the How it works page.
 
 ## Changing the site

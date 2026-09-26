@@ -45,4 +45,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://jzesbaugh.github.io/evidentiality-framework/sitemap.xml
+Sitemap: https://jzesbaugh.github.io/Evidentiality_Framework/sitemap.xml

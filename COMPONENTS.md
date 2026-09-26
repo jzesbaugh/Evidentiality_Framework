@@ -8,32 +8,32 @@ Site settings: base URL `https://jzesbaugh.github.io/Evidentiality_Framework/` Â
 |---|---|---|---|
 | `.gitignore` | Files git should ignore | 89 | `12e39d8201a7` |
 | `.nojekyll` | Tells GitHub Pages to serve files as-is | 0 | `e3b0c44298fc` |
-| `404.html` | Not-found page | 3,444 | `21ceb18bc977` |
-| `CHANGELOG.md` | Change log | 17,413 | `8df832e47c93` |
-| `CITATION.cff` | How to cite | 786 | `3251e0bfad8d` |
-| `CONTRIBUTING.md` | How to contribute | 1,305 | `5a0986bee817` |
+| `404.html` | Not-found page | 3,444 | `61f9ad4c6ba1` |
+| `CHANGELOG.md` | Change log | 19,052 | `94cb043cada8` |
+| `CITATION.cff` | How to cite | 786 | `57fcfe6afe2e` |
+| `CONTRIBUTING.md` | How to contribute | 1,305 | `b3d0d8bee461` |
 | `LICENSE` | CC BY 4.0 for text and site content | 439 | `fec7554a9e9f` |
 | `LICENSE-CODE` | MIT for scripts (src/, assets/js/, test-kit/) | 1,097 | `2d199a83921f` |
-| `README.md` | Repository readme | 6,362 | `6d49a544756e` |
-| `builders.html` | Building With the Labels: working version, design questions, parser and gate | 38,787 | `e80b4b5810be` |
-| `check.html` | Test 1 report and how-to: one chat, nine models | 14,635 | `89319a151e78` |
-| `contribute.html` | How to Take This and Build Something Better | 10,712 | `2bb438ab0345` |
+| `README.md` | Repository readme | 6,362 | `034821cc91d3` |
+| `builders.html` | Building With the Labels: working version, design questions, parser and gate | 38,937 | `bf0b1c36a6c3` |
+| `check.html` | Test 1 report and how-to: one chat, nine models | 14,785 | `170642ec19fe` |
+| `contribute.html` | How to Take This and Build Something Better | 10,862 | `6e2e59b2d639` |
 | `evidence.html` | Redirect to spoke-and-wheel.html#results (old address) | 427 | `ec7d592681a0` |
-| `for-ai.html` | For AI models (HTML render of for-ai.md) | 17,694 | `593d79327a94` |
-| `for-ai.md` | Process description for language models (hand-written) | 11,215 | `b921483075cf` |
-| `index.html` | Home: the two stories (the ship, the food bank swarm), the fix, limits, the articles | 22,692 | `7fdc06a0d1f0` |
-| `instructions-chat.md` | The instructions, chat version (Try it page) | 1,785 | `7ece1d8435df` |
-| `instructions-working.md` | The working version, as used day to day (adds (d)); not the tested version | 6,154 | `51aa6b32bf96` |
-| `instructions.md` | The instructions: current version (hand-written; tested as v0.5b) | 2,741 | `71fa11bfb972` |
-| `labels.html` | Article: How to Tell What an AI Actually Knows (the labels) | 19,354 | `def6eb0f67c0` |
-| `language.html` | Why Language Matters: evidentiality, the banana, Sandy Island, citogenesis, hard markers | 11,884 | `2b7b6bc90b1e` |
-| `llms.txt` | Index for AI tools (hand-written) | 1,874 | `f5c1ea6bbf0f` |
-| `robots.txt` | Crawler rules (hand-written; see README note on project sites) | 1,127 | `8bc74d8edc10` |
+| `for-ai.html` | For AI models (HTML render of for-ai.md) | 17,844 | `7300310f432a` |
+| `for-ai.md` | Process description for language models (hand-written) | 11,215 | `4176239fd2fb` |
+| `index.html` | Home: the two stories (the ship, the food bank swarm), the fix, limits, the articles | 22,839 | `7ab65627b1ed` |
+| `instructions-chat.md` | The instructions, chat version (Try it page) | 1,785 | `fbd23a791230` |
+| `instructions-working.md` | The working version, as used day to day (adds (d)); not the tested version | 6,154 | `26bc59c1fa2d` |
+| `instructions.md` | The instructions: current version (hand-written; tested as v0.5b) | 2,741 | `e018bf1588ec` |
+| `labels.html` | Article: How to Tell What an AI Actually Knows (the labels) | 19,504 | `8b750e3418d6` |
+| `language.html` | Why Language Matters: evidentiality, the banana, Sandy Island, citogenesis, hard markers | 12,034 | `8e202ffdeb58` |
+| `llms.txt` | Index for AI tools (hand-written) | 1,874 | `289d5cb04ce7` |
+| `robots.txt` | Crawler rules (hand-written; see README note on project sites) | 1,127 | `19b45413afa4` |
 | `sitemap.xml` | Sitemap (generated) | 1,137 | `99d03935441c` |
 | `spec.html` | Redirect to labels.html (old address) | 359 | `8bb163612e49` |
-| `spoke-and-wheel.html` | Test 2 report and how-to: the spoke and wheel swarm test (results, logs) | 36,763 | `891d2a92be7c` |
+| `spoke-and-wheel.html` | Test 2 report and how-to: the spoke and wheel swarm test (results, logs) | 36,913 | `fd5157f573cf` |
 | `test.html` | Redirect to spoke-and-wheel.html (old address) | 395 | `9006ef67fb1f` |
-| `try.html` | Article: How to Get Your AI to Label Its Answers | 15,246 | `ab513a0f8a24` |
+| `try.html` | Article: How to Get Your AI to Label Its Answers | 15,396 | `e4894341358f` |
 | `assets/css/style.css` | Styles, light and dark | 14,600 | `7990412b3e46` |
 | `assets/img/apple-touch-icon.png` | Home-screen icon, 180px | 4,774 | `7d8dcbee7769` |
 | `assets/img/favicon-32.png` | Favicon, 32px PNG | 907 | `4d45abb90e17` |
@@ -42,28 +42,28 @@ Site settings: base URL `https://jzesbaugh.github.io/Evidentiality_Framework/` Â
 | `assets/img/poster-spoke-and-wheel-test.jpg` | AI-generated poster (Test 2) | 402,406 | `342f07455234` |
 | `assets/img/poster-where-did-that-claim-come-from.jpg` | AI-generated poster (dramatization), The labels | 339,279 | `954e8a2435ca` |
 | `assets/img/ship-labelled.gif` | AI-generated animation: ship report labelled (The labels) | 394,178 | `97c4358e789c` |
-| `assets/img/social-card.png` | Social preview image, 1200Ã—630 | 89,691 | `5a60747e997d` |
+| `assets/img/social-card.png` | Social preview image, 1200Ã—630 (AI-generated swarm card) | 869,832 | `26ef0cc04460` |
 | `assets/img/spoke-and-wheel-loop.gif` | AI-generated animation of the loop (Test 2) | 1,301,795 | `89507f24f5cf` |
 | `assets/img/stress-test.png` | AI-generated infographic of the failure case (For builders) | 661,344 | `74cf24efb8ed` |
-| `assets/img/steps/README.md` | Step picture (AI-generated illustration) | 419 | `94fc39bede61` |
+| `assets/img/steps/README.md` | Step picture (AI-generated illustration) | 419 | `2ee904409e31` |
 | `assets/js/controls.js` | Page controls: theme, copy, AI prompt, print | 3,171 | `639e7c7b90fb` |
-| `assets/md/builders.md` | Markdown export of builders.html (generated) | 28,193 | `8b4ee18d3d53` |
-| `assets/md/check.md` | Markdown export of check.html (generated) | 7,530 | `d5703a8c00bf` |
-| `assets/md/contribute.md` | Markdown export of contribute.html (generated) | 3,159 | `1cfd1ca2ec80` |
-| `assets/md/index.md` | Markdown export of index.html (generated) | 11,715 | `89656674c40b` |
-| `assets/md/labels.md` | Markdown export of labels.html (generated) | 9,219 | `fbeec772dcf5` |
-| `assets/md/language.md` | Markdown export of language.html (generated) | 5,679 | `3acc032f7f0d` |
-| `assets/md/spoke-and-wheel.md` | Markdown export of spoke-and-wheel.html (generated) | 16,392 | `58f79f39095e` |
-| `assets/md/try.md` | Markdown export of try.html (generated) | 6,435 | `f0768a3f206d` |
+| `assets/md/builders.md` | Markdown export of builders.html (generated) | 28,193 | `35178efb493a` |
+| `assets/md/check.md` | Markdown export of check.html (generated) | 7,530 | `ebb433f593c8` |
+| `assets/md/contribute.md` | Markdown export of contribute.html (generated) | 3,159 | `c8ce546c4b28` |
+| `assets/md/index.md` | Markdown export of index.html (generated) | 11,712 | `9d7f05eb9902` |
+| `assets/md/labels.md` | Markdown export of labels.html (generated) | 9,219 | `1529cf0ab195` |
+| `assets/md/language.md` | Markdown export of language.html (generated) | 5,679 | `a1f1ffbfba8b` |
+| `assets/md/spoke-and-wheel.md` | Markdown export of spoke-and-wheel.html (generated) | 16,392 | `39e416ab4a40` |
+| `assets/md/try.md` | Markdown export of try.html (generated) | 6,435 | `938c6ba3381c` |
 | `paper/evidentiality_research_paper_draft.md` | Working paper draft (not peer reviewed) | 17,074 | `4160a05f7a2a` |
-| `src/build.py` | Site generator | 16,182 | `f020cace16c5` |
-| `src/pages.py` | Page content (edit this, then rebuild) | 73,872 | `fe8859227d5f` |
-| `src/social-card.html` | Source for the social preview image | 2,442 | `aebc20a70c47` |
+| `src/build.py` | Site generator | 19,466 | `cc193d5f9800` |
+| `src/pages.py` | Page content (edit this, then rebuild) | 73,869 | `dd9abc342195` |
+| `src/social-card.html` | Source for the earlier social card (meeting example); no longer used | 2,442 | `1abb7ed53948` |
 | `src/visuals.py` | Hand-built diagrams: food bank ladders, wheel, dot chart, ship reveal | 11,467 | `7bfd0d52e244` |
-| `test-kit/ANSWER_KEY.md` | Answer key for the five-agent test | 3,239 | `367950cf010d` |
+| `test-kit/ANSWER_KEY.md` | Answer key for the five-agent test | 3,239 | `dccafff5b6d7` |
 | `test-kit/LICENSE` | MIT licence for scripts | 1,097 | `2d199a83921f` |
-| `test-kit/README.md` | Test kit readme | 2,506 | `30584fa71db8` |
+| `test-kit/README.md` | Test kit readme | 2,506 | `fb27f8bea876` |
 | `test-kit/marks.py` | Parser, balance check, gate, strip | 3,853 | `fc1f6653b9f3` |
-| `test-kit/mini_swarm.py` | Five-agent test runner | 9,199 | `6c88571e8ef5` |
+| `test-kit/mini_swarm.py` | Five-agent test runner | 9,199 | `819ba999aa66` |
 | `test-kit/score_mini.py` | Keyword flags for hand review | 3,200 | `f97270e45788` |
 | `test-kit/logs/five-agent-six-rounds-2026-09-24.zip` | Working logs of the six-round run (zip) | 369,621 | `5d926d29130c` |

@@ -1,6 +1,6 @@
-> The Spoke and Wheel Test: How a Guess Spreads Through an AI Swarm: Test 2 of the Evidentiality framework: a small AI swarm, four agents and a coordinator, passes messages for six rounds with and without labels. What happened, how far we got, the logs, and how to run it yourself.
+> The Spoke and Wheel Test: How a Guess Spreads Through an AI Swarm: Test 2 of the Evidentiality Framework: a small AI swarm, four agents and a coordinator, passes messages for six rounds with and without labels. What happened, how far we got, the logs, and how to run it yourself.
 >
-> Evidentiality framework for AI. Early findings, September 2026. Web version: https://jzesbaugh.github.io/Evidentiality_Framework/spoke-and-wheel.html. Text CC BY 4.0.
+> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://jzesbaugh.github.io/Evidentiality_Framework/spoke-and-wheel.html. Text CC BY 4.0.
 
 Test 2 · swarm
 
@@ -10,16 +10,16 @@ Test 2 · swarm
 
 The short version: four AI agents each held one checked fact about a food bank, sent it to a coordinator, and got the coordinator’s conclusion back, for six rounds. Here’s what happened, then how far that gets us, then how the test was set up.
 
-**In this article**
+**In This Article**
 
-1. [Part 1: What happened](#what)
-2. [Part 2: How far we got](#results)
-3. [Part 3: How the test was set up](#ran)
-4. [Part 4: Why swarms: it’s already happening](#swarms)
-5. [Part 5: Run it yourself](#yourself)
-6. [Questions and answers](#qa)
+1. [Part 1: What Happened](#what)
+2. [Part 2: How Far We Got](#results)
+3. [Part 3: How the Test Was Set Up](#ran)
+4. [Part 4: Why Swarms: It’s Already Happening](#swarms)
+5. [Part 5: Run It Yourself](#yourself)
+6. [Questions and Answers](#qa)
 
-## Part 1 What happened
+## Part 1 What Happened
 
 In round 1 the coordinator made an ordinary maths mistake. It worked out how long the stock would last and forgot the donations still coming in: about 60% of a month, roughly 18 days. The right answer was about six months. Here is that one claim, round by round, in both versions:
 
@@ -73,7 +73,7 @@ Without labels, the guess became the warehouse’s own finding, then “confirme
 
 **AI-generated animation** condensing the same six-round run. Quotes are shortened from the logs. [Open full size](../../assets/img/food-bank-cascade.gif).
 
-## Part 2 How far we got
+## Part 2 How Far We Got
 
 One run of each version is a story, not a rate. The steadier numbers come from related hand-off tests with more runs:
 
@@ -101,7 +101,7 @@ A different test: five agents sharing one summary, three runs per version. Each 
 - **Agents that investigate.** In our run each agent started with one checked fact. The version on the poster, where agents go and find new evidence each round, hasn’t been run.
 - **A ship-style scenario**, rebuilding something like story 1 as a test.
 
-## Part 3 How the test was set up
+## Part 3 How the Test Was Set Up
 
 [Diagram: One coordinator in the middle, connected to four agents around it: Ames (warehouse), Brook (donors), Cruz (clients) and Dale (logistics). The agents are not connected to each other.]
 
@@ -147,7 +147,7 @@ Each agent’s user asks a follow-up; the next round begins. Six rounds. Does ev
 
 Diagram of the spoke and wheel test as we ran it. Blue: a checked fact (m). Red: the coordinator’s conclusion (g).
 
-## Part 4 Why swarms: it’s already happening
+## Part 4 Why Swarms: It’s Already Happening
 
 **The fake proofs.** Google DeepMind put 100 AI agents together to work on 71 maths problems. One agent found a way to submit false “solutions”. Within minutes, others copied the trick and started “solving” problems too, including famous unsolved ones. What stopped it was other agents checking the proofs and raising the alarm. ([MIT Technology Review, Sept 14, 2026](https://www.technologyreview.com/2026/09/14/1144037/ai-agents-blew-whistle-o-cheating-colleagues/))
 
@@ -159,7 +159,7 @@ Diagram of the spoke and wheel test as we ran it. Blue: a checked fact (m). Red:
 
 People do the same thing without AI: a guess goes out, comes back from someone else, and looks confirmed. [Citogenesis](../../language.html#citogenesis).
 
-## Part 5 Run it yourself
+## Part 5 Run It Yourself
 
 1. **Get the test kit.** The [test kit](../../test-kit/README.md) runs the test against any chat model you can call from Python. The agents, their facts, the coordinator’s instruction and every follow-up message are in [mini\_swarm.py](../../test-kit/mini_swarm.py). A dry run checks the plumbing without any API calls.
 2. **Write your answer key before you run.** Include the right answer to any sum the agents will face. Ours is [ANSWER\_KEY.md](../../test-kit/ANSWER_KEY.md). If you change the scenario, write a new key first.
@@ -176,7 +176,7 @@ People do the same thing without AI: a guess goes out, comes back from someone e
    | Public text (newsletter) | Only checked facts and clearly worded judgements | An event that didn’t happen |
 5. **Report counts and quotes.** Model, instructions version, rounds, runs per version, counts per item, and the exact words for every failure. [Send them to us](../../contribute.html#tell).
 
-## Questions and answers
+## Questions and Answers
 
 Where are your logs?
 :   Here: [the six-round run (zip)](../../test-kit/logs/five-agent-six-rounds-2026-09-24.zip). They’re working logs: they came from the runner as it was used then (`runner_as_used.py`, inside the zip), so the file names differ from what the current kit writes. The [test kit readme](../../test-kit/README.md) lists what went wrong on the way to setting the test up.

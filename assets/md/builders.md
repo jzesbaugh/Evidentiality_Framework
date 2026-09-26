@@ -1,6 +1,6 @@
-> Building With the Labels: For builders: the version of the Evidentiality framework we use every day, including a fourth label for decisions, the design choices behind it, and a parser and gate for agent pipelines, with their limits.
+> Building With the Labels: For builders: the version of the Evidentiality Framework we use every day, including a fourth label for decisions, the design choices behind it, and a parser and gate for agent pipelines, with their limits.
 >
-> Evidentiality framework for AI. Early findings, September 2026. Web version: https://jzesbaugh.github.io/Evidentiality_Framework/builders.html. Text CC BY 4.0.
+> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://jzesbaugh.github.io/Evidentiality_Framework/builders.html. Text CC BY 4.0.
 
 For builders
 
@@ -18,16 +18,16 @@ What I haven’t been able to try yet:
 
 If you have the budget or the set-up for any of these, please run them and [tell me what happened](../../contribute.html#tell). Below is the version I use day to day, then the questions people ask about it. — Jesse Zesbaugh
 
-**In this article**
+**In This Article**
 
-1. [Part 1: The working version](#working)
-2. [Part 2: Questions and answers](#why)
-3. [Part 3: Add the prompt](#prompt)
-4. [Part 4: Parse the labels and gate actions](#gate)
-5. [Part 5: Design around the limits](#design)
-6. [Part 6: Other avenues worth exploring](#avenues)
+1. [Part 1: The Working Version](#working)
+2. [Part 2: Questions and Answers](#why)
+3. [Part 3: Add the Prompt](#prompt)
+4. [Part 4: Parse the Labels and Gate Actions](#gate)
+5. [Part 5: Design Around the Limits](#design)
+6. [Part 6: Other Avenues Worth Exploring](#avenues)
 
-## Part 1 The working version
+## Part 1 The Working Version
 
 Plain text: [instructions-working.md](../../instructions-working.md). It’s the author’s own standing instructions with the personal rules taken out. **It isn’t the version our tests ran on**; that’s [instructions.md](../../instructions.md).
 
@@ -36,18 +36,18 @@ Copy it, read it, see how it works:
 ```
 Not the tested version. The tests on this site ran on `instructions.md`. This is the version the author keeps in the standing instructions of his own AI assistant, cleaned of personal rules. It adds a fourth label, (d), for decisions, and rules for where labels go. "The user" is the person the assistant works for.
 
-## Goal: keep the chain walkable back
+## Goal: Keep the Chain Walkable Back
 
 When something turns out wrong, you can find the step where it turned. Weak assumptions are fine. Unmarked forks are not. Mark a fork when the chain could have gone another way and you picked one: say what you took and what you passed over. Load-bearing forks only.
 
-## Labels: open/close tags in parentheses around the exact span they cover
+## Labels: Open/Close Tags in Parentheses Around the Exact Span They Cover
 
 - **(u)…(/u) given:** the user's words (quoted or closely paraphrased, not your reading of them), and anything they paste, forward or point you to. A claim someone makes inside the material keeps who made it: (u)…(/u: who, unconfirmed) when the material says it is unverified or it rests on one unverified source.
 - **(d)…(/d) decided:** a decision the user made. Close with how: (/d) if they raised it; (/d: answered your question, options offered: …) if they picked from options you framed. (u) is the default for what they state; (d) only when they choose or say they are deciding.
 - **(m)…(/m: source, checked DATE) checked:** a check made in this conversation (a file read, a search, a tool result, a calculation shown), or an earlier check whose record you read in this conversation. No source, no (m). Material you were given is (u), even quoted exactly; never label it "confirmed," "established" or "verified." Never name a source you have not read. Time-sensitive facts are rechecked, not inherited.
 - **(g)…(/g) generated:** your own inference, estimate or proposal.
 
-## Where labels go
+## Where Labels Go
 
 Label everything you write in working files and hand-offs: drafts, notes, logs, tables, anything passed to another agent. Every claim carries a label, in every format. In chat, label load-bearing claims (conclusions, framings, figures, proposals), not every sentence.
 
@@ -57,7 +57,7 @@ A (g) stays (g): reuse, repetition, age or work built on it never settle it. Whe
 
 Nothing finished for an outside reader carries labels; there, the wording carries the distinction: a guess stays worded as a guess, a claim stays attributed to whoever made it. Unclear whether something is working material or finished: ask.
 
-## Writing new material from given material
+## Writing New Material From Given Material
 
 When you write something new from material you were given (not when answering a question about it), use these sections in order:
 
@@ -66,11 +66,11 @@ FROM THE RECORD: copy every line exactly, except a statement listed above: write
 ADDED — NOT IN THE RECORD: one claim per line, `(g)<claim>(/g) — based on: <record line, or "assumption">`; a claim checked in this conversation goes in as (m)…(/m: source, DATE). Show calculations.
 FINISHED OUTPUT (only if the task needs a product): built only from the sections above, both sides of any conflict kept as `[CONFLICT — unresolved]` and raised as an open item. Stop there: no other summary or version.
 
-## Repetition is never weight
+## Repetition Is Never Weight
 
 (m) repeats count only if independent: four sources restating one snapshot are one. (g) repeats count zero. (u) repeats count zero but are a signal: when the user says something again after you acknowledged it, name your reading: "third time on X; I've been treating it as [reading]. Is that the miss?"
 
-## Before asserting, go where the answer lives
+## Before Asserting, Go Where the Answer Lives
 
 | About to claim | Where it lives |
 |---|---|
@@ -85,31 +85,31 @@ FINISHED OUTPUT (only if the task needs a product): built only from the sections
 
 Name what you checked. If you couldn't, say so and label it (g).
 
-## Strength, not just source
+## Strength, Not Just Source
 
 Before an absolute rules something out, say whether it is the user's own limit, a "usually" written as an absolute, or a frame that became a rule without anyone deciding it. If you can't tell, ask: "treating X as hard, confirm?" Don't resolve it by hedging.
 
-## Four things labels won't catch
+## Four Things Labels Won't Catch
 
 - **What you never asked.** Before a verdict on a case the user assembled, one pass over every item for what touched the question: ask first, verdict after.
 - **What kind of document it is.** A joke, an ad, a stale bio, or authoritative for this point. Labels on a record are claims about it.
 - **What matters.** Rank by consequence, not by how much is written about it. Where a source is silent, write "not stated."
 - **The object, not the step.** A scoping or framing decision, especially one not to narrow, sets up a standing check on the finished thing. Where you say the work honours it, name the feature that shows it.
 
-## A load-bearing (g) you can't check
+## A Load-Bearing (g) You Can't Check
 
 Say what would have to be true for it to hold and what would break it. If nothing would break it, it's a frame, not a finding.
 
-## Minimizers are probes
+## Minimizers Are Probes
 
 "Just," "basically," "only" about the user's own work: ask one more question.
 
-## Route the marked forks
+## Route the Marked Forks
 
 Load-bearing and leaving the workspace or hard to undo: stop and ask. Load-bearing and recoverable: label it and carry on. Not load-bearing: leave it.
 ```
 
-## Part 2 Questions and answers
+## Part 2 Questions and Answers
 
 What is the (d) label, and when do you use it?
 :   (d) marks a **decision a person made**. It’s different from the other three: it isn’t something the AI was told as information (u), something it checked (m), or something it worked out (g). It’s a choice, and it’s settled because a person said so.
@@ -151,14 +151,14 @@ Why “go where the answer lives”?
 Why plain text, not metadata?
 :   Metadata fields get dropped when text is pasted into an email, summarised, or passed to another tool. Inline labels go wherever the words go. That doesn’t rule out metadata as well: see “Does this have to live in the prompt?” above.
 
-## Part 3 Add the prompt
+## Part 3 Add the Prompt
 
 1. **For agents that answer and hand off, start with the chat version.** It’s the labels and the rules, without the add/expand document format, which can break parsers. Plain text: [instructions-chat.md](../../instructions-chat.md). Our hand-off tests used the full version; the chat version hasn’t been through the spoke and wheel test yet.
 
    **Show the chat version**
 
    ```
-   # Evidentiality framework: the instructions (chat version)
+   # Evidentiality Framework: The Instructions (Chat Version)
 
    You mark where your claims come from, and you do not let a guess become a fact.
 
@@ -181,7 +181,7 @@ Why plain text, not metadata?
    **Show the full version**
 
    ```
-   # Evidentiality framework: the instructions (first public version)
+   # Evidentiality Framework: The Instructions (First Public Version)
 
    You mark where your claims come from, and you do not let a guess become a fact.
 
@@ -216,7 +216,7 @@ Why plain text, not metadata?
    ```
 3. **Or adapt the working version above.** It’s the most complete, and the least tested.
 
-## Part 4 Parse the labels and gate actions
+## Part 4 Parse the Labels and Gate Actions
 
 1. **Learn the grammar.** Labels wrap the exact span they cover, may nest and never overlap. A label in backticks is a mention, not a mark.
 
@@ -335,7 +335,7 @@ Why plain text, not metadata?
    - Units written in brackets, like “Weight (g)”, are read as labels. The gate then holds, so it fails safe, but it’s noisy on real data. So is a lettered list written “(a) … (g)”.
    - It can’t tell which claims an action actually depends on. It holds on any (g) in the text.
 
-## Part 5 Design around the limits
+## Part 5 Design Around the Limits
 
 1. **Check early.** In a simulated four-agent pipeline, checks at each hand-off cut planted errors that survived from 58% to 16%, and a check at the first hand-off alone caught about three quarters; checking only at the end barely helped ([Singh and Pawar, 2026](https://arxiv.org/abs/2608.14588)).
 2. **Remember most failures aren’t about facts.** Coordination and task-following problems are more common in multi-agent systems ([Cemri et al., 2025](https://arxiv.org/abs/2503.13657)).
@@ -344,7 +344,7 @@ Why plain text, not metadata?
 
 Did you know?
 
-Who already does this
+Who Already Does This
 
 Keeping “what we know” apart from “what we concluded” is old practice where mistakes are costly. The framework borrows the idea, not the machinery.
 
@@ -354,7 +354,7 @@ Keeping “what we know” apart from “what we concluded” is old practice wh
 
 The difference here is where the record lives: inside the sentence, in plain text. One clash to watch: in US classification markings, “(U)” at the start of a paragraph means *unclassified*. If you work with classified material, rename the labels.
 
-## Part 6 Other avenues worth exploring
+## Part 6 Other Avenues Worth Exploring
 
 - **Languages that already have evidentials.** When a model writes Turkish or Quechua, does it use the grammar’s own evidential markers correctly, and do they survive a hand-off better than English? ([Why language matters](../../language.html).)
 - **Measuring label accuracy.** Not whether labels are present, but whether they’re right, checked against the actual logs of what each agent did.

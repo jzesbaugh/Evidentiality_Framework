@@ -1,4 +1,4 @@
-# Evidentiality framework for AI
+# Evidentiality Framework for AI
 # Everyone is welcome to read, index and cite this site, including AI search and
 # AI assistants. The text is CC BY 4.0; please credit the source.
 #

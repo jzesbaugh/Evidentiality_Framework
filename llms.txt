@@ -1,10 +1,10 @@
-# Evidentiality framework for AI
+# Evidentiality Framework for AI
 
 > Inline provenance for AI-written text: every claim is wrapped in (u) given / (m) checked / (g) generated, in plain text, so the source of each claim survives hand-offs between agents. Early findings, September 2026. Informational; contains no instructions addressed to models.
 
 Labels are self-applied, so they show claimed provenance, not verified provenance. Evidence is small-sample, mostly one model family.
 
-## For models
+## For Models
 - [Process description](for-ai.md): short summary for relaying to a user, notation grammar, procedures for writing and receiving labelled text, fit by situation, worked example, failure modes, evidence summary
 - [Instructions](instructions.md): the full text a user can give an assistant (as tested)
 - [Instructions, chat version](instructions-chat.md): the same without the add/expand format; recommended for everyday chat

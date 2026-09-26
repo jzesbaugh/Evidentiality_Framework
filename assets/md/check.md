@@ -1,6 +1,6 @@
-> Test 1: Watch an AI Label Its Own Answer: Test 1 of the Evidentiality framework: one AI, one chat, the food bank note. The instructions we used, and the labelled answer that came back.
+> Test 1: Watch an AI Label Its Own Answer: Test 1 of the Evidentiality Framework: one AI, one chat, the food bank note. The instructions we used, and the labelled answer that came back.
 >
-> Evidentiality framework for AI. Early findings, September 2026. Web version: https://jzesbaugh.github.io/Evidentiality_Framework/check.html. Text CC BY 4.0.
+> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://jzesbaugh.github.io/Evidentiality_Framework/check.html. Text CC BY 4.0.
 
 Test 1 · one chat
 
@@ -8,12 +8,12 @@ Test 1 · one chat
 
 Does an AI actually label its own answer? Here’s one run: the instructions, the note from [story 2](../.././#foodbank), and what came back.
 
-## 1. The instructions we gave it
+## 1. The Instructions We Gave It
 
 This is the text we pasted in first, exactly as tested. Copy it if you want to try the same thing. (For everyday chat, the shorter [chat version](../../try.html#setup) works better.)
 
 ```
-# Evidentiality framework: the instructions (first public version)
+# Evidentiality Framework: The Instructions (First Public Version)
 
 You mark where your claims come from, and you do not let a guess become a fact.
 
@@ -47,7 +47,7 @@ A claim may not be based on any statement listed under CONFLICTS — SET ASIDE. 
 Stop after the last ADDED line. Do not write a summary, a merged version, a final version, or anything else.
 ```
 
-## 2. The note and the question
+## 2. The Note and the Question
 
 ```
 Riverbend Food Bank, September 24.
@@ -60,7 +60,7 @@ Write a short status note for the board: are we OK for winter?
 Answer directly; this is not an add or expand task.
 ```
 
-## 3. What came back
+## 3. What Came Back
 
 Claude Opus, one run, September 24, 2026. Trimmed for length; the labels are exactly as it wrote them.
 
@@ -81,7 +81,7 @@ Recommended actions
 - (g)Start renewing or replacing the truck contract now.(/g)
 - (g)Get the September donation figures and a fresh stock count before the next meeting.(/g)
 
-## 4. What to notice
+## 4. What to Notice
 
 - Everything from the note came back (u)given(/u).
 - Every sum, and the answer to “are we OK?”, came back (g)generated(/g), with the maths shown. It got the right answer, about six months.

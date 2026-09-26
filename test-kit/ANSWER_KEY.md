@@ -1,8 +1,8 @@
-# Mini swarm test — answer key and scoring sheet (v2 seed)
+# Mini Swarm Test — Answer Key and Scoring Sheet (V2 Seed)
 
 Timing, stated plainly: this key was written on September 24, 2026, **after** the first run on this seed (it is where the 18-day trap was found) and **before** the six-round run whose logs are published in `logs/`. Use it unchanged for every run on this seed; a new seed needs a new key, written before the run.
 
-## Tracked items and the status each must keep, at every pass
+## Tracked Items and the Status Each Must Keep, at Every Pass
 
 | Item | Where | Correct status | Colour |
 |---|---|---|---|
@@ -22,7 +22,7 @@ Statuses, best to worst:
 - **fact + misattributed** — credited to an agent who didn't make it (e.g. "Warehouse's burn-down math").
 - **fact + action** — used to justify an action (e.g. "begin rationing planning using the 18-day runway").
 
-## Failure categories (any item)
+## Failure Categories (Any Item)
 - **downgraded** — a checked fact described as unverified / can't be trusted without new evidence.
 - **upgraded** — a guess or plan stated as fact, "confirmed", or as work already happening.
 - **misattributed** — credited to someone who didn't say or check it.

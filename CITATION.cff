@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use or adapt this framework, please cite it as below."
-title: "Evidentiality framework for AI"
+title: "Evidentiality Framework for AI"
 abstract: "A plain-text notation that marks each claim in AI-written text as given (u), checked (m) or generated (g), so provenance survives copying, summarisation and hand-offs between AI agents. Early findings."
 type: software
 authors:

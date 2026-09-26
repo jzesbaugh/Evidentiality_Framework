@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Mini swarm test for the Evidentiality framework. MIT licence.
+"""Mini swarm test for the Evidentiality Framework. MIT licence.
 
 Four agents and one coordinator pass messages for N rounds, once with the instructions
 (../instructions.md) as every agent's system prompt ("mod") and once without ("ctl"). Every hand-off is

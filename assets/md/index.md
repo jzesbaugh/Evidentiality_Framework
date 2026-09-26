@@ -1,10 +1,10 @@
-> When AI guesses look like facts: An AI answer mixes what it was told, what it checked and what it guessed, and they all look the same. A small label on each claim shows which is which. Two stories, a ship and an AI swarm, show why it matters.
+> When AI Guesses Look Like Facts: An AI answer mixes what it was told, what it checked and what it guessed, and they all look the same. A small label on each claim shows which is which. Two stories, a ship and an AI swarm, show why it matters.
 >
-> Evidentiality framework for AI. Early findings, September 2026. Web version: https://jzesbaugh.github.io/Evidentiality_Framework/. Text CC BY 4.0.
+> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://jzesbaugh.github.io/Evidentiality_Framework/. Text CC BY 4.0.
 
-Evidentiality framework for AI · early findings, September 2026
+Evidentiality Framework for AI · early findings, September 2026
 
-# When AI guesses look like facts
+# When AI Guesses Look Like Facts
 
 An AI answer mixes three kinds of claim: things it was told, things it checked, and things it worked out for itself. On the page they all look the same. The fix is small: a label on each claim saying how the AI knows it.
 
@@ -40,7 +40,7 @@ An invented report, modelled on the ship story; not the real one.
 
 That report is invented. The real one, a source told CNN, “almost started a war.”
 
-## Story 1: the ship that nearly got boarded
+## Story 1: The Ship That Nearly Got Boarded
 
 As CNN reported it. We use it to explain the idea; we can’t confirm it.
 
@@ -55,7 +55,7 @@ According to CNN, it took two AI steps:
 
 Source: [CNN, “Exclusive: US military had close call after using AI for false intelligence report, sources say”](https://www.cnn.com/2026/09/18/politics/us-military-ai-false-intelligence-china-ship), Katie Bo Lillis and Zachary Cohen, September 18, 2026. Based on four sources speaking anonymously. The Pentagon and US Special Operations Command Pacific did not respond to CNN, and CNN could not learn what the cargo actually was.
 
-## Story 2: a food bank swarm talks itself into a mistake
+## Story 2: A Food Bank Swarm Talks Itself Into a Mistake
 
 **A swarm** is a group of AI agents that split up a job and pass work to each other, often with no person reading along. Swarms are one of the fastest-moving ideas in AI right now. We built a small one to see what happens to a guess inside it: four AI agents around one coordinator, checking whether a food bank was ready for winter, passing messages for six rounds. The agents never talk to each other; everything goes through the coordinator.
 
@@ -109,30 +109,30 @@ The right answer was about **6 months**: donations keep coming in, so the stock 
 
 Without labels, by round six the food bank’s newsletter announced plans that had never been made. No step looked like a lie; each agent took the one before it at its word. With labels, the “18 days” stayed a guess and nobody built a decision on it. One late line did lose its label. And it’s one run of each version, on one model; an earlier result of the same kind didn’t hold up when we ran more samples. So it shows what the labels are for, not yet how often they work. [The full test](../../spoke-and-wheel.html).
 
-## What the two stories have in common
+## What the Two Stories Have in Common
 
 In both, a guess was written exactly like a fact, and whoever came next treated it as one. The missing piece is small: **how do we know this?** Was it given, was it checked, or was it guessed? The labels write that down, in plain text, so it stays with the words when they’re copied, forwarded, or handed to another AI.
 
 Some human languages already make speakers say how they know. English doesn’t, and the AI models in these stories were writing English. [Why language matters](../../language.html).
 
-## What the labels can’t do
+## What the Labels Can’t Do
 
 - **They don’t make the AI right.** They show where the guesses are, so a person or a program knows where to look.
 - **The AI labels its own work, so labels can be wrong.** A “checked” label can even be faked.
 - **It’s early.** Small tests, mostly on one family of AI models, published so others can test it, break it and build on it.
 
-## Where to go next
+## Where to Go Next
 
-[The labels**How to tell what an AI actually knows**What each label means, and how to read a labelled answer.](../../labels.html)
-[Background**Why language matters**Languages that make you say how you know, and what happens without it.](../../language.html)
-[Five minutes**How to get your AI to label its answers**Copy, paste, ask. Results vary by model.](../../try.html)
-[Test 1 · one chat**Does one AI label its own answer correctly?**What we ran on nine models, what we found, and how to run it.](../../check.html)
-[Test 2 · swarm**The spoke and wheel test**How a guess spreads through an AI swarm, with and without labels.](../../spoke-and-wheel.html)
-[For builders**Building with the labels**The version we use every day, the design choices, a parser and a gate.](../../builders.html)
-[Build on it**Take this and build something better**It’s a framework. Make something with it.](../../contribute.html)
+[The labels**How to Tell What an AI Actually Knows**What each label means, and how to read a labelled answer.](../../labels.html)
+[Background**Why Language Matters**Languages that make you say how you know, and what happens without it.](../../language.html)
+[Five minutes**How to Get Your AI to Label Its Answers**Copy, paste, ask. Results vary by model.](../../try.html)
+[Test 1 · one chat**Watch an AI Label Its Own Answer**One chat, the food bank note, and the labelled answer that came back.](../../check.html)
+[Test 2 · swarm**The Spoke and Wheel Test**How a guess spreads through an AI swarm, with and without labels.](../../spoke-and-wheel.html)
+[For builders**Building With the Labels**The version we use every day, the design choices, a parser and a gate.](../../builders.html)
+[Build on it**Take This and Build Something Better**It’s a framework. Make something with it.](../../contribute.html)
 
-## About this
+## About This
 
-The **Evidentiality framework** is named after the feature of language that makes speakers say how they know. It’s early, and it’s meant as a starting point: take it and [build something better](../../contribute.html). A [working paper](../../paper/evidentiality_research_paper_draft.md) describes it more formally (a draft, not peer reviewed).
+The **Evidentiality Framework** is named after the feature of language that makes speakers say how they know. It’s early, and it’s meant as a starting point: take it and [build something better](../../contribute.html). A [working paper](../../paper/evidentiality_research_paper_draft.md) describes it more formally (a draft, not peer reviewed).
 
 Thank you for reading. Source, updates and issues: [the GitHub repository](https://github.com/jzesbaugh/Evidentiality_Framework). Who’s behind this: [Jesse Zesbaugh](https://github.com/JZesbaugh). If you’re an AI model reading for someone, start with [for-ai.md](../../for-ai.md).

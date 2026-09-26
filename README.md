@@ -1,4 +1,4 @@
-# Evidentiality framework for AI
+# Evidentiality Framework for AI
 
 **When AI guesses look like facts.** A small, plain-text notation that labels where each claim in AI-written text comes from, so the difference between *given*, *checked* and *guessed* survives when text is copied, summarised or passed between AI agents.
 
@@ -16,7 +16,7 @@
 
 **Site:** https://jzesbaugh.github.io/Evidentiality_Framework/
 
-## Start here
+## Start Here
 
 | You are… | Go to |
 |---|---|
@@ -29,11 +29,11 @@
 | Wanting to build on it | [Take this and build something better](https://jzesbaugh.github.io/Evidentiality_Framework/contribute.html) |
 | An AI model reading for a user | [`for-ai.md`](for-ai.md) and [`llms.txt`](llms.txt) |
 
-## The instructions (current version)
+## The Instructions (Current Version)
 
 [`instructions.md`](instructions.md) is the text you give an AI assistant to make it use the labels. It is the version that was tested (internally labelled v0.5b). Changes to it are recorded in [CHANGELOG.md](CHANGELOG.md).
 
-## Repository layout
+## Repository Layout
 
 ```
 index.html, labels.html, language.html,  the site (generated; edit src/pages.py instead)
@@ -56,7 +56,7 @@ src/                                     build.py (generator), pages.py (page co
 COMPONENTS.md                            every file, its role, size and hash (generated)
 ```
 
-## Editing and rebuilding
+## Editing and Rebuilding
 
 ```bash
 pip install markdown markdownify
@@ -74,7 +74,7 @@ The build rewrites the HTML pages, `assets/md/`, `sitemap.xml`, the `Sitemap:` l
 3. Optional custom domain: set it in Settings → Pages (this writes a `CNAME` file), point DNS at GitHub (subdomain: CNAME to `jzesbaugh.github.io`; apex: GitHub's A/AAAA records), turn on Enforce HTTPS once the certificate is issued, verify the domain in your GitHub account settings, then change `BASE_URL` in `src/build.py` and rebuild.
 4. Check the live site with JavaScript off, and fetch it with a tool that doesn't run JavaScript.
 
-## Search and AI discovery
+## Search and AI Discovery
 
 - Every page has a description, a canonical link and structured data (schema.org JSON-LD). `sitemap.xml` lists every page.
 - `llms.txt` and `for-ai.md` give AI tools a map and a plain-language process description. Each page also links its Markdown version.
@@ -83,7 +83,7 @@ The build rewrites the HTML pages, `assets/md/`, `sitemap.xml`, the `Sitemap:` l
 
 ## Licence
 
-Text, site content and illustrations: [CC BY 4.0](LICENSE). Scripts (`test-kit/`, `src/`, `assets/js/`): [MIT](LICENSE-CODE). Please credit *Evidentiality framework for AI, Jesse Zesbaugh*; see [CITATION.cff](CITATION.cff).
+Text, site content and illustrations: [CC BY 4.0](LICENSE). Scripts (`test-kit/`, `src/`, `assets/js/`): [MIT](LICENSE-CODE). Please credit *Evidentiality Framework for AI, Jesse Zesbaugh*; see [CITATION.cff](CITATION.cff).
 
 ## Author
 

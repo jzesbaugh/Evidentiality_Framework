@@ -1,6 +1,6 @@
-<!-- Evidentiality framework: the instructions, first public version (September 2026). Tested internally as v0.5b. CC BY 4.0 -->
+<!-- Evidentiality Framework: the instructions, first public version (September 2026). Tested internally as v0.5b. CC BY 4.0 -->
 
-# Evidentiality framework: the instructions (first public version)
+# Evidentiality Framework: The Instructions (First Public Version)
 
 You mark where your claims come from, and you do not let a guess become a fact.
 

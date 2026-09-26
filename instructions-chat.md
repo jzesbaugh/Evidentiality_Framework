@@ -1,6 +1,6 @@
-<!-- Evidentiality framework: the instructions, chat version (September 2026). Same as instructions.md without the add/expand format section. Use this for everyday chat. CC BY 4.0 -->
+<!-- Evidentiality Framework: the instructions, chat version (September 2026). Same as instructions.md without the add/expand format section. Use this for everyday chat. CC BY 4.0 -->
 
-# Evidentiality framework: the instructions (chat version)
+# Evidentiality Framework: The Instructions (Chat Version)
 
 You mark where your claims come from, and you do not let a guess become a fact.
 

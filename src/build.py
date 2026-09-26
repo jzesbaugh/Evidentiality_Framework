@@ -1,4 +1,4 @@
-"""Build the Evidentiality framework for AI site.
+"""Build the Evidentiality Framework for AI site.
 
 Run from anywhere:  python3 src/build.py
 Writes the HTML pages, assets/md/*.md page exports, sitemap.xml and COMPONENTS.md
@@ -14,7 +14,7 @@ os.chdir(ROOT)
 from markdownify import markdownify as _md
 
 # ---- site settings: change BASE_URL once the repository name / domain is final ----
-SITE_NAME = 'Evidentiality framework for AI'
+SITE_NAME = 'Evidentiality Framework for AI'
 BASE_URL  = 'https://jzesbaugh.github.io/Evidentiality_Framework/'
 AUTHOR    = {'name': 'Jesse Zesbaugh', 'url': 'https://github.com/JZesbaugh'}
 PUBLISHED = '2026-09-24'
@@ -74,8 +74,8 @@ def jsonld(fn, title, desc):
                       'author': {'@id': person['@id']}})
     return '<script type="application/ld+json">' + json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False) + '</script>'
 
-SOCIAL_IMAGE = 'assets/img/social-card.png'   # 1200x630; source: src/social-card.html
-SOCIAL_ALT = 'Three sentences from an AI summary, each labelled: (u) The launch is on track, from meeting notes; (m) Two bugs are still open, checked in the issue tracker; (g) Neither bug blocks the release. Ship Friday, a guess by the AI.'
+SOCIAL_IMAGE = 'assets/img/social-card.png'   # 1200x630; AI-generated swarm card (from the handoff packet), resized
+SOCIAL_ALT = 'Evidentiality Framework. What happens when AI builds on its own guesses? Make the origins of AI claims visible. Three labels: (u) from you, (m) checked, (g) generated. A diagram of the swarm experiment: four fact providers around one concluder, labelled (g). Can provenance survive the feedback loop?'
 
 def social(fn, title, desc, url):
     img = BASE_URL + SOCIAL_IMAGE
@@ -88,7 +88,63 @@ def social(fn, title, desc, url):
             f'<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}">'
             f'<meta name="twitter:description" content="{esc(desc)}"><meta name="twitter:image" content="{img}"><meta name="twitter:image:alt" content="{esc(SOCIAL_ALT)}">')
 
+# ---- title case for headings, titles and navigation (AP-style: short articles,
+#      conjunctions and prepositions stay lower case unless first, last or after a colon) ----
+SMALL = {'a','an','the','and','but','or','nor','for','so','yet','as','at','by','in','of','on','to','up','via','vs'}
+def _tc_text(text, state):
+    def fix(m):
+        w = m.group(0)
+        first = state['first']; state['first'] = False
+        low = w.lower()
+        if not first and low in SMALL and not state['after_colon']:
+            out = low
+        elif m.start() and m.string[m.start()-1] in '(/' and len(w) == 1 and low in 'umgd':
+            out = w   # a label letter such as (g) or (/u) stays as it is
+        else:
+            out = '-'.join(p[:1].upper() + p[1:] if p else p for p in w.split('-'))
+        state['after_colon'] = False
+        return out
+    def colon(m):
+        state['after_colon'] = True
+        return m.group(0)
+    # walk words; a colon (or an em dash) resets "first word" behaviour for the next word
+    out = []
+    for tok in re.split(r'(\s+|[:—])', text):
+        if tok in (':', '—'):
+            state['after_colon'] = True; out.append(tok); continue
+        out.append(re.sub(r"(?<![\w’'])[A-Za-z][\w’'-]*", fix, tok))
+    return ''.join(out)
+def titlecase(fragment):
+    """Title-case the text of an HTML fragment, leaving tags, (u)/(m)/(g) labels and code alone."""
+    m = re.match(r'(<span class="pn">.*?</span>\s*)(.*)$', fragment, re.S)
+    if m:   # "Part 1" is its own label; the heading after it starts fresh
+        return m.group(1) + titlecase(m.group(2))
+    parts = re.split(r'(<[^>]+>)', fragment)
+    state = {'first': True, 'after_colon': False}
+    skip = 0
+    for i, part in enumerate(parts):
+        if part.startswith('<'):
+            if re.match(r'<(code|span class="tag")', part): skip += 1
+            elif skip and re.match(r'</(code|span)>', part): skip -= 1
+            continue
+        if not skip and part.strip():
+            parts[i] = _tc_text(part, state)
+    s = ''.join(parts)
+    # the last word, and a word just before a colon, are always capitalised
+    s = re.sub(r"\b(" + "|".join(sorted(SMALL)) + r")\b(?=[\s’”\"')?]*(?:<[^>]+>\s*)*(?::|$))",
+               lambda m: m.group(1)[0].upper() + m.group(1)[1:], s)
+    return s
+def titlecase_html(body):
+    body = re.sub(r'(<h[123][^>]*>)(.*?)(</h[123]>)', lambda m: m.group(1) + titlecase(m.group(2)) + m.group(3), body, flags=re.S)
+    body = re.sub(r'(<a class="acard"[^>]*>.*?<b>)(.*?)(</b>)', lambda m: m.group(1) + titlecase(m.group(2)) + m.group(3), body, flags=re.S)
+    body = re.sub(r'(<p class="sideh">)(.*?)(</p>)', lambda m: m.group(1) + titlecase(m.group(2)) + m.group(3), body, flags=re.S)
+    body = re.sub(r'(<nav class="parts"[^>]*><b>)(.*?)(</b>)', lambda m: m.group(1) + titlecase(m.group(2)) + m.group(3), body)
+    body = re.sub(r'(<li><a href="#[^"]+">)(Part \d+: .*?|Tips|Warnings|Questions and answers)(</a></li>)', lambda m: m.group(1) + titlecase(m.group(2)) + m.group(3), body)
+    return body
+
 def page(fn, title, desc, body):
+    title = titlecase(title)
+    body = titlecase_html(body)
     mdfile = md_path(fn)
     if fn not in ('for-ai.html', '404.html'):
         open(mdfile, 'w').write(to_md(fn, title, desc, body))
@@ -100,7 +156,7 @@ def page(fn, title, desc, body):
              f'<button type="button" class="js-only" id="t-ai">Copy an AI summary prompt</button>'
              f'<button type="button" class="js-only" id="t-print" title="Print, or choose Save as PDF in the print dialog">Print / PDF</button>'
              f'<span class="status" id="t-status" aria-live="polite"></span></div>')
-    nav = ''.join(f'<a href="{h}"' + (' aria-current="page"' if (h == fn or (h == './' and fn == 'index.html')) else '') + f'>{t}</a>' for h, t in NAV)
+    nav = ''.join(f'<a href="{h}"' + (' aria-current="page"' if (h == fn or (h == './' and fn == 'index.html')) else '') + f'>{titlecase(t)}</a>' for h, t in NAV)
     canonical = BASE_URL + ('' if fn == 'index.html' else fn)
     full_title = f'{title} · {SITE_NAME}'
     html = f'''<!doctype html>
@@ -145,7 +201,7 @@ ROLE = {  # what each component is for; COMPONENTS.md is generated from this plu
  'for-ai.md': 'Process description for language models (hand-written)', 'instructions.md': 'The instructions: current version (hand-written; tested as v0.5b)',
  'llms.txt': 'Index for AI tools (hand-written)', 'robots.txt': 'Crawler rules (hand-written; see README note on project sites)',
  'sitemap.xml': 'Sitemap (generated)', 'README.md': 'Repository readme', 'CHANGELOG.md': 'Change log', 'COMPONENTS.md': 'This inventory (generated)',
- 'CONTRIBUTING.md': 'How to contribute', 'CITATION.cff': 'How to cite', 'assets/img/social-card.png': 'Social preview image, 1200×630', 'assets/img/favicon.svg': 'Favicon (red (g))', 'assets/img/favicon-32.png': 'Favicon, 32px PNG', 'assets/img/apple-touch-icon.png': 'Home-screen icon, 180px', 'src/social-card.html': 'Source for the social preview image', 'assets/img/ship-labelled.gif': 'AI-generated animation: ship report labelled (The labels)', 'assets/img/spoke-and-wheel-loop.gif': 'AI-generated animation of the loop (Test 2)', 'assets/img/food-bank-cascade.gif': 'AI-generated animation of the six-round run (Test 2)', 'assets/img/stress-test.png': 'AI-generated infographic of the failure case (For builders)', 'assets/img/poster-spoke-and-wheel-test.jpg': 'AI-generated poster (Test 2)', 'LICENSE': 'CC BY 4.0 for text and site content', 'LICENSE-CODE': 'MIT for scripts (src/, assets/js/, test-kit/)', '.nojekyll': 'Tells GitHub Pages to serve files as-is',
+ 'CONTRIBUTING.md': 'How to contribute', 'CITATION.cff': 'How to cite', 'assets/img/social-card.png': 'Social preview image, 1200×630 (AI-generated swarm card)', 'assets/img/favicon.svg': 'Favicon (red (g))', 'assets/img/favicon-32.png': 'Favicon, 32px PNG', 'assets/img/apple-touch-icon.png': 'Home-screen icon, 180px', 'src/social-card.html': 'Source for the earlier social card (meeting example); no longer used', 'assets/img/ship-labelled.gif': 'AI-generated animation: ship report labelled (The labels)', 'assets/img/spoke-and-wheel-loop.gif': 'AI-generated animation of the loop (Test 2)', 'assets/img/food-bank-cascade.gif': 'AI-generated animation of the six-round run (Test 2)', 'assets/img/stress-test.png': 'AI-generated infographic of the failure case (For builders)', 'assets/img/poster-spoke-and-wheel-test.jpg': 'AI-generated poster (Test 2)', 'LICENSE': 'CC BY 4.0 for text and site content', 'LICENSE-CODE': 'MIT for scripts (src/, assets/js/, test-kit/)', '.nojekyll': 'Tells GitHub Pages to serve files as-is',
  '.gitignore': 'Files git should ignore', 'src/build.py': 'Site generator', 'src/pages.py': 'Page content (edit this, then rebuild)',
  'assets/css/style.css': 'Styles, light and dark', 'assets/js/controls.js': 'Page controls: theme, copy, AI prompt, print',
  
@@ -180,7 +236,7 @@ if __name__ == '__main__':
     import pages
     for p in pages.PAGES:
         page(*p)
-    page('404.html', 'Page not found', 'This page does not exist on the Evidentiality framework for AI site.',
+    page('404.html', 'Page not found', 'This page does not exist on the Evidentiality Framework for AI site.',
          '<h1>Page not found</h1><p>That page doesn’t exist. Try the <a href="./">home page</a> or the <a href="llms.txt">site index</a>.</p>')
     for old, new in REDIRECTS.items():
         redirect(old, new)

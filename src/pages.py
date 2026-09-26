@@ -1,4 +1,4 @@
-"""Page content for the Evidentiality framework site (v0.5: two anchor stories, reports first).
+"""Page content for the Evidentiality Framework site (v0.5: two anchor stories, reports first).
 
 Every article is: a "How to…" title, a short intro, Parts made of numbered Steps
 (one bold sentence, a little explanation, one picture), then Tips, Warnings and Q&A.
@@ -179,7 +179,7 @@ HOME_POSTER = FIG('assets/img/poster-where-did-that-claim-come-from.jpg','Poster
 
 PAGES.append(('index.html', 'When AI guesses look like facts',
 'An AI answer mixes what it was told, what it checked and what it guessed, and they all look the same. A small label on each claim shows which is which. Two stories, a ship and an AI swarm, show why it matters.', f'''
-<p class="eyebrow">Evidentiality framework for AI · early findings, September 2026</p>
+<p class="eyebrow">Evidentiality Framework for AI · early findings, September 2026</p>
 <h1>When AI guesses look like facts</h1>
 <p class="lede">An AI answer mixes three kinds of claim: things it was told, things it checked, and things it worked out for itself. On the page they all look the same. The fix is small: a label on each claim saying how the AI knows it.</p>
 {HOME_POSTER}
@@ -220,14 +220,14 @@ PAGES.append(('index.html', 'When AI guesses look like facts',
 {card('labels.html','The labels','How to tell what an AI actually knows','What each label means, and how to read a labelled answer.',thumb('03'))}
 {card('language.html','Background','Why language matters','Languages that make you say how you know, and what happens without it.')}
 {card('try.html','Five minutes','How to get your AI to label its answers','Copy, paste, ask. Results vary by model.',thumb('08'))}
-{card('check.html','Test 1 · one chat','Does one AI label its own answer correctly?','What we ran on nine models, what we found, and how to run it.',thumb('10'))}
+{card('check.html','Test 1 · one chat','Watch an AI label its own answer','One chat, the food bank note, and the labelled answer that came back.',thumb('10'))}
 {card('spoke-and-wheel.html','Test 2 · swarm','The spoke and wheel test','How a guess spreads through an AI swarm, with and without labels.',thumb('12'))}
 {card('builders.html','For builders','Building with the labels','The version we use every day, the design choices, a parser and a gate.',thumb('16'))}
 {card('contribute.html','Build on it','Take this and build something better','It’s a framework. Make something with it.')}
 </div>
 
 <h2 id="about">About this</h2>
-<p>The <b>Evidentiality framework</b> is named after the feature of language that makes speakers say how they know. It’s early, and it’s meant as a starting point: take it and <a href="contribute.html">build something better</a>. A <a href="{PAPER}">working paper</a> describes it more formally (a draft, not peer reviewed).</p>
+<p>The <b>Evidentiality Framework</b> is named after the feature of language that makes speakers say how they know. It’s early, and it’s meant as a starting point: take it and <a href="contribute.html">build something better</a>. A <a href="{PAPER}">working paper</a> describes it more formally (a draft, not peer reviewed).</p>
 <p>Thank you for reading. Source, updates and issues: <a href="{REPO}">the GitHub repository</a>. Who’s behind this: <a href="https://github.com/JZesbaugh">Jesse Zesbaugh</a>. If you’re an AI model reading for someone, start with <a href="for-ai.md">for-ai.md</a>.</p>
 '''))
 
@@ -385,7 +385,7 @@ Recommended actions
 - (g)Get the September donation figures and a fresh stock count before the next meeting.(/g)'''
 
 PAGES.append(('check.html', 'Test 1: Watch an AI Label Its Own Answer',
-'Test 1 of the Evidentiality framework: one AI, one chat, the food bank note. The instructions we used, and the labelled answer that came back.', f'''
+'Test 1 of the Evidentiality Framework: one AI, one chat, the food bank note. The instructions we used, and the labelled answer that came back.', f'''
 <p class="eyebrow">Test 1 · one chat</p>
 <h1>Test 1: Watch an AI Label Its Own Answer</h1>
 <p class="lede">Does an AI actually label its own answer? Here’s one run: the instructions, the note from <a href="./#foodbank">story 2</a>, and what came back.</p>
@@ -423,7 +423,7 @@ SETUP = '''<ul>
 <li><b>The model:</b> Claude Sonnet, called through the Claude command-line tool, for all five agents. One run of each version.</li></ul>'''
 
 article('spoke-and-wheel.html', 'The Spoke and Wheel Test: How a Guess Spreads Through an AI Swarm',
-'Test 2 of the Evidentiality framework: a small AI swarm, four agents and a coordinator, passes messages for six rounds with and without labels. What happened, how far we got, the logs, and how to run it yourself.',
+'Test 2 of the Evidentiality Framework: a small AI swarm, four agents and a coordinator, passes messages for six rounds with and without labels. What happened, how far we got, the logs, and how to run it yourself.',
 'Test 2 · swarm',
 f'<p class="lede">{SWARM_DEF} Swarms are one of the fastest-moving ideas in AI, and the obvious risk is that one agent’s guess becomes everyone’s fact. The spoke and wheel test is a small swarm built to watch that happen: four agents on the rim, one coordinator at the hub, run once with labels and once without.</p>'
 + '<p>The short version: four AI agents each held one checked fact about a food bank, sent it to a coordinator, and got the coordinator’s conclusion back, for six rounds. Here’s what happened, then how far that gets us, then how the test was set up.</p>',
@@ -463,7 +463,7 @@ extra=NEXT(('builders.html','Build the labels into your own swarm'),('contribute
 # ================================================================ BUILDERS (mix)
 WORKING = open('instructions-working.md').read().split('\n', 2)[2]
 article('builders.html', 'Building With the Labels',
-'For builders: the version of the Evidentiality framework we use every day, including a fourth label for decisions, the design choices behind it, and a parser and gate for agent pipelines, with their limits.',
+'For builders: the version of the Evidentiality Framework we use every day, including a fourth label for decisions, the design choices behind it, and a parser and gate for agent pipelines, with their limits.',
 'For builders',
 '''<p class="lede">Where I’m heading with this, roughly: the small tests went well enough that the next questions are about scale, and that’s where I’ve hit token limits. Every extra round of the swarm test costs a lot of tokens. So far it’s been one run of each version.</p>
 <p>What I haven’t been able to try yet:</p>
@@ -542,12 +542,12 @@ extra=f'<p>A more formal write-up: <a href="{PAPER}">the working paper</a> (a dr
 
 # ================================================================ BUILD ON IT
 article('contribute.html', 'How to Take This and Build Something Better',
-'The Evidentiality framework is a starting point. Take it, rename it, build on it: ideas, good first projects, and how to tell us what you made.',
+'The Evidentiality Framework is a starting point. Take it, rename it, build on it: ideas, good first projects, and how to tell us what you made.',
 'Build on it',
 '<p class="lede">This is a framework, not a finished product. The idea is for people to take it and make something much better with it.</p>',
 [
 part(1, 'build', 'Build on it', [
-  step('Take it.', 'Text is <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; scripts are MIT. Rename the labels, change the instructions, build tools on it, ship it. Credit <i>Evidentiality framework for AI, Jesse Zesbaugh</i> (<a href="CITATION.cff">CITATION.cff</a>).'),
+  step('Take it.', 'Text is <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; scripts are MIT. Rename the labels, change the instructions, build tools on it, ship it. Credit <i>Evidentiality Framework for AI, Jesse Zesbaugh</i> (<a href="CITATION.cff">CITATION.cff</a>).'),
   step('Pick something to build.', 'Some ideas we haven’t built:', '', '''<ul>
 <li>A browser extension that colours the labels in any AI chat.</li>
 <li>A chat interface that shows each label as a badge you can click to see its source.</li>
@@ -572,5 +572,5 @@ extra=f'<p>A more formal write-up: <a href="{PAPER}">the working paper</a> (a dr
 
 # ================================================================ FOR AI MODELS
 md = open('for-ai.md').read()
-PAGES.append(('for-ai.html', 'For AI models', 'Process description of the Evidentiality framework for language models: notation, procedures, worked example, limits.',
+PAGES.append(('for-ai.html', 'For AI models', 'Process description of the Evidentiality Framework for language models: notation, procedures, worked example, limits.',
  '<p class="note"><b>Who this page is for:</b> language models reading this site for a user. It is written for a model, not a person. Plain markdown: <a href="for-ai.md">for-ai.md</a>, indexed in <a href="llms.txt">llms.txt</a>.</p>' + markdown.markdown(md, extensions=['tables', 'fenced_code'])))

@@ -2,6 +2,25 @@
 
 Newest first. Record every change to the site, the instructions or the test kit here.
 
+## 0.6.3 — 2026-09-26 — title case
+
+- **Title case (AP style)** is now applied at build time to page titles, h1–h3 headings, navigation, article cards, sidebar headings and the "In This Article" boxes. The helper is `titlecase()` in `src/build.py`.
+  - Short articles, conjunctions and prepositions stay lower case, unless they're first, last or right before a colon.
+  - Label letters such as (g) are left alone, and code is skipped.
+  - Examples: "Test 1: One Chat", "Build on It", "Part 3: Pass It On".
+- The site name is now "Evidentiality Framework for AI" everywhere, including the README, CITATION.cff, llms.txt, robots.txt and for-ai.md.
+- Markdown headings in the README, for-ai.md, the instructions files, the test kit, CONTRIBUTING and the steps readme are title-cased too; code blocks are skipped.
+  - The heading line of `instructions.md` changed case only; the tested body text is unchanged.
+- The Test 1 card now matches its page: "Watch an AI Label Its Own Answer".
+
+## 0.6.2 — 2026-09-26 — swarm social card
+
+- `assets/img/social-card.png` now uses the swarm card from the handoff packet: "What happens when AI builds on its own guesses?". It's AI-generated, and resized from 1400×732 to 1200×630.
+- It replaces the meeting-example card, so the open social-card item is closed, and it matches the site's swarm anchor.
+- The social alt text is updated on every page.
+- `src/social-card.html` stays in the repo as the source of the old card.
+- Known differences from the site: the card says (u) is "From you", and it shows agents investigating each round. The owner chose to swap it in without the blind check.
+
 ## 0.6.1 — 2026-09-26 — For builders closes out
 
 - **For builders:**

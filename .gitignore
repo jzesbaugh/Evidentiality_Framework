@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.DS_Store
+# test-kit run output
+test-kit/runs/
+runs/
+score_flags.json

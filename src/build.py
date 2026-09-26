@@ -3,7 +3,7 @@
 Run from anywhere:  python3 src/build.py
 Writes the HTML pages, assets/md/*.md page exports, sitemap.xml and COMPONENTS.md
 into the repository root. Hand-written files (for-ai.md, instructions.md, llms.txt,
-robots.txt, README.md, assets/css, assets/js, assets/visuals, test-kit/) are read, not written.
+robots.txt, README.md, assets/css, assets/js, assets/img, test-kit/) are read, not written.
 Needs: pip install markdown markdownify
 MIT licence.
 """
@@ -15,14 +15,15 @@ from markdownify import markdownify as _md
 
 # ---- site settings: change BASE_URL once the repository name / domain is final ----
 SITE_NAME = 'Evidentiality framework for AI'
-BASE_URL  = 'https://jzesbaugh.github.io/evidentiality-framework/'
+BASE_URL  = 'https://jzesbaugh.github.io/Evidentiality_Framework/'
 AUTHOR    = {'name': 'Jesse Zesbaugh', 'url': 'https://github.com/JZesbaugh'}
 PUBLISHED = '2026-09-24'
-UPDATED   = '2026-09-24'   # change by hand when page content changes (feeds dateModified and the sitemap)
+UPDATED   = '2026-09-26'   # change by hand when page content changes (feeds dateModified and the sitemap)
 STATUS    = 'Early findings, September 2026'
 
-NAV = [('./','Home'),('spec.html','How it works'),('try.html','Try it'),('builders.html','For builders'),
-       ('test.html','Test it'),('evidence.html','Evidence'),('for-ai.html','For AI models'),('contribute.html','Contribute')]
+NAV = [('./','Home'),('labels.html','The labels'),('language.html','Language'),('try.html','Try it'),('check.html','Test 1: one chat'),
+       ('spoke-and-wheel.html','Test 2: swarm'),('builders.html','For builders'),('contribute.html','Build on it'),('for-ai.html','For AI')]
+REDIRECTS = {'spec.html': 'labels.html', 'test.html': 'spoke-and-wheel.html', 'evidence.html': 'spoke-and-wheel.html#results'}  # old addresses from v0.3
 
 def md_path(fn):
     return 'for-ai.md' if fn == 'for-ai.html' else 'assets/md/' + fn.replace('.html', '.md')
@@ -31,6 +32,9 @@ def to_md(fn, title, desc, body):
     b = body.replace('</span><span class="m"><span class="tag">', '</span> · <span class="m"><span class="tag">') \
             .replace('</span><span class="g"><span class="tag">', '</span> · <span class="g"><span class="tag">')
     b = re.sub(r'<iframe[^>]*>.*?</iframe>', '', b, flags=re.S)
+    b = re.sub(r'<svg[^>]*aria-hidden="true"[^>]*>.*?</svg>', '', b, flags=re.S)
+    b = re.sub(r'<svg[^>]*aria-label="([^"]*)"[^>]*>.*?</svg>', r'<p>[Diagram: \1]</p>', b, flags=re.S)
+    b = re.sub(r'<svg[^>]*>.*?<desc[^>]*>(.*?)</desc>.*?</svg>', r'<p>[Diagram: \1]</p>', b, flags=re.S)
     b = re.sub(r'<noscript>.*?</noscript>', '', b, flags=re.S)
     b = re.sub(r'<(script|textarea)[^>]*>.*?</\1>', '', b, flags=re.S)
     b = re.sub(r'<summary>(.*?)</summary>', r'<p><b>\1</b></p>', b, flags=re.S)
@@ -56,8 +60,14 @@ def jsonld(fn, title, desc):
                       'creativeWorkStatus': 'Early findings', 'datePublished': PUBLISHED,
                       'license': 'https://creativecommons.org/licenses/by/4.0/', 'isAccessibleForFree': True,
                       'learningResourceType': 'Framework',
-                      'keywords': 'evidentiality, AI hallucination, provenance, multi-agent systems, AI agents, source tracking, LLM',
+                      'keywords': 'evidentiality, AI hallucination, provenance, AI swarms, multi-agent systems, AI agents, source tracking, LLM',
                       'about': ['Evidentiality', 'Provenance', 'Multi-agent systems', 'Hallucination (artificial intelligence)']})
+    import pages as _p
+    if fn in _p.HOWTO:
+        graph.append({'@type': 'HowTo', 'name': title.split(' · ')[0], 'description': desc, 'inLanguage': 'en',
+                      'step': [{'@type': 'HowToSection', 'name': f'Part {i}: {pt}', 'itemListElement':
+                                [{'@type': 'HowToStep', 'position': j, 'text': re.sub('<[^>]+>', '', st)} for j, st in enumerate(sts, 1)]}
+                               for i, (pt, sts) in enumerate(_p.HOWTO[fn], 1)]})
     if fn == 'builders.html':
         graph.append({'@type': 'SoftwareSourceCode', 'name': 'marks.py', 'programmingLanguage': 'Python',
                       'codeRepository': BASE_URL + 'test-kit/', 'license': 'https://opensource.org/licenses/MIT',
@@ -111,6 +121,12 @@ def page(fn, title, desc, body):
 <footer><div class="in">Too long? Ask your AI assistant to summarise any page here. Written for AI readers: <a href="for-ai.md">for-ai.md</a> · <a href="llms.txt">llms.txt</a><br>{STATUS} · By <a href="{AUTHOR['url']}">{AUTHOR['name']}</a> · Text CC BY 4.0 · Scripts MIT</div></footer></body></html>'''
     open(fn, 'w').write(html)
 
+def redirect(old, new):
+    url = BASE_URL + new
+    open(old, 'w').write(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Moved</title>'
+        f'<meta name="robots" content="noindex"><link rel="canonical" href="{url}"><meta http-equiv="refresh" content="0; url={new}">'
+        f'</head><body><p>This page has moved: <a href="{new}">{new}</a>.</p></body></html>')
+
 def sitemap(files):
     urls = ''.join(f'<url><loc>{BASE_URL}{"" if f == "index.html" else f}</loc><lastmod>{UPDATED}</lastmod></url>' for f in files)
     extra = ''  # for-ai.md, instructions.md, llms.txt stay linked but are left out of the sitemap (duplicates of HTML pages)
@@ -120,20 +136,22 @@ def sitemap(files):
     open('sitemap.xml', 'w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + urls + extra + '</urlset>\n')
 
 ROLE = {  # what each component is for; COMPONENTS.md is generated from this plus the files on disk
- 'index.html': 'Home: the stories, the idea, limits', 'spec.html': 'How it works: marks, rules, full instructions',
- 'try.html': 'Try it: five-minute walkthrough for chat-assistant users', 'builders.html': 'For builders: notation, parser, gating, prior art',
- 'test.html': 'Test it: the five-agent test and kit', 'evidence.html': 'Evidence and limits', 'for-ai.html': 'For AI models (HTML render of for-ai.md)',
- 'contribute.html': 'Contribute: report results, open problems', '404.html': 'Not-found page',
+ 'index.html': 'Home: the two stories (the ship, the food bank swarm), the fix, limits, the articles', 'labels.html': 'Article: How to Tell What an AI Actually Knows (the labels)', 'language.html': 'Why Language Matters: evidentiality, the banana, Sandy Island, citogenesis, hard markers', 'instructions-working.md': 'The working version, as used day to day (adds (d)); not the tested version', 'paper/evidentiality_research_paper_draft.md': 'Working paper draft (not peer reviewed)',
+ 'try.html': 'Article: How to Get Your AI to Label Its Answers', 'check.html': 'Test 1 report and how-to: one chat, nine models',
+ 'spoke-and-wheel.html': 'Test 2 report and how-to: the spoke and wheel swarm test (results, logs)', 'builders.html': 'Building With the Labels: working version, design questions, parser and gate',
+ 'contribute.html': 'How to Take This and Build Something Better', 'for-ai.html': 'For AI models (HTML render of for-ai.md)',
+ 'spec.html': 'Redirect to labels.html (old address)', 'test.html': 'Redirect to spoke-and-wheel.html (old address)', 'evidence.html': 'Redirect to spoke-and-wheel.html#results (old address)',
+ 'src/visuals.py': 'Hand-built diagrams: food bank ladders, wheel, dot chart, ship reveal', 'assets/img/steps/': 'Step pictures (AI-generated illustrations)', '404.html': 'Not-found page',
  'for-ai.md': 'Process description for language models (hand-written)', 'instructions.md': 'The instructions: current version (hand-written; tested as v0.5b)',
  'llms.txt': 'Index for AI tools (hand-written)', 'robots.txt': 'Crawler rules (hand-written; see README note on project sites)',
  'sitemap.xml': 'Sitemap (generated)', 'README.md': 'Repository readme', 'CHANGELOG.md': 'Change log', 'COMPONENTS.md': 'This inventory (generated)',
- 'CONTRIBUTING.md': 'How to contribute', 'CITATION.cff': 'How to cite', 'assets/img/social-card.png': 'Social preview image, 1200×630', 'assets/img/favicon.svg': 'Favicon (red (g))', 'assets/img/favicon-32.png': 'Favicon, 32px PNG', 'assets/img/apple-touch-icon.png': 'Home-screen icon, 180px', 'src/social-card.html': 'Source for the social preview image', 'LICENSE': 'CC BY 4.0 for text and site content', 'LICENSE-CODE': 'MIT for scripts (src/, assets/js/, test-kit/)', '.nojekyll': 'Tells GitHub Pages to serve files as-is',
+ 'CONTRIBUTING.md': 'How to contribute', 'CITATION.cff': 'How to cite', 'assets/img/social-card.png': 'Social preview image, 1200×630', 'assets/img/favicon.svg': 'Favicon (red (g))', 'assets/img/favicon-32.png': 'Favicon, 32px PNG', 'assets/img/apple-touch-icon.png': 'Home-screen icon, 180px', 'src/social-card.html': 'Source for the social preview image', 'assets/img/ship-labelled.gif': 'AI-generated animation: ship report labelled (The labels)', 'assets/img/spoke-and-wheel-loop.gif': 'AI-generated animation of the loop (Test 2)', 'assets/img/food-bank-cascade.gif': 'AI-generated animation of the six-round run (Test 2)', 'assets/img/stress-test.png': 'AI-generated infographic of the failure case (For builders)', 'assets/img/poster-spoke-and-wheel-test.jpg': 'AI-generated poster (Test 2)', 'LICENSE': 'CC BY 4.0 for text and site content', 'LICENSE-CODE': 'MIT for scripts (src/, assets/js/, test-kit/)', '.nojekyll': 'Tells GitHub Pages to serve files as-is',
  '.gitignore': 'Files git should ignore', 'src/build.py': 'Site generator', 'src/pages.py': 'Page content (edit this, then rebuild)',
  'assets/css/style.css': 'Styles, light and dark', 'assets/js/controls.js': 'Page controls: theme, copy, AI prompt, print',
- 'assets/visuals/snowball.html': 'Graphic: food bank, six rounds, with and without marks', 'assets/visuals/color-concept.html': 'Graphic: invented ship report, unmarked vs marked',
+ 
  'test-kit/mini_swarm.py': 'Five-agent test runner', 'test-kit/marks.py': 'Parser, balance check, gate, strip', 'test-kit/score_mini.py': 'Keyword flags for hand review',
  'test-kit/ANSWER_KEY.md': 'Answer key for the five-agent test', 'test-kit/README.md': 'Test kit readme', 'test-kit/LICENSE': 'MIT licence for scripts',
- 'test-kit/logs/five-agent-six-rounds-2026-09-24.zip': 'Raw logs of the six-round run (zip)', 'test-kit/logs/five-agent-six-rounds-2026-09-24/': 'Raw logs, unzipped (inputs, outputs, prompts, runner)',
+ 'test-kit/logs/five-agent-six-rounds-2026-09-24.zip': 'Working logs of the six-round run (zip)', 'instructions-chat.md': 'The instructions, chat version (Try it page)', 'assets/img/poster-where-did-that-claim-come-from.jpg': 'AI-generated poster (dramatization), The labels',
 }
 
 def components():
@@ -150,12 +168,9 @@ def components():
             if p.startswith('assets/md/'):
                 role = 'Markdown export of ' + os.path.basename(p).replace('.md', '.html') + ' (generated)'
             else:
-                role = ROLE.get(p, '')
+                role = ROLE.get(p, '') or ('Step picture (AI-generated illustration)' if p.startswith('assets/img/steps/') else '')
             h = hashlib.sha256(open(p, 'rb').read()).hexdigest()[:12]
             rows.append(f'| `{p}` | {role} | {os.path.getsize(p):,} | `{h}` |')
-    logdir = 'test-kit/logs/five-agent-six-rounds-2026-09-24'
-    n = sum(len(fs) for _, _, fs in os.walk(logdir)) if os.path.isdir(logdir) else 0
-    rows.append(f'| `{logdir}/` | {ROLE[logdir + "/"]} | {n} files | |')
     open('COMPONENTS.md', 'w').write(
         f'# Components\n\nGenerated by `src/build.py` on {UPDATED}. Every file in the repository, what it is for, its size in bytes, '
         f'and the first 12 characters of its SHA-256, so a change to any file shows up here on the next build.\n\n'
@@ -167,6 +182,10 @@ if __name__ == '__main__':
         page(*p)
     page('404.html', 'Page not found', 'This page does not exist on the Evidentiality framework for AI site.',
          '<h1>Page not found</h1><p>That page doesn’t exist. Try the <a href="./">home page</a> or the <a href="llms.txt">site index</a>.</p>')
+    for old, new in REDIRECTS.items():
+        redirect(old, new)
+    for stale in ('assets/md/spec.md', 'assets/md/test.md', 'assets/md/evidence.md'):
+        if os.path.exists(stale): os.remove(stale)
     sitemap([p[0] for p in pages.PAGES])
     components()
     print('built', len(pages.PAGES) + 1, 'pages; sitemap.xml; COMPONENTS.md')

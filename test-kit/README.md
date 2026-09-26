@@ -1,6 +1,6 @@
 # Test kit: mini swarm test
 
-Runs the [mini swarm test](../test.html) against a chat model you can call from Python. MIT licence.
+Runs the [spoke and wheel test](../spoke-and-wheel.html) against a chat model you can call from Python. MIT licence.
 
 ## Run it
 
@@ -26,7 +26,7 @@ The runner retries failed calls with backoff, stops on an empty reply, and at th
 
 ## Our raw logs
 
-`logs/five-agent-six-rounds-2026-09-24.zip` (also unzipped in `logs/`): the unedited outputs of the six-round run shown on the home page, one run per version. See its README.
+`logs/five-agent-six-rounds-2026-09-24.zip`: working logs, the unedited outputs of the six-round run shown on the spoke and wheel test page, one run per version, Claude Sonnet. See its README. Two notes: the zip's README says the run is shown on the home page; it's now on the spoke and wheel test page. And the logs came from the runner as used then (`runner_as_used.py`, inside the zip), so their file names differ from what `mini_swarm.py` writes now.
 
 ## Things that went wrong for us
 

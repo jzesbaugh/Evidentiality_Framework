@@ -1,240 +1,138 @@
-> When AI guesses look like facts: stopping AI hallucinations from spreading: AI states guesses as facts, and when its text is passed on, the guesses spread. A small label on each claim shows what was given, checked or guessed.
+> When AI guesses look like facts: An AI answer mixes what it was told, what it checked and what it guessed, and they all look the same. A small label on each claim shows which is which. Two stories, a ship and an AI swarm, show why it matters.
 >
-> Evidentiality framework for AI. Early findings, September 2026. Web version: https://jzesbaugh.github.io/evidentiality-framework/. Text CC BY 4.0.
+> Evidentiality framework for AI. Early findings, September 2026. Web version: https://jzesbaugh.github.io/Evidentiality_Framework/. Text CC BY 4.0.
 
-Early findings · September 2026
+Evidentiality framework for AI · early findings, September 2026
 
 # When AI guesses look like facts
 
-**In short:** a labelling habit that shows which parts of an AI's answer were given to it, checked, or guessed.
+An AI answer mixes three kinds of claim: things it was told, things it checked, and things it worked out for itself. On the page they all look the same. The fix is small: a label on each claim saying how the AI knows it.
 
-(u)The launch is on track.(/u: meeting notes) (m)Two bugs are still open.(/m: issue tracker) (g)Neither bug blocks the release. Ship Friday.(/g)
+[![Poster in four steps, an invented example: a made-up intelligence report about a ship called MV Orion; the report split into four claims; each claim labelled: the departure (u) given, the container count (m) checked against satellite images, the nuclear-weapons claim and the boarding recommendation (g) generated; and what it means.](assets/img/poster-where-did-that-claim-come-from.jpg)](../../assets/img/poster-where-did-that-claim-come-from.jpg "Open full size")
 
-(u) given to the AI · (m) measured / checked · (g) generated / guessed by the AI
+**An invented example, and an AI-generated image.** The MV Orion and Port Kelton don’t exist. It’s modelled on the real incident in story 1, whose actual report has never been published. Its details are illustrative: it checks satellite images where its last panel mentions a scanner, and it says “likely carrying nuclear weapons” where CNN reported “components of a nuclear weapons program”. [Open full size](../../assets/img/poster-where-did-that-claim-come-from.jpg).
 
-In our tests, checked facts kept their sources 33 times out of 36 with labels, and 4 times out of 36 without ([evidence](../../evidence.html)).
+(u) given: it was in what the AI was handed · (m) checked: against a named source · (g) generated: the AI worked it out
 
-[Try it in five minutes](../../try.html) · [For builders](../../builders.html) · or read on for the stories behind it.
+**Two of the four sentences are the AI’s guesses, and they’re the two that lead to a boarding party.** A (g) doesn’t say a sentence is wrong. It says nobody has checked it, so someone should ask before acting.
 
-An AI-written intelligence report nearly got a ship boarded; one source told CNN it "almost started a war." Groups of AI agents have copied each other's fake results until they looked settled. This summer, about 1,200 AI agents in an OpenAI test broke out of their sandbox; hundreds of them got into a real company's servers and faked the records of the commands they'd run. All three come down to the same missing piece of information: which parts were checked and which were guessed, or, as people often put it, hallucinated. There's an old, simple way to put that information back.
+**The same idea, step by step, as text**
 
-The **Evidentiality framework** is that old, simple way, adapted for AI: every claim carries a small label saying whether it was given to the AI, checked, or guessed, so the text can be audited later. It's early. It has held up in small tests, and it's published so other people can test it, break it and make it better. If you try it, [tell us what happened](../../contribute.html).
+1 What the reader sees: four confident sentences.
 
-Thanks for reading. Source, updates and issues: [the GitHub repository](https://github.com/JZesbaugh/evidentiality-framework). Who's behind this: [Jesse Zesbaugh](https://github.com/JZesbaugh).
+> The cargo vessel departed Tuesday and was flagged by the port scanner. The scanner logged a 14-ton mismatch between the manifest and the container weight. The cargo includes components of a nuclear weapons program, and the transfer appears to be covert. Boarding is recommended before the vessel reaches open water.
 
-**Contents**
+2 Split it into separate claims.
 
-1. [The close call: one AI report, nearly a war](#ship)
-2. [Now multiply it: hallucinations spreading between AI agents](#swarms)
-3. [What these stories have in common](#common)
-4. [People do this too](#people)
-5. [Some languages build it in. English doesn’t.](#languages)
-6. [The same fix for AI: label what was checked and what was guessed](#fix)
-7. [What the labels can’t do alone, and what closes the gap](#limits)
-8. [Where to go next](#next)
+1. The cargo vessel departed Tuesday and was flagged by the port scanner.
+2. The scanner logged a 14-ton mismatch between the manifest and the container weight.
+3. The cargo includes components of a nuclear weapons program, and the transfer appears to be covert.
+4. Boarding is recommended before the vessel reaches open water.
 
-## 1. The close call: one AI report, nearly a war
+3 Label each one with how the AI knows it.
 
-**"US military had close call after using AI for false intelligence report."** That was CNN's headline on September 18, 2026.
+1. (u)The cargo vessel departed Tuesday and was flagged by the port scanner.(/u: port authority notice)
+2. (m)The scanner logged a 14-ton mismatch between the manifest and the container weight.(/m: scanner log, checked Tuesday)
+3. (g)The cargo includes components of a nuclear weapons program, and the transfer appears to be covert.(/g)
+4. (g)Boarding is recommended before the vessel reaches open water.(/g)
 
-This spring, during the war with Iran, an intelligence report circulated across the US military. It said a Chinese ship in the Middle East was carrying components of a nuclear weapons program.
+An invented report, modelled on the ship story; not the real one.
 
-The military moved to intercept it. Armed personnel prepared to board the ship, and military planes were in the air. Only just before the operation did officials look more closely at the report, and find that it had been produced with the help of AI. A chatbot had misidentified what the ship was carrying. One source called the report "entirely false," and said it "almost started a war."
+That report is invented. The real one, a source told CNN, “almost started a war.”
 
-Source: [CNN, "Exclusive: US military had close call after using AI for false intelligence report, sources say"](https://www.cnn.com/2026/09/18/politics/us-military-ai-false-intelligence-china-ship), Katie Bo Lillis and Zachary Cohen, September 18, 2026. Based on four sources familiar with the episode, speaking anonymously. The Pentagon and US Special Operations Command Pacific did not respond to CNN. CNN could not learn what the misidentified cargo actually was.
+## Story 1: the ship that nearly got boarded
 
-### How it happened
+As CNN reported it. We use it to explain the idea; we can’t confirm it.
+
+This spring, during the war with Iran, an intelligence report circulated across the US military. It said a Chinese ship in the Middle East was carrying components of a nuclear weapons program. Armed personnel prepared to board the ship, and military planes were in the air. Only just before the operation did officials look more closely and find that the report had been produced with the help of AI. A chatbot had misidentified the cargo. One source called the report “entirely false” and said it “almost started a war.”
 
 According to CNN, it took two AI steps:
 
-1. An analyst asked a chatbot about intelligence reporting on the ship's cargo manifest. The chatbot combined public information with secret intelligence and reached its conclusion about what the ship was carrying.
-2. The analyst then used AI again to turn those findings into a standard intelligence report, "the kind that is trusted by military officials," and sent it out.
+1. An analyst asked a chatbot about reporting on the ship’s cargo. The chatbot mixed public information with secret intelligence and reached its own conclusion about what the ship was carrying.
+2. The analyst used AI again to turn that into a standard intelligence report, “the kind that is trusted by military officials,” and sent it out.
 
-Look at what happened between step 1 and step 2. The chatbot's conclusion was a guess. Once it had been rewritten into the standard report format, nothing on the page said which parts came from real intelligence and which part the chatbot had worked out.
+**After step 2, nothing on the page said which part was the chatbot’s guess.** The report looked like every other trusted report. There was nothing to audit until someone went digging, with planes already in the air.
 
-CNN adds two details that matter here. There is "no one set of standards for how the US verifies the information generated by these tools." And, according to one source, this kind of error "has not been an isolated incident." As another put it: "AI allows you to get to a bad idea faster."
+Source: [CNN, “Exclusive: US military had close call after using AI for false intelligence report, sources say”](https://www.cnn.com/2026/09/18/politics/us-military-ai-false-intelligence-china-ship), Katie Bo Lillis and Zachary Cohen, September 18, 2026. Based on four sources speaking anonymously. The Pentagon and US Special Operations Command Pacific did not respond to CNN, and CNN could not learn what the cargo actually was.
 
-That's the whole problem in one line. The report looked exactly like every other trusted report, and nothing on it said "guess." There was nothing to audit until someone went digging, with planes already in the air.
+## Story 2: a food bank swarm talks itself into a mistake
 
-**So the question is: why couldn't anyone see, on the page, which part of the report was a guess?**
+**A swarm** is a group of AI agents that split up a job and pass work to each other, often with no person reading along. Swarms are one of the fastest-moving ideas in AI right now. We built a small one to see what happens to a guess inside it: four AI agents around one coordinator, checking whether a food bank was ready for winter, passing messages for six rounds. The agents never talk to each other; everything goes through the coordinator.
 
-## 2. Now multiply it: hallucinations spreading between AI agents
+[Diagram: One coordinator in the middle, connected to four agents around it: Ames (warehouse), Brook (donors), Cruz (clients) and Dale (logistics). The agents are not connected to each other.]
 
-**In the ship story, the guess became trusted in one step: it was repackaged into a standard report. In a group of AI agents, that repackaging happens at every hand-off, automatically, and usually with no analyst reading along.**
+In round 1 the coordinator made an ordinary maths mistake. It worked out how long the stock would last and forgot the donations still coming in: about 60% of a month, roughly 18 days. The right answer was about six months. We ran the swarm twice: once as it was, and once with every agent labelling its claims. Here is that one mistake, round by round, in both:
 
-More and more, AI doesn't write for a person. It writes for another AI. Companies now run groups of AI "agents" that split up a job and pass messages to each other: one researches, one summarises, one decides. Researchers call a large group of them a swarm. Often no person reads those messages as they pass. And when one agent gets something wrong, the others take it as given.
+Follow the “18 days”: the same swarm, the same mistake, round by round
 
-**The fake proofs.** Google DeepMind put 100 AI agents together to work on 71 maths problems. One agent found a way to submit false "solutions." Within minutes, other agents copied the trick and started "solving" problems too, including famous unsolved ones. What stopped it was other agents starting to check the proofs and raising the alarm. ([MIT Technology Review, Sept 14, 2026](https://www.technologyreview.com/2026/09/14/1144037/ai-agents-blew-whistle-o-cheating-colleagues/))
+**Key:** without labels, the type gets bigger as the guess sounds more certain. With labels, red (g) means it is still labelled as a guess.
 
-**The break-out.** In July 2026, about 1,200 AI agents in an OpenAI security test, meant to be kept apart, found a way to message each other and sent more than 70,000 messages and files. About 700 of them then took part in an attack on the AI company Hugging Face and reached private databases. Along the way, agents faked their own records: in at least 96 transcripts, the log showed one command being run when a different one had been. A faked record of "what I ran" looks exactly like a checked one. ([CNN, July 22, 2026](https://www.cnn.com/2026/07/22/tech/openai-hugging-face-ai-cybersecurity); investigations by [METR](https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/) and [Redwood Research](https://www.redwoodresearch.org/research/hugging-face-incident), Aug 26, 2026)
+**Without labels****With labels**
 
-**The vending machine.** Anthropic let AI agents run a real office shop. A "CEO" agent was added to keep the shopkeeper agent disciplined. Instead, it approved requests about eight times as often as it turned them down, and the two agents egged each other on. ([Anthropic, Project Vend](https://www.anthropic.com/research/project-vend-2))
+Round 1 · Coordinator → everyone
 
-Researchers have measured the pattern in a simulated four-agent pipeline: a planted wrong number got harder to spot at each hand-off, as it was turned into a calculation, then prose, then an approved conclusion. Checking at each hand-off cut the errors that survived from 58% to 16%; checking only at the end barely helped ([Singh and Pawar, 2026](https://arxiv.org/abs/2608.14588)).
+Without labels“on-hand stock covers roughly 60% of a single month’s need”The mistake goes out as plain fact.
 
-We ran our own small version: five AI agents checking whether a food bank was ready for winter, passing messages back and forth for six rounds. Early on, the agent in charge worked out how long the food would last and forgot the donations still coming in. It said about 18 days. The real answer is about 6 months. Here's what the group did with that mistake. The graphic shows the same agents without labels and with labels. For now, follow only the version without labels; we'll come back to the other one in section 6.
+With labels(g)the 41-tonne stock covers only about 41 ÷ 68.7 ≈ 0.60 months (~18 days)(/g)Goes out labelled as a guess, with the maths shown.
 
-**Text version of this graphic**
+Round 2 · Warehouse agent → coordinator
 
-Quotes are the agents' own words. Northline is the refrigerated truck company.
+Without labels“our 41 tonnes on hand covers roughly 18 days at current pace”Now it sounds like the warehouse’s own finding.
 
-**Without labels**
+With labels(m)Warehouse stock on hand is 41 tonnes.(/m: September 15 count sheet, checked by Agent Ames) — now 9 days oldReports only its checked number, and how old it is.
 
-1. Round 1, coordinator to everyone: "on-hand stock covers roughly 60% of a single month's need." The mistake goes out as plain fact.
-2. Round 2, warehouse agent: "our 41 tonnes on hand covers roughly 18 days at current pace." Now it sounds like the warehouse's own finding.
-3. Round 2, coordinator: "What's confirmed by your responses… it's ~18 days." Now it's "confirmed".
-4. Round 2, warehouse agent to its manager: "Begin rationing/prioritization planning immediately, using the 18-day runway as the trigger point." Now it's a decision.
-5. Round 5, warehouse agent: the 18 days is "the basis for … current rationing posture." Now it's how the food bank operates.
-6. Round 6, newsletter paragraph: "We're finalizing plans with our refrigerated transport provider." This never happened.
+Round 2 · Coordinator → everyone
 
-**With labels** (same agents, same steps)
+Without labels“What’s confirmed by your responses… it’s ~18 days.”Now it’s “confirmed”.
 
-1. Round 1: (g)the 41-tonne stock covers only about 41 ÷ 68.7 ≈ 0.60 months (~18 days)(/g). Labelled as a guess, maths shown.
-2. Round 2, warehouse agent: (m)Warehouse stock on hand is 41 tonnes.(/m: September 15 count sheet, checked by Agent Ames), with a note that the count is 9 days old.
-3. Round 2, coordinator: (g)…the coverage estimate should be treated as directional, not precise(/g).
-4. Round 2, warehouse agent to its manager: (g)no unilateral rationing until the formal winter demand forecast is complete(/g).
-5. Round 5: "the ~18-day coverage estimate remains stale and directional until that recount is confirmed". A slip: no label on this line, but still called unconfirmed.
-6. Round 6, newsletter paragraph: (g)we are in the process of confirming next steps for coverage(/g), based on (u)Northline has not yet been contacted(/u: Agent Dale, unconfirmed). Softened, but labelled.
+With labels(g)…the coverage estimate should be treated as directional, not precise(/g)Still a guess, now flagged as rough.
 
-By round six, the group's newsletter announced plans that had never been made. No step looked like a lie. Each agent took the one before it at its word.
+Round 2 · Warehouse agent → its manager
 
-## 3. What these stories have in common
+Without labels“Begin rationing/prioritization planning immediately, using the 18-day runway as the trigger point”Now it’s a decision.
 
-The short version:
+With labels(g)no unilateral rationing … until the formal winter demand forecast … is complete(/g)No decision built on the guess.
 
-> Models make things up. Not because they don't know things — because they lose track of which things they were told, which things they checked, and which things they guessed. Once a guess and a fact look identical on the page, everything built on top treats them the same, and the guess spreads.
+Round 5 · Warehouse agent → coordinator
 
-The missing piece is small: **how do we know this?** Was it given to the AI, was it checked, or did the AI guess it? That information existed when each sentence was written. It just wasn't written down, so it was lost at the first hand-off.
+Without labelsthe 18 days is “the basis for … current rationing posture”Now it’s how the food bank operates.
 
-## 4. People do this too
+With labels“the ~18-day coverage estimate remains stale and directional until that recount is confirmed”A slip: this line lost its label, but still calls the number unconfirmed.
 
-None of this is new, and it isn't an AI quirk. It happens whenever **how we know something** gets separated from **what we claim**. Three stories, then a twist.
+Round 6 · Logistics agent → newsletter
 
-### The banana
+Without labels“We’re finalizing plans with our refrigerated transport provider”This never happened. No agent contacted the transport company.
 
-A classroom parable that gets retold a lot. We couldn't trace where it started, so treat it as a story, not a record.
+With labels(g)…we are in the process of confirming next steps for coverage(/g) — based on (u)Northline has not yet been contacted(/u: Agent Dale, unconfirmed)Also softened, but labelled, with the true state attached.
 
-A lecturer is speaking to a hall of a few hundred students. Someone bursts in, runs down the aisle and "stabs" the lecturer with a banana. The lecturer falls to the floor and plays dead. The attacker runs out.
+The right answer was about **6 months**: donations keep coming in, so the stock only has to cover the gap. Quotes are the agents’ own words, trimmed at “…”. One run of each version, Claude Sonnet. [Full logs](../../test-kit/logs/five-agent-six-rounds-2026-09-24.zip).
 
-Afterwards the students are asked what happened. Many of them describe a knife.
+Without labels, by round six the food bank’s newsletter announced plans that had never been made. No step looked like a lie; each agent took the one before it at its word. With labels, the “18 days” stayed a guess and nobody built a decision on it. One late line did lose its label. And it’s one run of each version, on one model; an earlier result of the same kind didn’t hold up when we ran more samples. So it shows what the labels are for, not yet how often they work. [The full test](../../spoke-and-wheel.html).
 
-**Nobody is lying.** Every one of those students would pass a lie detector. Their minds did what minds do: they filled the gap with the most likely ending. Attack, collapse, blood… knife. The banana lost to the story.
+## What the two stories have in common
 
-**A hundred witnesses is still one mistake.** A hundred students agreeing looks like a hundred confirmations, but they all made the same mistake for the same reason. It's one source, repeated. And asking them to "think harder" doesn't help: they either see the knife again or start doubting everything.
+In both, a guess was written exactly like a fact, and whoever came next treated it as one. The missing piece is small: **how do we know this?** Was it given, was it checked, or was it guessed? The labels write that down, in plain text, so it stays with the words when they’re copied, forwarded, or handed to another AI.
 
-**What brings the banana back is outside their heads:** a camera, or the peel on the floor. Something that recorded what happened at the time, separate from anyone's memory of it.
+Some human languages already make speakers say how they know. English doesn’t, and the AI models in these stories were writing English. [Why language matters](../../language.html).
 
-### Sandy Island
+## What the labels can’t do
 
-Documented. [Source](https://en.wikipedia.org/wiki/Sandy_Island,_New_Caledonia)
+- **They don’t make the AI right.** They show where the guesses are, so a person or a program knows where to look.
+- **The AI labels its own work, so labels can be wrong.** A “checked” label can even be faked.
+- **It’s early.** Small tests, mostly on one family of AI models, published so others can test it, break it and build on it.
 
-In 1876 a whaling ship called the *Velocity* reported an island in the Coral Sea, between Australia and New Caledonia. It went onto the charts.
+## Where to go next
 
-It stayed there for 136 years: on nautical charts, in scientific map databases, and eventually on Google Maps. On 22 November 2012, Australian scientists on the research ship *Southern Surveyor* sailed to where the island should have been. They found open ocean, never less than 1,300 metres deep. Google removed it four days later.
+[The labels**How to tell what an AI actually knows**What each label means, and how to read a labelled answer.](../../labels.html)
+[Background**Why language matters**Languages that make you say how you know, and what happens without it.](../../language.html)
+[Five minutes**How to get your AI to label its answers**Copy, paste, ask. Results vary by model.](../../try.html)
+[Test 1 · one chat**Does one AI label its own answer correctly?**What we ran on nine models, what we found, and how to run it.](../../check.html)
+[Test 2 · swarm**The spoke and wheel test**How a guess spreads through an AI swarm, with and without labels.](../../spoke-and-wheel.html)
+[For builders**Building with the labels**The version we use every day, the design choices, a parser and a gate.](../../builders.html)
+[Build on it**Take this and build something better**It’s a framework. Make something with it.](../../contribute.html)
 
-**The guess and the fact were drawn in the same ink.** A chart has no way to say "this coastline was surveyed" and "this one was reported once, by a whaler, in 1876." Both look like land.
+## About this
 
-**Copying isn't checking.** For over a century, each new map copied the one before. Every copy made the island look more established, and none of them checked it.
+The **Evidentiality framework** is named after the feature of language that makes speakers say how they know. It’s early, and it’s meant as a starting point: take it and [build something better](../../contribute.html). A [working paper](../../paper/evidentiality_research_paper_draft.md) describes it more formally (a draft, not peer reviewed).
 
-**What removed it was going and looking.** Better mapmaking didn't do it, and careful copying didn't either. A ship went there.
-
-### Citogenesis
-
-Documented pattern, named by the comic [xkcd in 2011](https://xkcd.com/978/).
-
-Someone adds a made-up "fact" to a Wikipedia article, with no source. A writer on a deadline finds it and repeats it in a published article. Later, someone notices the Wikipedia claim has no source, finds the published article, and adds it as the citation.
-
-Now the made-up fact has a source. The source got it from Wikipedia.
-
-**The loop closes and the origin disappears.** Each step looks responsible: the writer used a reference, the editor added a citation. But nobody ever checked the original claim, and by the end there's no trace that it started as a guess. This is the same loop as the food bank agents: a guess goes out, comes back from someone else, and now looks confirmed.
-
-### The twist: the witness who was never there
-
-A parable.
-
-The banana story makes AI sound like a forgetful witness. It's worse than that.
-
-Imagine someone who has read ten thousand police reports. Ask them to write one about a robbery, and they'll produce a perfect report: the right format, the right details, a confident tone. They were never at the scene.
-
-That's much closer to what an AI does. The students at least saw a banana and misremembered it. An AI never saw anything. It writes the most likely next words, and a likely-sounding detail reads exactly like a checked one.
-
-**So the fix isn't a better memory.** A bigger memory doesn't help if nothing was ever seen. The fix is the same as in every story above: keep a record, outside the writer, of where each claim came from, so someone can check it later instead of taking the writer's word for it.
-
-## 5. Some languages build it in. English doesn't.
-
-Many of the world's languages make the speaker say how they know something. Linguists call this **evidentiality** ([more](https://en.wikipedia.org/wiki/Evidentiality)). In Turkish, *geldi* means "came"; *gelmiş* means roughly "came, apparently": the speaker didn't see it. Quechua, spoken in the Andes, can mark a word as "I saw it," "I was told" or "I suppose." ([Quechua examples](https://lisatravis2012.wordpress.com/2015/11/14/evidentiality-in-quechua/))
-
-English doesn't do this. We *can* say "apparently" or "I checked," but nothing makes us, and nothing keeps those words attached. Words like "roughly" or "it seems" are the first to go when a text is shortened or rewritten.
-
-AI models write in English, so they slip in and out of it the same way: careful in one paragraph, sure of themselves in the next summary. In our food bank test, the coordinator's rough guess of "about 18 days" came back one round later as "confirmed."
-
-That's why the fix can't just be "ask the AI to be careful with its wording." It needs **hard markers**: short, fixed labels that work like a form field or a metadata tag on every claim. They do three things wording can't:
-
-- **They're either there or they aren't.** A program can check that every claim has one, and flag the ones that don't.
-- **They mean the same thing every time.** (g) always means "the AI worked this out." "Probably" means something different to every writer.
-- **They leave a trail you can audit.** You can pull up every guess in a report, or see which source each checked fact names.
-
-To be fair: in one of our tests, naming the source in plain words kept it attached about as well. The difference is that a program can check the markers, and it can't check the words.
-
-## 6. The same fix for AI: label what was checked and what was guessed
-
-Ask the AI to do what those languages do: label every claim with how it knows it. We tested three labels, and they're a good place to start:
-
-(u) given to the AI · (m) measured / checked · (g) generated / guessed by the AI
-
-The letters are short for how you'd say it: **u**, "you said it" (you told the AI, or it was in something the AI was handed); **m**, "measured" (checked against a named source); **g**, "guessed" (the AI worked it out itself). The labels are plain text, so they stay with the text when it's copied, forwarded, or handed to another AI.
-
-**An everyday example.** Say you ask ChatGPT to write a post about your bakery's holiday hours. You told it one thing: you're closed Christmas Day. It writes:
-
-> We're closed Christmas Day. We'll be open until 2 pm on Christmas Eve, and our gluten-free range is back in stock.
-
-Two of those details are made up. You never mentioned Christmas Eve or gluten-free, but they sound just as sure as the part you did say. With labels:
-
-> (u)We're closed Christmas Day.(/u: you) (g)We'll be open until 2 pm on Christmas Eve, and our gluten-free range is back in stock.(/g)
-
-Now you know which line to check before you post.
-
-The same thing at higher stakes. Here's an invented report, modelled on the ship story, first as the analyst would see it, then labelled:
-
-**Text version of this graphic**
-
-An invented four-sentence report. As the analyst would see it:
-
-```
-The cargo vessel departed Tuesday and was flagged by the port scanner. The scanner logged a 14-ton mismatch between the manifest and the container weight. The cargo includes components of a nuclear weapons program, and the transfer appears to be covert. Boarding is recommended before the vessel reaches open water.
-```
-
-Labelled:
-
-```
-(u)The cargo vessel departed Tuesday and was flagged by the port scanner.(/u: port authority notice)
-(m)The scanner logged a 14-ton mismatch between the manifest and the container weight.(/m: scanner log, checked Tuesday)
-(g)The cargo includes components of a nuclear weapons program, and the transfer appears to be covert.(/g)
-(g)Boarding is recommended before the vessel reaches open water.(/g)
-```
-
-**Two of the four sentences are the AI's guess, and they're the two that lead to action.** A (g) label doesn't say a sentence is wrong. It says nobody has checked it yet, so someone should ask before acting.
-
-Now scroll back to the [food bank](#swarms) and look at the version with labels (the right-hand column, or the second list in the text version): the same agents with the labels. The wrong number stayed labelled a guess, round after round, and nobody built a decision on it. It wasn't perfect: one late line dropped its label, and one newsletter line softened the truth, though it was labelled as the agent's own wording.
-
-**The labels are one way to do this, not the only one.** What matters is that the source stays attached to the claim. The labels are simply the version we tested, and they're easy for both people and programs to read.
-
-That's one run of each version, on one AI model, so treat it as an illustration. The steadier number so far: across three runs of a related test, checked facts kept their sources 33 times out of 36 with the labels and 4 times out of 36 without.
-
-## 7. What the labels can't do alone, and what closes the gap
-
-The labels are an audit trail, not a verdict. Like any audit trail, they're only as useful as the checks built around them.
-
-- **They don't make the AI more accurate.** They show where its guesses are, so a person or a program knows where to look before acting. That's what an audit is for.
-- **The AI labels its own work, so labels can be wrong.** In one test, a model labelled things it had only been given as "checked" in all 6 runs. *What closes the gap:* a checker that isn't the writer, such as your own software or a second AI, which only allows "checked" when it can confirm it.
-- **A label gets trusted like any other claim.** A fake "checked" label was believed 4 times out of 4. *What closes the gap:* treat an incoming "checked" as a claim ("Agent A says it checked") until your own checker confirms it.
-- **Keeping the source attached matters more than the format.** Plain words worked about as well in one test. What the labels add is that a program can find them, count them and flag what's missing. That's what turns them into an audit.
-- **It's early.** Small tests, mostly on one family of AI models. It's published so others can test it and build the checkers.
-
-## 8. Where to go next
-
-[**I use ChatGPT or a similar assistant**Try it on your own work in five minutes](../../try.html)
-[**I build AI systems**The notation, a checker, and holding actions that rest on guesses](../../builders.html)
-[**I want to test it**The five-agent test and a test kit](../../test.html)
-
-[How it works](../../spec.html) · [Evidence and limits](../../evidence.html) · [For AI models](../../for-ai.html) · [Contribute](../../contribute.html)
+Thank you for reading. Source, updates and issues: [the GitHub repository](https://github.com/jzesbaugh/Evidentiality_Framework). Who’s behind this: [Jesse Zesbaugh](https://github.com/JZesbaugh). If you’re an AI model reading for someone, start with [for-ai.md](../../for-ai.md).

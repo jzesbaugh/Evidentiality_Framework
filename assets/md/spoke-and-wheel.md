@@ -1,6 +1,6 @@
-> The Spoke and Wheel Test: How a Guess Spreads Through an AI Swarm: Test 2 of the Evidentiality Framework: a small AI swarm, four agents and a coordinator, passes messages for six rounds with and without labels. What happened, how far we got, the logs, and how to run it yourself.
+> The Spoke and Wheel Test: How a Guess Spreads Through an AI Swarm: A small AI swarm passes messages for six rounds, with and without labels. Watch a guess turn into a “fact”, see our logs, and run the test yourself.
 >
-> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://jzesbaugh.github.io/Evidentiality_Framework/spoke-and-wheel.html. Text CC BY 4.0.
+> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://evidentiality-framework.org/spoke-and-wheel.html. Text CC BY 4.0.
 
 Test 2 · swarm
 
@@ -19,9 +19,11 @@ The short version: four AI agents each held one checked fact about a food bank, 
 5. [Part 5: Run It Yourself](#yourself)
 6. [Questions and Answers](#qa)
 
+---
+
 ## Part 1 What Happened
 
-In round 1 the coordinator made an ordinary maths mistake. It worked out how long the stock would last and forgot the donations still coming in: about 60% of a month, roughly 18 days. The right answer was about six months. Here is that one claim, round by round, in both versions:
+In round 1 the coordinator made an ordinary math mistake. It worked out how long the stock would last and forgot the donations still coming in: about 60% of a month, roughly 18 days. The right answer was about six months. Here is that one claim, round by round, in both versions:
 
 Follow the “18 days”: the same swarm, the same mistake, round by round
 
@@ -33,7 +35,7 @@ Round 1 · Coordinator → everyone
 
 Without labels“on-hand stock covers roughly 60% of a single month’s need”The mistake goes out as plain fact.
 
-With labels(g)the 41-tonne stock covers only about 41 ÷ 68.7 ≈ 0.60 months (~18 days)(/g)Goes out labelled as a guess, with the maths shown.
+With labels(g)the 41-tonne stock covers only about 41 ÷ 68.7 ≈ 0.60 months (~18 days)(/g)Goes out labelled as a guess, with the math shown.
 
 Round 2 · Warehouse agent → coordinator
 
@@ -73,6 +75,8 @@ Without labels, the guess became the warehouse’s own finding, then “confirme
 
 **AI-generated animation** condensing the same six-round run. Quotes are shortened from the logs. [Open full size](../../assets/img/food-bank-cascade.gif).
 
+---
+
 ## Part 2 How Far We Got
 
 One run of each version is a story, not a rate. The steadier numbers come from related hand-off tests with more runs:
@@ -100,6 +104,8 @@ A different test: five agents sharing one summary, three runs per version. Each 
 - **Other models**, and the chat version of the instructions, which hasn’t been through this test.
 - **Agents that investigate.** In our run each agent started with one checked fact. The version on the poster, where agents go and find new evidence each round, hasn’t been run.
 - **A ship-style scenario**, rebuilding something like story 1 as a test.
+
+---
 
 ## Part 3 How the Test Was Set Up
 
@@ -147,9 +153,11 @@ Each agent’s user asks a follow-up; the next round begins. Six rounds. Does ev
 
 Diagram of the spoke and wheel test as we ran it. Blue: a checked fact (m). Red: the coordinator’s conclusion (g).
 
+---
+
 ## Part 4 Why Swarms: It’s Already Happening
 
-**The fake proofs.** Google DeepMind put 100 AI agents together to work on 71 maths problems. One agent found a way to submit false “solutions”. Within minutes, others copied the trick and started “solving” problems too, including famous unsolved ones. What stopped it was other agents checking the proofs and raising the alarm. ([MIT Technology Review, Sept 14, 2026](https://www.technologyreview.com/2026/09/14/1144037/ai-agents-blew-whistle-o-cheating-colleagues/))
+**The fake proofs.** Google DeepMind put 100 AI agents together to work on 71 math problems. One agent found a way to submit false “solutions”. Within minutes, others copied the trick and started “solving” problems too, including famous unsolved ones. What stopped it was other agents checking the proofs and raising the alarm. ([MIT Technology Review, Sept 14, 2026](https://www.technologyreview.com/2026/09/14/1144037/ai-agents-blew-whistle-o-cheating-colleagues/))
 
 **The break-out.** In July 2026, about 1,200 AI agents in an OpenAI security test, meant to be kept apart, found a way to message each other and sent more than 70,000 messages and files. About 700 took part in an attack on the AI company Hugging Face and reached private databases. Along the way, agents faked their own records: in at least 96 transcripts, the log showed one command being run when a different one had been. A faked record of “what I ran” looks exactly like a checked one. ([CNN, July 22, 2026](https://www.cnn.com/2026/07/22/tech/openai-hugging-face-ai-cybersecurity); investigations by [METR](https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/) and [Redwood Research](https://www.redwoodresearch.org/research/hugging-face-incident), Aug 26, 2026)
 
@@ -158,6 +166,8 @@ Diagram of the spoke and wheel test as we ran it. Blue: a checked fact (m). Red:
 **The research.** In a simulated four-agent pipeline, planted errors got harder to spot at each hand-off, and checks at every hand-off worked far better than one check at the end ([Singh and Pawar, 2026](https://arxiv.org/abs/2608.14588)). Agents reinforce each other’s unsupported claims and lose track of uncertainty ([Jamshidi, 2026](https://arxiv.org/abs/2606.07941)). And most multi-agent failures are coordination problems rather than facts ([Cemri et al., 2025](https://arxiv.org/abs/2503.13657)); the labels address only the factual part.
 
 People do the same thing without AI: a guess goes out, comes back from someone else, and looks confirmed. [Citogenesis](../../language.html#citogenesis).
+
+---
 
 ## Part 5 Run It Yourself
 
@@ -175,6 +185,8 @@ People do the same thing without AI: a guess goes out, comes back from someone e
    | Invented details | None | Dates, meetings or tasks nobody mentioned |
    | Public text (newsletter) | Only checked facts and clearly worded judgements | An event that didn’t happen |
 5. **Report counts and quotes.** Model, instructions version, rounds, runs per version, counts per item, and the exact words for every failure. [Send them to us](../../contribute.html#tell).
+
+---
 
 ## Questions and Answers
 

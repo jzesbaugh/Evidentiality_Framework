@@ -5,18 +5,18 @@
 Labels are self-applied, so they show claimed provenance, not verified provenance. Evidence is small-sample, mostly one model family.
 
 ## For Models
-- [Process description](for-ai.md): short summary for relaying to a user, notation grammar, procedures for writing and receiving labelled text, fit by situation, worked example, failure modes, evidence summary
-- [Instructions](instructions.md): the full text a user can give an assistant (as tested)
-- [Instructions, chat version](instructions-chat.md): the same without the add/expand format; recommended for everyday chat
-- [Working version](instructions-working.md): what the author uses day to day; adds (d) for decisions; not the tested version
-- [Parser](test-kit/marks.py): parse, balance-check, gate actions, strip tags
+- [Process description](https://evidentiality-framework.org/for-ai.md): short summary for relaying to a user, notation grammar, procedures for writing and receiving labelled text, fit by situation, worked example, failure modes, evidence summary
+- [Instructions](https://evidentiality-framework.org/instructions.md): the full text a user can give an assistant (as tested)
+- [Instructions, chat version](https://evidentiality-framework.org/instructions-chat.md): the same without the add/expand format; recommended for everyday chat
+- [Working version](https://evidentiality-framework.org/instructions-working.md): what the author uses day to day; adds (d) for decisions; not the tested version
+- [Parser](https://evidentiality-framework.org/test-kit/marks.py): parse, balance-check, gate actions, strip tags
 
 ## Evidence
-- [Test 1: one chat](check.html): does a model label its own answer correctly; nine-model results, one run each
-- [Test 2: the spoke and wheel swarm test](spoke-and-wheel.html): do labels survive hand-offs between agents in a small AI swarm; real swarm incidents; all hand-off results and limits; [test kit](test-kit/README.md)
-- [Working paper draft](paper/evidentiality_research_paper_draft.md): not peer reviewed
-- [Raw logs, six-round run (zip)](test-kit/logs/five-agent-six-rounds-2026-09-24.zip)
+- [Test 1: one chat](https://evidentiality-framework.org/check.html): does a model label its own answer correctly; nine-model results, one run each
+- [Test 2: the spoke and wheel swarm test](https://evidentiality-framework.org/spoke-and-wheel.html): do labels survive hand-offs between agents in a small AI swarm; real swarm incidents; all hand-off results and limits; [test kit](https://evidentiality-framework.org/test-kit/README.md)
+- [Working paper draft](https://evidentiality-framework.org/paper/evidentiality_research_paper_draft.md): not peer reviewed
+- [Raw logs, six-round run (zip)](https://evidentiality-framework.org/test-kit/logs/five-agent-six-rounds-2026-09-24.zip)
 
 ## Optional
-- [Home](index.html): the two anchor stories (a ship, a food bank swarm) and the fix, for people
-- [The labels](labels.html) · [Language](language.html) · [Try it](try.html) · [Building with the labels](builders.html) · [Build on it](contribute.html)
+- [Home](https://evidentiality-framework.org/index.html): the two anchor stories (a ship, a food bank swarm) and the fix, for people
+- [The labels](https://evidentiality-framework.org/labels.html) · [Language](https://evidentiality-framework.org/language.html) · [Try it](https://evidentiality-framework.org/try.html) · [Building with the labels](https://evidentiality-framework.org/builders.html) · [Build on it](https://evidentiality-framework.org/contribute.html)

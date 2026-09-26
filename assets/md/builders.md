@@ -1,6 +1,6 @@
-> Building With the Labels: For builders: the version of the Evidentiality Framework we use every day, including a fourth label for decisions, the design choices behind it, and a parser and gate for agent pipelines, with their limits.
+> Building With the Labels: The version we use every day, a fourth label for decisions, the design choices, and a parser and gate for agent pipelines, with their limits.
 >
-> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://jzesbaugh.github.io/Evidentiality_Framework/builders.html. Text CC BY 4.0.
+> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://evidentiality-framework.org/builders.html. Text CC BY 4.0.
 
 For builders
 
@@ -26,6 +26,8 @@ If you have the budget or the set-up for any of these, please run them and [tell
 4. [Part 4: Parse the Labels and Gate Actions](#gate)
 5. [Part 5: Design Around the Limits](#design)
 6. [Part 6: Other Avenues Worth Exploring](#avenues)
+
+---
 
 ## Part 1 The Working Version
 
@@ -109,6 +111,8 @@ Say what would have to be true for it to hold and what would break it. If nothin
 Load-bearing and leaving the workspace or hard to undo: stop and ask. Load-bearing and recoverable: label it and carry on. Not load-bearing: leave it.
 ```
 
+---
+
 ## Part 2 Questions and Answers
 
 What is the (d) label, and when do you use it?
@@ -150,6 +154,8 @@ Why “go where the answer lives”?
 
 Why plain text, not metadata?
 :   Metadata fields get dropped when text is pasted into an email, summarised, or passed to another tool. Inline labels go wherever the words go. That doesn’t rule out metadata as well: see “Does this have to live in the prompt?” above.
+
+---
 
 ## Part 3 Add the Prompt
 
@@ -215,6 +221,8 @@ Why plain text, not metadata?
    Stop after the last ADDED line. Do not write a summary, a merged version, a final version, or anything else.
    ```
 3. **Or adapt the working version above.** It’s the most complete, and the least tested.
+
+---
 
 ## Part 4 Parse the Labels and Gate Actions
 
@@ -335,6 +343,8 @@ Why plain text, not metadata?
    - Units written in brackets, like “Weight (g)”, are read as labels. The gate then holds, so it fails safe, but it’s noisy on real data. So is a lettered list written “(a) … (g)”.
    - It can’t tell which claims an action actually depends on. It holds on any (g) in the text.
 
+---
+
 ## Part 5 Design Around the Limits
 
 1. **Check early.** In a simulated four-agent pipeline, checks at each hand-off cut planted errors that survived from 58% to 16%, and a check at the first hand-off alone caught about three quarters; checking only at the end barely helped ([Singh and Pawar, 2026](https://arxiv.org/abs/2608.14588)).
@@ -353,6 +363,8 @@ Keeping “what we know” apart from “what we concluded” is old practice wh
 - **Data provenance.** Standards such as [W3C PROV](https://www.w3.org/TR/prov-overview/) record where data came from, as metadata beside the data.
 
 The difference here is where the record lives: inside the sentence, in plain text. One clash to watch: in US classification markings, “(U)” at the start of a paragraph means *unclassified*. If you work with classified material, rename the labels.
+
+---
 
 ## Part 6 Other Avenues Worth Exploring
 

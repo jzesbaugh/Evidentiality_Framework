@@ -2,6 +2,30 @@
 
 Newest first. Record every change to the site, the instructions or the test kit here.
 
+## 0.7.1 — 2026-09-26 — pre-upload SEO/LLM check
+
+The PUBLIC_LAUNCH_CHECKLIST was run against the local build. Sections 1–4 were checked before upload; section 0 and the live fetch follow after it.
+- **Passed:** every page except 404 has a title, a description, a canonical on the domain, Open Graph and Twitter tags with an absolute image URL, and one h1; `lang="en"` and the viewport tag are set.
+  - JSON-LD parses on every page: WebSite, Person, WebPage, CreativeWork on Home, HowTo on the step articles, SoftwareSourceCode on For builders.
+  - The sitemap lists the 9 real pages on the domain, with no redirect stubs, and robots.txt points to it and names the search, AI-search, assistant and training crawlers.
+  - Nothing loads from a third party; there are no TODO or placeholder strings.
+  - With JavaScript off, the full text is present (1,054–2,117 words per page), the JS-only buttons and the colour preview are hidden, and nothing is left stuck on screen.
+- **Fixed:**
+  - Meta descriptions on Home, Test 2 and For builders were 206–212 characters; they're now under 160, so search results don't cut them off.
+  - The redirect stub `evidence.html` had a canonical with a `#fragment`; it now points at the page itself.
+  - llms.txt links are now absolute URLs on the domain.
+- **Known and left as is:** some page titles run past about 60 characters with the site-name suffix. The key words come first, so a cut-off costs little.
+
+## 0.7 — 2026-09-26 — own domain
+
+- **The site moves to https://evidentiality-framework.org/.** `BASE_URL` is set, and every canonical link, social tag, the sitemap, the JSON-LD, robots.txt's Sitemap line, the README and CITATION.cff now use it.
+- **A new `CNAME` file** holds the domain, so later uploads keep GitHub Pages pointed at it.
+- **robots.txt** is now read by crawlers, because the site sits at the root of its own domain. Its note and the README are updated. The README also records the Cloudflare set-up: DNS only (grey cloud), managed robots.txt off.
+- **Home:** "What the Two Stories Have in Common" now defines provenance and ties the site together in four lines: the ship, the food bank, the framework, the swarm test. This came from an outside AI reviewer's note. for-ai.md §0 carries the same thesis.
+- **Dividers:** a horizontal rule now sits before every major section on every page. It's added once, in `page()` in `src/build.py`.
+- **Build on It:** a ready-to-copy citation replaces the link to the raw CITATION.cff, with a pointer to GitHub's "Cite this repository" button. CITATION.cff is now version 0.7, released 2026-09-26.
+- **Spelling:** "maths" becomes "math" throughout the site (8 places). Other British spellings stay.
+
 ## 0.6.3 — 2026-09-26 — title case
 
 - **Title case (AP style)** is now applied at build time to page titles, h1–h3 headings, navigation, article cards, sidebar headings and the "In This Article" boxes. The helper is `titlecase()` in `src/build.py`.

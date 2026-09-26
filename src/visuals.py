@@ -11,7 +11,7 @@ WHO=lambda s: f'<p class="note"><b>Who this page is for:</b> {s}</p>'
 # ---------- hand-built visuals (HTML/SVG, theme-aware, text-first) ----------
 LADDER_STEPS=[
  ('Round 1','Coordinator → everyone','“on-hand stock covers roughly 60% of a single month’s need”','The mistake goes out as plain fact.',
-  "{g:the 41-tonne stock covers only about 41 ÷ 68.7 ≈ 0.60 months (~18 days)}",'Goes out labelled as a guess, with the maths shown.'),
+  "{g:the 41-tonne stock covers only about 41 ÷ 68.7 ≈ 0.60 months (~18 days)}",'Goes out labelled as a guess, with the math shown.'),
  ('Round 2','Warehouse agent → coordinator','“our 41 tonnes on hand covers roughly 18 days at current pace”','Now it sounds like the warehouse’s own finding.',
   "{m:Warehouse stock on hand is 41 tonnes.|September 15 count sheet, checked by Agent Ames} — now 9 days old",'Reports only its checked number, and how old it is.'),
  ('Round 2','Coordinator → everyone','“What’s confirmed by your responses… it’s ~18 days.”','Now it’s “confirmed”.',

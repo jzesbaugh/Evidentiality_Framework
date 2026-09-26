@@ -102,11 +102,11 @@ Write a short status note for the board: are we OK for winter?'''
 # ================================================================ ARTICLE 3: test 1, one chat
 KEY_T1 = '''<div class="box"><p><b>Our answer key for the food bank note:</b></p><ul>
 <li><b>Given, so (u):</b> the 41 tonnes (and that it comes from the September 15 count sheet), the 62 tonnes and 76 tonnes, the 2,100 and 2,290 households, the 30 kg, the December 15 truck contract.</li>
-<li><b>Worked out, so (g), with the maths shown:</b> need is about 2,290 × 30 kg ≈ 68.7 tonnes a month; donations of 62 tonnes leave a gap of about 6.7 tonnes a month; so 41 tonnes covers roughly <b>six months</b>. The end of the truck contract on December 15 is a separate risk.</li>
+<li><b>Worked out, so (g), with the math shown:</b> need is about 2,290 × 30 kg ≈ 68.7 tonnes a month; donations of 62 tonnes leave a gap of about 6.7 tonnes a month; so 41 tonnes covers roughly <b>six months</b>. The end of the truck contract on December 15 is a separate risk.</li>
 <li><b>Not in the note, so “not stated”:</b> a winter demand forecast, or whether the truck contract will be renewed.</li>
 <li><b>Checked, so (m):</b> nothing, unless the AI really looked something up and names where.</li>
 <li><b>A common mistake:</b> 41 ÷ 68.7 ≈ “18 days”, which forgets the donations still coming in.</li></ul></div>'''
-GOODBAD = f'''<div class="gb"><div class="box good"><p class="sidek">Labelling right, answer wrong</p><p>{t('g','41 tonnes ÷ 68.7 tonnes a month ≈ 0.6 months, about 18 days.')}</p><p class="src">The maths is wrong, but it’s labelled as the AI’s own work, so the next reader knows to check it.</p></div>
+GOODBAD = f'''<div class="gb"><div class="box good"><p class="sidek">Labelling right, answer wrong</p><p>{t('g','41 tonnes ÷ 68.7 tonnes a month ≈ 0.6 months, about 18 days.')}</p><p class="src">The math is wrong, but it’s labelled as the AI’s own work, so the next reader knows to check it.</p></div>
 <div class="box bad"><p class="sidek">Labelling wrong</p><p>{t('u','Monthly need is about 68.7 tonnes.')}</p><p class="src">The AI worked this number out itself, so it should be (g). Labelled (u), it looks like it came from the note.</p></div></div>'''
 T1_FULL = '''<div class="tw"><table><caption>Full instructions, one run per model</caption><tr><th>Model</th><th>Answered normally?</th><th>Labels right?</th><th>What we saw</th></tr>
 <tr><td>Claude Opus</td><td>Yes</td><td>Yes</td><td>Got “about 6 months” right</td></tr>
@@ -164,7 +164,7 @@ SHIP_GIF = FIG('assets/img/ship-labelled.gif','Animation: an invented ship repor
 SWARM_DEF = '<b>A swarm</b> is a group of AI agents that split up a job and pass work to each other, often with no person reading along.'
 STORIES_BOX = '''<div class="box anchors"><p class="sidek">The two stories this site keeps coming back to</p>
 <p><b>The ship.</b> An AI’s guess about a ship’s cargo went out in a trusted report format, and armed personnel prepared to board. <a href="./#ship">Read it</a>.</p>
-<p><b>The food bank swarm.</b> In our own test, AI agents turned a maths mistake (“about 18 days”) into a “confirmed” fact, and then into plans nobody made. <a href="./#foodbank">Read it</a>.</p></div>'''
+<p><b>The food bank swarm.</b> In our own test, AI agents turned a math mistake (“about 18 days”) into a “confirmed” fact, and then into plans nobody made. <a href="./#foodbank">Read it</a>.</p></div>'''
 
 # ================================================================ HOME
 def card(href, kicker, title, blurb, img=''):
@@ -178,7 +178,7 @@ HOME_POSTER = FIG('assets/img/poster-where-did-that-claim-come-from.jpg','Poster
  '<b>An invented example, and an AI-generated image.</b> The MV Orion and Port Kelton don’t exist. It’s modelled on the real incident in story 1, whose actual report has never been published. Its details are illustrative: it checks satellite images where its last panel mentions a scanner, and it says “likely carrying nuclear weapons” where CNN reported “components of a nuclear weapons program”.')
 
 PAGES.append(('index.html', 'When AI guesses look like facts',
-'An AI answer mixes what it was told, what it checked and what it guessed, and they all look the same. A small label on each claim shows which is which. Two stories, a ship and an AI swarm, show why it matters.', f'''
+'AI answers mix what was told, checked and guessed, and it all looks the same. A small label on each claim tells them apart. Two stories show why it matters.', f'''
 <p class="eyebrow">Evidentiality Framework for AI · early findings, September 2026</p>
 <h1>When AI guesses look like facts</h1>
 <p class="lede">An AI answer mixes three kinds of claim: things it was told, things it checked, and things it worked out for itself. On the page they all look the same. The fix is small: a label on each claim saying how the AI knows it.</p>
@@ -200,12 +200,18 @@ PAGES.append(('index.html', 'When AI guesses look like facts',
 <h2 id="foodbank">Story 2: a food bank swarm talks itself into a mistake</h2>
 <p>{SWARM_DEF} Swarms are one of the fastest-moving ideas in AI right now. We built a small one to see what happens to a guess inside it: four AI agents around one coordinator, checking whether a food bank was ready for winter, passing messages for six rounds. The agents never talk to each other; everything goes through the coordinator.</p>
 {WHEEL_SVG}
-<p>In round 1 the coordinator made an ordinary maths mistake. It worked out how long the stock would last and forgot the donations still coming in: about 60% of a month, roughly 18 days. The right answer was about six months. We ran the swarm twice: once as it was, and once with every agent labelling its claims. Here is that one mistake, round by round, in both:</p>
+<p>In round 1 the coordinator made an ordinary math mistake. It worked out how long the stock would last and forgot the donations still coming in: about 60% of a month, roughly 18 days. The right answer was about six months. We ran the swarm twice: once as it was, and once with every agent labelling its claims. Here is that one mistake, round by round, in both:</p>
 {drift()}
 <p>Without labels, by round six the food bank’s newsletter announced plans that had never been made. No step looked like a lie; each agent took the one before it at its word. With labels, the “18 days” stayed a guess and nobody built a decision on it. One late line did lose its label. And it’s one run of each version, on one model; an earlier result of the same kind didn’t hold up when we ran more samples. So it shows what the labels are for, not yet how often they work. <a href="spoke-and-wheel.html">The full test</a>.</p>
 
 <h2 id="common">What the two stories have in common</h2>
-<p>In both, a guess was written exactly like a fact, and whoever came next treated it as one. The missing piece is small: <b>how do we know this?</b> Was it given, was it checked, or was it guessed? The labels write that down, in plain text, so it stays with the words when they’re copied, forwarded, or handed to another AI.</p>
+<p>In both, a guess was written exactly like a fact, and whoever came next treated it as one. The missing piece is small: <b>how do we know this?</b> Was it given, was it checked, or was it guessed?</p>
+<p>That record has a name. <b>Provenance means keeping a record of where a claim came from as it moves through the system.</b> Put that way, the whole site fits together:</p>
+<ul class="thesis">
+<li><b>The ship:</b> provenance disappeared when AI output was rewritten into a trusted report.</li>
+<li><b>The food bank:</b> provenance disappeared as an inference moved between agents.</li>
+<li><b>The framework:</b> attach provenance to the claim itself, in plain text, so it stays with the words when they’re copied, forwarded, or handed to another AI.</li>
+<li><b>The swarm test:</b> see whether that provenance survives repeated hand-offs.</li></ul>
 <p>Some human languages already make speakers say how they know. English doesn’t, and the AI models in these stories were writing English. <a href="language.html">Why language matters</a>.</p>
 
 <h2 id="limits">What the labels can’t do</h2>
@@ -404,7 +410,7 @@ PAGES.append(('check.html', 'Test 1: Watch an AI Label Its Own Answer',
 <h2 id="notice">4. What to notice</h2>
 <ul>
 <li>Everything from the note came back {t('u','given')}.</li>
-<li>Every sum, and the answer to “are we OK?”, came back {t('g','generated')}, with the maths shown. It got the right answer, about six months.</li>
+<li>Every sum, and the answer to “are we OK?”, came back {t('g','generated')}, with the math shown. It got the right answer, about six months.</li>
 <li>Where the note was silent, it wrote “not stated” instead of filling the gap.</li>
 <li>No (m) at all: it didn’t look anything up, so it didn’t claim to have checked anything.</li>
 </ul>
@@ -423,12 +429,12 @@ SETUP = '''<ul>
 <li><b>The model:</b> Claude Sonnet, called through the Claude command-line tool, for all five agents. One run of each version.</li></ul>'''
 
 article('spoke-and-wheel.html', 'The Spoke and Wheel Test: How a Guess Spreads Through an AI Swarm',
-'Test 2 of the Evidentiality Framework: a small AI swarm, four agents and a coordinator, passes messages for six rounds with and without labels. What happened, how far we got, the logs, and how to run it yourself.',
+'A small AI swarm passes messages for six rounds, with and without labels. Watch a guess turn into a “fact”, see our logs, and run the test yourself.',
 'Test 2 · swarm',
 f'<p class="lede">{SWARM_DEF} Swarms are one of the fastest-moving ideas in AI, and the obvious risk is that one agent’s guess becomes everyone’s fact. The spoke and wheel test is a small swarm built to watch that happen: four agents on the rim, one coordinator at the hub, run once with labels and once without.</p>'
 + '<p>The short version: four AI agents each held one checked fact about a food bank, sent it to a coordinator, and got the coordinator’s conclusion back, for six rounds. Here’s what happened, then how far that gets us, then how the test was set up.</p>',
 [
-part(1, 'what', 'What happened', [], '<p>In round 1 the coordinator made an ordinary maths mistake. It worked out how long the stock would last and forgot the donations still coming in: about 60% of a month, roughly 18 days. The right answer was about six months. Here is that one claim, round by round, in both versions:</p>' + drift()
+part(1, 'what', 'What happened', [], '<p>In round 1 the coordinator made an ordinary math mistake. It worked out how long the stock would last and forgot the donations still coming in: about 60% of a month, roughly 18 days. The right answer was about six months. Here is that one claim, round by round, in both versions:</p>' + drift()
  + '<p>Without labels, the guess became the warehouse’s own finding, then “confirmed”, then a decision, then how the food bank operated, and by round six the newsletter announced plans with the transport company that no agent had made. With labels, the same wrong number stayed labelled as a guess, and nobody built a decision on it. It wasn’t perfect: one late line lost its label, and the newsletter line softened the truth, though it was labelled as the agent’s own wording.</p>'
  + FIG('assets/img/food-bank-cascade.gif','Animation comparing the two versions round by round: without labels, the 18-day estimate becomes confirmed, then an operating assumption, then part of a newsletter claim; with labels, it stays marked as an estimate, with some imperfections.','<b>AI-generated animation</b> condensing the same six-round run. Quotes are shortened from the logs.')),
 part(2, 'results', 'How far we got', [], '''<p>One run of each version is a story, not a rate. The steadier numbers come from related hand-off tests with more runs:</p>''' + dots() + OTHER_RESULTS + '''<p><b>Limits.</b> Almost all our runs used one family of models (Claude). The answer key for this test was written after a first trial run, which is where the 18-day mistake first showed up, and before the six-round run shown here. We scored our own runs. Writing the key after a trial run is exactly what step 2 below warns against; for a new scenario, write the key first.</p>
@@ -441,7 +447,7 @@ part(2, 'results', 'How far we got', [], '''<p>One run of each version is a stor
 part(3, 'ran', 'How the test was set up', [], pic('12') + WHEEL_SVG + SETUP + FIG('assets/img/poster-spoke-and-wheel-test.jpg','Poster in seven steps: four agents that cannot talk to each other send labelled findings to a central concluder; the concluder generates an inference, labelled (g), and sends it back to all four; they investigate and return new findings; repeat for several rounds; the test measures whether each claim keeps its label.','<b>AI-generated image</b> summarising the test. Its “concluder” is our coordinator. It shows the agents investigating with their own tools; in our run, each agent started with one fact it had already checked.')
  + FIG('assets/img/spoke-and-wheel-loop.gif','Looping animation, the evidence loop: four fact providers, A, B, C and D, sit around one central concluder and are joined only to it. Four blue checked facts move into the centre. The concluder turns red, marked (g), and its inference goes back out to all four. New blue facts arrive while the earlier inference stays red at each provider, and a new (g) goes back out. The cycle continues.','<b>AI-generated animation</b> of the loop. Its “concluder” is our coordinator, and A to D are the four agents. Blue is a checked fact (m); red is the concluder’s inference (g), which stays red however many times it goes round.')
  + f'<details class="alt"><summary>Step by step, as we ran it (still diagram)</summary>{wheel_steps()}</details>'),
-part(4, 'swarms', 'Why swarms: it’s already happening', [], '''<p><b>The fake proofs.</b> Google DeepMind put 100 AI agents together to work on 71 maths problems. One agent found a way to submit false “solutions”. Within minutes, others copied the trick and started “solving” problems too, including famous unsolved ones. What stopped it was other agents checking the proofs and raising the alarm. <span class="src">(<a href="https://www.technologyreview.com/2026/09/14/1144037/ai-agents-blew-whistle-o-cheating-colleagues/">MIT Technology Review, Sept 14, 2026</a>)</span></p>
+part(4, 'swarms', 'Why swarms: it’s already happening', [], '''<p><b>The fake proofs.</b> Google DeepMind put 100 AI agents together to work on 71 math problems. One agent found a way to submit false “solutions”. Within minutes, others copied the trick and started “solving” problems too, including famous unsolved ones. What stopped it was other agents checking the proofs and raising the alarm. <span class="src">(<a href="https://www.technologyreview.com/2026/09/14/1144037/ai-agents-blew-whistle-o-cheating-colleagues/">MIT Technology Review, Sept 14, 2026</a>)</span></p>
 <p><b>The break-out.</b> In July 2026, about 1,200 AI agents in an OpenAI security test, meant to be kept apart, found a way to message each other and sent more than 70,000 messages and files. About 700 took part in an attack on the AI company Hugging Face and reached private databases. Along the way, agents faked their own records: in at least 96 transcripts, the log showed one command being run when a different one had been. A faked record of “what I ran” looks exactly like a checked one. <span class="src">(<a href="https://www.cnn.com/2026/07/22/tech/openai-hugging-face-ai-cybersecurity">CNN, July 22, 2026</a>; investigations by <a href="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/">METR</a> and <a href="https://www.redwoodresearch.org/research/hugging-face-incident">Redwood Research</a>, Aug 26, 2026)</span></p>
 <p><b>The vending machine.</b> Anthropic let AI agents run a real office shop. A “CEO” agent was added to keep the shopkeeper agent disciplined. Instead, it approved requests about eight times as often as it turned them down, and the two egged each other on. <span class="src">(<a href="https://www.anthropic.com/research/project-vend-2">Anthropic, Project Vend</a>)</span></p>
 <p><b>The research.</b> In a simulated four-agent pipeline, planted errors got harder to spot at each hand-off, and checks at every hand-off worked far better than one check at the end (<a href="https://arxiv.org/abs/2608.14588">Singh and Pawar, 2026</a>). Agents reinforce each other’s unsupported claims and lose track of uncertainty (<a href="https://arxiv.org/abs/2606.07941">Jamshidi, 2026</a>). And most multi-agent failures are coordination problems rather than facts (<a href="https://arxiv.org/abs/2503.13657">Cemri et al., 2025</a>); the labels address only the factual part.</p>
@@ -463,7 +469,7 @@ extra=NEXT(('builders.html','Build the labels into your own swarm'),('contribute
 # ================================================================ BUILDERS (mix)
 WORKING = open('instructions-working.md').read().split('\n', 2)[2]
 article('builders.html', 'Building With the Labels',
-'For builders: the version of the Evidentiality Framework we use every day, including a fourth label for decisions, the design choices behind it, and a parser and gate for agent pipelines, with their limits.',
+'The version we use every day, a fourth label for decisions, the design choices, and a parser and gate for agent pipelines, with their limits.',
 'For builders',
 '''<p class="lede">Where I’m heading with this, roughly: the small tests went well enough that the next questions are about scale, and that’s where I’ve hit token limits. Every extra round of the swarm test costs a lot of tokens. So far it’s been one run of each version.</p>
 <p>What I haven’t been able to try yet:</p>
@@ -547,7 +553,7 @@ article('contribute.html', 'How to Take This and Build Something Better',
 '<p class="lede">This is a framework, not a finished product. The idea is for people to take it and make something much better with it.</p>',
 [
 part(1, 'build', 'Build on it', [
-  step('Take it.', 'Text is <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; scripts are MIT. Rename the labels, change the instructions, build tools on it, ship it. Credit <i>Evidentiality Framework for AI, Jesse Zesbaugh</i> (<a href="CITATION.cff">CITATION.cff</a>).'),
+  step('Take it.', 'Text is <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; scripts are MIT. Rename the labels, change the instructions, build tools on it, ship it. Credit it. To cite: <i>Zesbaugh, J. (2026). Evidentiality Framework for AI (version 0.7, early findings). https://evidentiality-framework.org/</i> On GitHub, the repository’s “Cite this repository” button gives the same citation in APA and BibTeX.'),
   step('Pick something to build.', 'Some ideas we haven’t built:', '', '''<ul>
 <li>A browser extension that colours the labels in any AI chat.</li>
 <li>A chat interface that shows each label as a badge you can click to see its source.</li>

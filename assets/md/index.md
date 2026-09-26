@@ -1,6 +1,6 @@
-> When AI Guesses Look Like Facts: An AI answer mixes what it was told, what it checked and what it guessed, and they all look the same. A small label on each claim shows which is which. Two stories, a ship and an AI swarm, show why it matters.
+> When AI Guesses Look Like Facts: AI answers mix what was told, checked and guessed, and it all looks the same. A small label on each claim tells them apart. Two stories show why it matters.
 >
-> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://jzesbaugh.github.io/Evidentiality_Framework/. Text CC BY 4.0.
+> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://evidentiality-framework.org/. Text CC BY 4.0.
 
 Evidentiality Framework for AI · early findings, September 2026
 
@@ -40,6 +40,8 @@ An invented report, modelled on the ship story; not the real one.
 
 That report is invented. The real one, a source told CNN, “almost started a war.”
 
+---
+
 ## Story 1: The Ship That Nearly Got Boarded
 
 As CNN reported it. We use it to explain the idea; we can’t confirm it.
@@ -55,13 +57,15 @@ According to CNN, it took two AI steps:
 
 Source: [CNN, “Exclusive: US military had close call after using AI for false intelligence report, sources say”](https://www.cnn.com/2026/09/18/politics/us-military-ai-false-intelligence-china-ship), Katie Bo Lillis and Zachary Cohen, September 18, 2026. Based on four sources speaking anonymously. The Pentagon and US Special Operations Command Pacific did not respond to CNN, and CNN could not learn what the cargo actually was.
 
+---
+
 ## Story 2: A Food Bank Swarm Talks Itself Into a Mistake
 
 **A swarm** is a group of AI agents that split up a job and pass work to each other, often with no person reading along. Swarms are one of the fastest-moving ideas in AI right now. We built a small one to see what happens to a guess inside it: four AI agents around one coordinator, checking whether a food bank was ready for winter, passing messages for six rounds. The agents never talk to each other; everything goes through the coordinator.
 
 [Diagram: One coordinator in the middle, connected to four agents around it: Ames (warehouse), Brook (donors), Cruz (clients) and Dale (logistics). The agents are not connected to each other.]
 
-In round 1 the coordinator made an ordinary maths mistake. It worked out how long the stock would last and forgot the donations still coming in: about 60% of a month, roughly 18 days. The right answer was about six months. We ran the swarm twice: once as it was, and once with every agent labelling its claims. Here is that one mistake, round by round, in both:
+In round 1 the coordinator made an ordinary math mistake. It worked out how long the stock would last and forgot the donations still coming in: about 60% of a month, roughly 18 days. The right answer was about six months. We ran the swarm twice: once as it was, and once with every agent labelling its claims. Here is that one mistake, round by round, in both:
 
 Follow the “18 days”: the same swarm, the same mistake, round by round
 
@@ -73,7 +77,7 @@ Round 1 · Coordinator → everyone
 
 Without labels“on-hand stock covers roughly 60% of a single month’s need”The mistake goes out as plain fact.
 
-With labels(g)the 41-tonne stock covers only about 41 ÷ 68.7 ≈ 0.60 months (~18 days)(/g)Goes out labelled as a guess, with the maths shown.
+With labels(g)the 41-tonne stock covers only about 41 ÷ 68.7 ≈ 0.60 months (~18 days)(/g)Goes out labelled as a guess, with the math shown.
 
 Round 2 · Warehouse agent → coordinator
 
@@ -109,17 +113,30 @@ The right answer was about **6 months**: donations keep coming in, so the stock 
 
 Without labels, by round six the food bank’s newsletter announced plans that had never been made. No step looked like a lie; each agent took the one before it at its word. With labels, the “18 days” stayed a guess and nobody built a decision on it. One late line did lose its label. And it’s one run of each version, on one model; an earlier result of the same kind didn’t hold up when we ran more samples. So it shows what the labels are for, not yet how often they work. [The full test](../../spoke-and-wheel.html).
 
+---
+
 ## What the Two Stories Have in Common
 
-In both, a guess was written exactly like a fact, and whoever came next treated it as one. The missing piece is small: **how do we know this?** Was it given, was it checked, or was it guessed? The labels write that down, in plain text, so it stays with the words when they’re copied, forwarded, or handed to another AI.
+In both, a guess was written exactly like a fact, and whoever came next treated it as one. The missing piece is small: **how do we know this?** Was it given, was it checked, or was it guessed?
+
+That record has a name. **Provenance means keeping a record of where a claim came from as it moves through the system.** Put that way, the whole site fits together:
+
+- **The ship:** provenance disappeared when AI output was rewritten into a trusted report.
+- **The food bank:** provenance disappeared as an inference moved between agents.
+- **The framework:** attach provenance to the claim itself, in plain text, so it stays with the words when they’re copied, forwarded, or handed to another AI.
+- **The swarm test:** see whether that provenance survives repeated hand-offs.
 
 Some human languages already make speakers say how they know. English doesn’t, and the AI models in these stories were writing English. [Why language matters](../../language.html).
+
+---
 
 ## What the Labels Can’t Do
 
 - **They don’t make the AI right.** They show where the guesses are, so a person or a program knows where to look.
 - **The AI labels its own work, so labels can be wrong.** A “checked” label can even be faked.
 - **It’s early.** Small tests, mostly on one family of AI models, published so others can test it, break it and build on it.
+
+---
 
 ## Where to Go Next
 
@@ -130,6 +147,8 @@ Some human languages already make speakers say how they know. English doesn’t,
 [Test 2 · swarm**The Spoke and Wheel Test**How a guess spreads through an AI swarm, with and without labels.](../../spoke-and-wheel.html)
 [For builders**Building With the Labels**The version we use every day, the design choices, a parser and a gate.](../../builders.html)
 [Build on it**Take This and Build Something Better**It’s a framework. Make something with it.](../../contribute.html)
+
+---
 
 ## About This
 

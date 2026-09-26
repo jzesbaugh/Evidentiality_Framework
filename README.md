@@ -14,19 +14,19 @@
 
 **Status: early findings, September 2026.** Small tests, mostly on one model family. Published so other people can test it, break it and make it better.
 
-**Site:** https://jzesbaugh.github.io/Evidentiality_Framework/
+**Site:** https://evidentiality-framework.org/
 
 ## Start Here
 
 | You are… | Go to |
 |---|---|
-| New to this | [Home](https://jzesbaugh.github.io/Evidentiality_Framework/): two stories, a ship and an AI swarm, then the fix; [the labels](https://jzesbaugh.github.io/Evidentiality_Framework/labels.html); [why language matters](https://jzesbaugh.github.io/Evidentiality_Framework/language.html) |
-| Using ChatGPT, Claude or similar | [How to Get Your AI to Label Its Answers](https://jzesbaugh.github.io/Evidentiality_Framework/try.html): five minutes, no set-up |
-| Testing one model | [Test 1: one chat, nine models](https://jzesbaugh.github.io/Evidentiality_Framework/check.html) |
-| Testing hand-offs in an AI swarm | [Test 2: the spoke and wheel test](https://jzesbaugh.github.io/Evidentiality_Framework/spoke-and-wheel.html), [raw logs](test-kit/logs/) |
-| Building AI pipelines or agents | [Building with the labels](https://jzesbaugh.github.io/Evidentiality_Framework/builders.html), [`instructions-working.md`](instructions-working.md) and [`test-kit/marks.py`](test-kit/marks.py) |
+| New to this | [Home](https://evidentiality-framework.org/): two stories, a ship and an AI swarm, then the fix; [the labels](https://evidentiality-framework.org/labels.html); [why language matters](https://evidentiality-framework.org/language.html) |
+| Using ChatGPT, Claude or similar | [How to Get Your AI to Label Its Answers](https://evidentiality-framework.org/try.html): five minutes, no set-up |
+| Testing one model | [Test 1: one chat, nine models](https://evidentiality-framework.org/check.html) |
+| Testing hand-offs in an AI swarm | [Test 2: the spoke and wheel test](https://evidentiality-framework.org/spoke-and-wheel.html), [raw logs](test-kit/logs/) |
+| Building AI pipelines or agents | [Building with the labels](https://evidentiality-framework.org/builders.html), [`instructions-working.md`](instructions-working.md) and [`test-kit/marks.py`](test-kit/marks.py) |
 | Wanting the formal version | [Working paper draft](paper/evidentiality_research_paper_draft.md) (not peer reviewed) |
-| Wanting to build on it | [Take this and build something better](https://jzesbaugh.github.io/Evidentiality_Framework/contribute.html) |
+| Wanting to build on it | [Take this and build something better](https://evidentiality-framework.org/contribute.html) |
 | An AI model reading for a user | [`for-ai.md`](for-ai.md) and [`llms.txt`](llms.txt) |
 
 ## The Instructions (Current Version)
@@ -78,7 +78,7 @@ The build rewrites the HTML pages, `assets/md/`, `sitemap.xml`, the `Sitemap:` l
 
 - Every page has a description, a canonical link and structured data (schema.org JSON-LD). `sitemap.xml` lists every page.
 - `llms.txt` and `for-ai.md` give AI tools a map and a plain-language process description. Each page also links its Markdown version.
-- **robots.txt on a project site:** crawlers only read `robots.txt` at the root of a host. At `jzesbaugh.github.io/Evidentiality_Framework/` this file is not read; a copy has to live in the `jzesbaugh.github.io` user-site repository, or the site needs its own domain. Until then, submit `sitemap.xml` directly in Google Search Console and Bing Webmaster Tools.
+- **robots.txt:** the site is served from its own domain, so crawlers read `robots.txt` at the root. It welcomes search engines, AI search, AI assistants and AI training crawlers. The domain uses Cloudflare DNS only (grey cloud), so Cloudflare's AI-bot blocking is not in the path; keep Cloudflare's managed robots.txt off, since it would add AI-crawler disallows in front of ours.
 - Each article also carries schema.org `HowTo` data built from its parts and steps.
 
 ## Licence

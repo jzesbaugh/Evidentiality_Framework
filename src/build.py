@@ -15,7 +15,7 @@ from markdownify import markdownify as _md
 
 # ---- site settings: change BASE_URL once the repository name / domain is final ----
 SITE_NAME = 'Evidentiality Framework for AI'
-BASE_URL  = 'https://jzesbaugh.github.io/Evidentiality_Framework/'
+BASE_URL  = 'https://evidentiality-framework.org/'
 AUTHOR    = {'name': 'Jesse Zesbaugh', 'url': 'https://github.com/JZesbaugh'}
 PUBLISHED = '2026-09-24'
 UPDATED   = '2026-09-26'   # change by hand when page content changes (feeds dateModified and the sitemap)
@@ -145,6 +145,9 @@ def titlecase_html(body):
 def page(fn, title, desc, body):
     title = titlecase(title)
     body = titlecase_html(body)
+    # a horizontal rule before each major section (article parts, and every h2 not already inside a part)
+    body = body.replace('<section class="part', '<hr class="sec"><section class="part')
+    body = re.sub(r'(?<!part">)(?<!prose">)<h2', '<hr class="sec"><h2', body)
     mdfile = md_path(fn)
     if fn not in ('for-ai.html', '404.html'):
         open(mdfile, 'w').write(to_md(fn, title, desc, body))
@@ -178,7 +181,7 @@ def page(fn, title, desc, body):
     open(fn, 'w').write(html)
 
 def redirect(old, new):
-    url = BASE_URL + new
+    url = BASE_URL + new.split('#')[0]
     open(old, 'w').write(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Moved</title>'
         f'<meta name="robots" content="noindex"><link rel="canonical" href="{url}"><meta http-equiv="refresh" content="0; url={new}">'
         f'</head><body><p>This page has moved: <a href="{new}">{new}</a>.</p></body></html>')
@@ -201,7 +204,7 @@ ROLE = {  # what each component is for; COMPONENTS.md is generated from this plu
  'for-ai.md': 'Process description for language models (hand-written)', 'instructions.md': 'The instructions: current version (hand-written; tested as v0.5b)',
  'llms.txt': 'Index for AI tools (hand-written)', 'robots.txt': 'Crawler rules (hand-written; see README note on project sites)',
  'sitemap.xml': 'Sitemap (generated)', 'README.md': 'Repository readme', 'CHANGELOG.md': 'Change log', 'COMPONENTS.md': 'This inventory (generated)',
- 'CONTRIBUTING.md': 'How to contribute', 'CITATION.cff': 'How to cite', 'assets/img/social-card.png': 'Social preview image, 1200×630 (AI-generated swarm card)', 'assets/img/favicon.svg': 'Favicon (red (g))', 'assets/img/favicon-32.png': 'Favicon, 32px PNG', 'assets/img/apple-touch-icon.png': 'Home-screen icon, 180px', 'src/social-card.html': 'Source for the earlier social card (meeting example); no longer used', 'assets/img/ship-labelled.gif': 'AI-generated animation: ship report labelled (The labels)', 'assets/img/spoke-and-wheel-loop.gif': 'AI-generated animation of the loop (Test 2)', 'assets/img/food-bank-cascade.gif': 'AI-generated animation of the six-round run (Test 2)', 'assets/img/stress-test.png': 'AI-generated infographic of the failure case (For builders)', 'assets/img/poster-spoke-and-wheel-test.jpg': 'AI-generated poster (Test 2)', 'LICENSE': 'CC BY 4.0 for text and site content', 'LICENSE-CODE': 'MIT for scripts (src/, assets/js/, test-kit/)', '.nojekyll': 'Tells GitHub Pages to serve files as-is',
+ 'CONTRIBUTING.md': 'How to contribute', 'CITATION.cff': 'How to cite', 'assets/img/social-card.png': 'Social preview image, 1200×630 (AI-generated swarm card)', 'assets/img/favicon.svg': 'Favicon (red (g))', 'assets/img/favicon-32.png': 'Favicon, 32px PNG', 'assets/img/apple-touch-icon.png': 'Home-screen icon, 180px', 'src/social-card.html': 'Source for the earlier social card (meeting example); no longer used', 'assets/img/ship-labelled.gif': 'AI-generated animation: ship report labelled (The labels)', 'assets/img/spoke-and-wheel-loop.gif': 'AI-generated animation of the loop (Test 2)', 'assets/img/food-bank-cascade.gif': 'AI-generated animation of the six-round run (Test 2)', 'assets/img/stress-test.png': 'AI-generated infographic of the failure case (For builders)', 'assets/img/poster-spoke-and-wheel-test.jpg': 'AI-generated poster (Test 2)', 'LICENSE': 'CC BY 4.0 for text and site content', 'LICENSE-CODE': 'MIT for scripts (src/, assets/js/, test-kit/)', '.nojekyll': 'Tells GitHub Pages to serve files as-is', 'CNAME': 'Custom domain for GitHub Pages (evidentiality-framework.org)',
  '.gitignore': 'Files git should ignore', 'src/build.py': 'Site generator', 'src/pages.py': 'Page content (edit this, then rebuild)',
  'assets/css/style.css': 'Styles, light and dark', 'assets/js/controls.js': 'Page controls: theme, copy, AI prompt, print',
  

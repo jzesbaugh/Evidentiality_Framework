@@ -177,3 +177,9 @@ figure.drift{margin:18px 0 22px;border:1px solid var(--rule);border-radius:12px;
 .drift .truth{margin:10px 0 0;padding:10px 12px;border-radius:8px;background:var(--tint);font-size:14.5px}
 .runout{font-size:15px;line-height:1.6;white-space:pre-wrap}
 pre.copyblock{max-height:520px;overflow:auto;border-color:var(--m)}
+hr.sec{border:0;border-top:1px solid var(--rule);margin:40px 0 0}
+hr.sec+h2,hr.sec+section.part>h2{margin-top:22px}
+hr.sec+section.part{margin-top:0}
+section.part h2{border-bottom:0;padding-bottom:0}
+ul.thesis{list-style:none;padding:12px 16px;border-left:4px solid var(--m);background:var(--tint);border-radius:8px}
+ul.thesis li{margin:6px 0}

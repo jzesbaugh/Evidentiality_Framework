@@ -1,6 +1,6 @@
 > How to Get Your AI to Label Its Answers: Paste one short set of instructions into ChatGPT, Claude, Gemini or another AI chat, and it labels each claim as given, checked or generated, so you know what to check.
 >
-> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://jzesbaugh.github.io/Evidentiality_Framework/try.html. Text CC BY 4.0.
+> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://evidentiality-framework.org/try.html. Text CC BY 4.0.
 
 Try it · about five minutes
 
@@ -16,6 +16,8 @@ You don’t need any special tools. You paste a short set of instructions into y
 4. [Tips](#tips)
 5. [Warnings](#warnings)
 6. [Questions and Answers](#qa)
+
+---
 
 ## Part 1 Set It Up
 
@@ -55,6 +57,8 @@ You don’t need any special tools. You paste a short set of instructions into y
    Write a short status note for the board: are we OK for winter?
    ```
 
+---
+
 ## Part 2 Read What Comes Back
 
 1. **The facts from your note should be labelled (u).** They were given to it: (u)Warehouse stock is 41 tonnes.(/u: September 15 count sheet)
@@ -65,11 +69,15 @@ You don’t need any special tools. You paste a short set of instructions into y
 
 Labelled text
 
+---
+
 ## Part 3 Pass It On
 
 1. **Copy the answer into a new chat and ask for a shorter version.** In one message, paste the instructions, then the answer, then: “Turn this into two sentences for our newsletter.” In real life, text gets forwarded, and that’s when guesses turn into facts.
 2. **Check that the guesses are still labelled as guesses.** This is the part that matters. If a (g) came back as (u) or (m), or lost its label, the guess has just been passed off as a fact.
 3. **Try the same thing without the instructions.** In a fresh chat with no instructions, ask the same question, then ask for the newsletter version again. Look for a guess that now reads like a fact.
+
+---
 
 ## Tips
 
@@ -77,10 +85,14 @@ Labelled text
 - Drafting something longer, like a grant or a report? The labels point you to the lines to check, especially figures and references the AI supplied.
 - Want to score the labelling properly, or compare AI models? See [Test 1](../../check.html).
 
+---
+
 ## Warnings
 
 - Results vary by model. Some labelled cleanly in our checks; others labelled their own sums as “given”, or left the labels out. Check the labels; don’t just trust them.
 - Use the chat version above for everyday chat. The [full version](../../instructions.md) adds a strict three-part format for adding to documents, and in our check three of nine models switched into that format instead of answering.
+
+---
 
 ## Questions and Answers
 

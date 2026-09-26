@@ -2,9 +2,7 @@
 # Everyone is welcome to read, index and cite this site, including AI search and
 # AI assistants. The text is CC BY 4.0; please credit the source.
 #
-# NOTE: crawlers only read robots.txt at the root of a host. If this site is served
-# from a GitHub project path (username.github.io/repo/), this file is not read there;
-# see README.md, "Search and AI discovery".
+# Served at the root of evidentiality-framework.org, so crawlers read it.
 
 # Search engines
 User-agent: Googlebot
@@ -45,4 +43,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://jzesbaugh.github.io/Evidentiality_Framework/sitemap.xml
+Sitemap: https://evidentiality-framework.org/sitemap.xml

@@ -17,6 +17,16 @@ Labels are self-applied, so they show claimed provenance, not verified provenanc
 - [Working paper draft](https://evidentiality-framework.org/paper/evidentiality_research_paper_draft.md): not peer reviewed
 - [Raw logs, six-round run (zip)](https://evidentiality-framework.org/test-kit/logs/five-agent-six-rounds-2026-09-24.zip)
 
+## Case Studies
+- [Case studies hub](https://evidentiality-framework.org/cases.html): seven real incidents where AI-written text was passed along as if checked; illustrations, not tests; a first-look scan of the AI Incident Database and how to run your own
+- [West Midlands Police](https://evidentiality-framework.org/case-west-midlands-police.html): a football match that never happened, later attributed by the force's chief to Copilot, in police advice to the panel behind a fan ban (UK, 2025–26)
+- [The MAHA report](https://evidentiality-framework.org/case-maha-report.html): studies that don't appear to exist, cited in a White House health report; AI use suspected, not confirmed (US, 2025)
+- [Deloitte's welfare review](https://evidentiality-framework.org/case-deloitte-welfare-review.html): an invented quote from a court judgment in a government review (Australia, 2025)
+- [South Africa's draft AI policy](https://evidentiality-framework.org/case-south-africa-ai-policy.html): fake references; the policy was withdrawn (2026)
+- [Mata v. Avianca](https://evidentiality-framework.org/case-mata-v-avianca.html): court cases invented by ChatGPT, which then said they were real (US, 2023)
+- [The summer reading list](https://evidentiality-framework.org/case-summer-reading-list.html): a syndicated list of books that don't exist, printed by two newspapers (US, 2025)
+- [Starbucks Korea "Tank Day"](https://evidentiality-framework.org/case-starbucks-korea.html): a partial fit; an AI-written slogan made a human mistake worse (2026)
+
 ## Optional
 - [Home](https://evidentiality-framework.org/index.html): the two anchor stories (a ship, a food bank swarm) and the fix, for people
 - [The labels](https://evidentiality-framework.org/labels.html) · [Language](https://evidentiality-framework.org/language.html) · [Try it](https://evidentiality-framework.org/try.html) · [Building with the labels](https://evidentiality-framework.org/builders.html) · [Build on it](https://evidentiality-framework.org/contribute.html)

@@ -18,11 +18,11 @@ SITE_NAME = 'Evidentiality Framework for AI'
 BASE_URL  = 'https://evidentiality-framework.org/'
 AUTHOR    = {'name': 'Jesse Zesbaugh', 'url': 'https://github.com/JZesbaugh'}
 PUBLISHED = '2026-09-24'
-UPDATED   = '2026-09-26'   # change by hand when page content changes (feeds dateModified and the sitemap)
-STATUS    = 'Early findings, September 2026'
+UPDATED   = '2026-10-03'   # change by hand when page content changes (feeds dateModified and the sitemap)
+STATUS    = 'Early findings, October 2026'
 
 NAV = [('./','Home'),('labels.html','The labels'),('language.html','Language'),('try.html','Try it'),('check.html','Test 1: one chat'),
-       ('spoke-and-wheel.html','Test 2: swarm'),('builders.html','For builders'),('contribute.html','Build on it'),('for-ai.html','For AI')]
+       ('spoke-and-wheel.html','Test 2: swarm'),('cases.html','Case studies'),('builders.html','For builders'),('contribute.html','Build on it'),('for-ai.html','For AI')]
 REDIRECTS = {'spec.html': 'labels.html', 'test.html': 'spoke-and-wheel.html', 'evidence.html': 'spoke-and-wheel.html#results'}  # old addresses from v0.3
 
 def md_path(fn):
@@ -68,6 +68,11 @@ def jsonld(fn, title, desc):
                       'step': [{'@type': 'HowToSection', 'name': f'Part {i}: {pt}', 'itemListElement':
                                 [{'@type': 'HowToStep', 'position': j, 'text': re.sub('<[^>]+>', '', st)} for j, st in enumerate(sts, 1)]}
                                for i, (pt, sts) in enumerate(_p.HOWTO[fn], 1)]})
+    if fn in getattr(_p, 'CASES', {}):
+        graph.append({'@type': 'Article', 'headline': title, 'description': desc, 'inLanguage': 'en',
+                      'author': {'@id': person['@id']}, 'datePublished': UPDATED, 'genre': 'Case study',
+                      'about': ['Hallucination (artificial intelligence)', 'Provenance'],
+                      'citation': _p.CASES[fn], 'isPartOf': {'@id': BASE_URL + 'cases.html#page'}})
     if fn == 'builders.html':
         graph.append({'@type': 'SoftwareSourceCode', 'name': 'marks.py', 'programmingLanguage': 'Python',
                       'codeRepository': BASE_URL + 'test-kit/', 'license': 'https://opensource.org/licenses/MIT',
@@ -90,7 +95,7 @@ def social(fn, title, desc, url):
 
 # ---- title case for headings, titles and navigation (AP-style: short articles,
 #      conjunctions and prepositions stay lower case unless first, last or after a colon) ----
-SMALL = {'a','an','the','and','but','or','nor','for','so','yet','as','at','by','in','of','on','to','up','via','vs'}
+SMALL = {'a','an','the','and','but','or','nor','for','so','yet','as','at','by','in','of','on','to','up','via','vs','v'}
 def _tc_text(text, state):
     def fix(m):
         w = m.group(0)
@@ -203,7 +208,7 @@ ROLE = {  # what each component is for; COMPONENTS.md is generated from this plu
  'src/visuals.py': 'Hand-built diagrams: food bank ladders, wheel, dot chart, ship reveal', 'assets/img/steps/': 'Step pictures (AI-generated illustrations)', '404.html': 'Not-found page',
  'for-ai.md': 'Process description for language models (hand-written)', 'instructions.md': 'The instructions: current version (hand-written; tested as v0.5b)',
  'llms.txt': 'Index for AI tools (hand-written)', 'robots.txt': 'Crawler rules (hand-written; see README note on project sites)',
- 'sitemap.xml': 'Sitemap (generated)', 'README.md': 'Repository readme', 'CHANGELOG.md': 'Change log', 'COMPONENTS.md': 'This inventory (generated)',
+ 'sitemap.xml': 'Sitemap (generated)', 'README.md': 'Repository readme', 'CHANGELOG.md': 'Change log', 'CASE_STUDIES.md': 'How to write and review a case study page (template and guard rails)', 'COMPONENTS.md': 'This inventory (generated)',
  'CONTRIBUTING.md': 'How to contribute', 'CITATION.cff': 'How to cite', 'assets/img/social-card.png': 'Social preview image, 1200×630 (AI-generated swarm card)', 'assets/img/favicon.svg': 'Favicon (red (g))', 'assets/img/favicon-32.png': 'Favicon, 32px PNG', 'assets/img/apple-touch-icon.png': 'Home-screen icon, 180px', 'src/social-card.html': 'Source for the earlier social card (meeting example); no longer used', 'assets/img/ship-labelled.gif': 'AI-generated animation: ship report labelled (The labels)', 'assets/img/spoke-and-wheel-loop.gif': 'AI-generated animation of the loop (Test 2)', 'assets/img/food-bank-cascade.gif': 'AI-generated animation of the six-round run (Test 2)', 'assets/img/stress-test.png': 'AI-generated infographic of the failure case (For builders)', 'assets/img/poster-spoke-and-wheel-test.jpg': 'AI-generated poster (Test 2)', 'LICENSE': 'CC BY 4.0 for text and site content', 'LICENSE-CODE': 'MIT for scripts (src/, assets/js/, test-kit/)', '.nojekyll': 'Tells GitHub Pages to serve files as-is', 'CNAME': 'Custom domain for GitHub Pages (evidentiality-framework.org)',
  '.gitignore': 'Files git should ignore', 'src/build.py': 'Site generator', 'src/pages.py': 'Page content (edit this, then rebuild)',
  'assets/css/style.css': 'Styles, light and dark', 'assets/js/controls.js': 'Page controls: theme, copy, AI prompt, print',

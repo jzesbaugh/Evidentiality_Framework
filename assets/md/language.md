@@ -1,6 +1,6 @@
 > Why Language Matters: Saying How You Know: Many languages make speakers say how they know something; English doesn’t. What that has to do with a banana, a phantom island, Wikipedia, and AI.
 >
-> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://evidentiality-framework.org/language.html. Text CC BY 4.0.
+> Evidentiality Framework for AI. Early findings, October 2026. Web version: https://evidentiality-framework.org/language.html. Text CC BY 4.0.
 
 Background · language
 
@@ -57,6 +57,8 @@ Each step looked responsible, but nobody checked the original claim, and by the 
 An AI doesn’t remember seeing anything. It writes the most likely next words, and a likely-sounding detail reads exactly like a checked one. It writes English, so nothing in the grammar makes it say how it knows. It slips in and out of care: cautious in one paragraph, sure of itself in the next summary.
 
 All three human stories show up in the [food bank swarm](../.././#foodbank). The coordinator filled a gap with a likely answer (the banana). The agents copied it forward without checking (Sandy Island). And one round later the guess came back from an agent, and the coordinator called it “confirmed” (citogenesis).
+
+The same pattern shows up in real incidents, with an AI at the start of the chain. See the [case studies](../../cases.html), such as [the summer reading list of books that don’t exist](../../case-summer-reading-list.html).
 
 ---
 

@@ -1,6 +1,6 @@
 > How to Take This and Build Something Better: The Evidentiality Framework is a starting point. Take it, rename it, build on it: ideas, good first projects, and how to tell us what you made.
 >
-> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://evidentiality-framework.org/contribute.html. Text CC BY 4.0.
+> Evidentiality Framework for AI. Early findings, October 2026. Web version: https://evidentiality-framework.org/contribute.html. Text CC BY 4.0.
 
 Build on it
 

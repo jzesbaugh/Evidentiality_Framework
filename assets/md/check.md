@@ -1,6 +1,6 @@
 > Test 1: Watch an AI Label Its Own Answer: Test 1 of the Evidentiality Framework: one AI, one chat, the food bank note. The instructions we used, and the labelled answer that came back.
 >
-> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://evidentiality-framework.org/check.html. Text CC BY 4.0.
+> Evidentiality Framework for AI. Early findings, October 2026. Web version: https://evidentiality-framework.org/check.html. Text CC BY 4.0.
 
 Test 1 · one chat
 

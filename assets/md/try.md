@@ -1,6 +1,6 @@
 > How to Get Your AI to Label Its Answers: Paste one short set of instructions into ChatGPT, Claude, Gemini or another AI chat, and it labels each claim as given, checked or generated, so you know what to check.
 >
-> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://evidentiality-framework.org/try.html. Text CC BY 4.0.
+> Evidentiality Framework for AI. Early findings, October 2026. Web version: https://evidentiality-framework.org/try.html. Text CC BY 4.0.
 
 Try it · about five minutes
 

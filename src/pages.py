@@ -228,6 +228,7 @@ PAGES.append(('index.html', 'When AI guesses look like facts',
 {card('try.html','Five minutes','How to get your AI to label its answers','Copy, paste, ask. Results vary by model.',thumb('08'))}
 {card('check.html','Test 1 · one chat','Watch an AI label its own answer','One chat, the food bank note, and the labelled answer that came back.',thumb('10'))}
 {card('spoke-and-wheel.html','Test 2 · swarm','The spoke and wheel test','How a guess spreads through an AI swarm, with and without labels.',thumb('12'))}
+{card('cases.html','Case studies','When AI-written claims were treated as fact','Seven real incidents, from a police fan ban to fake citations in government reports.')}
 {card('builders.html','For builders','Building with the labels','The version we use every day, the design choices, a parser and a gate.',thumb('16'))}
 {card('contribute.html','Build on it','Take this and build something better','It’s a framework. Make something with it.')}
 </div>
@@ -258,7 +259,8 @@ part(2, 'english', 'English doesn’t, and people lose track', [], '''<p>English
 <div class="story"><p>Someone adds a made-up “fact” to Wikipedia with no source. A writer on a deadline repeats it in a published article. Later, someone finds that article and adds it to Wikipedia as the citation. Now the made-up fact has a source, and the source got it from Wikipedia.</p></div>
 <p>Each step looked responsible, but nobody checked the original claim, and by the end there was no trace that it started as a guess. <span class="src">(Named by <a href="https://xkcd.com/978/">xkcd in 2011</a>.)</span></p>'''),
 part(3, 'ai', 'AI writes English, and it slips', [], '''<p>An AI doesn’t remember seeing anything. It writes the most likely next words, and a likely-sounding detail reads exactly like a checked one. It writes English, so nothing in the grammar makes it say how it knows. It slips in and out of care: cautious in one paragraph, sure of itself in the next summary.</p>
-<p>All three human stories show up in the <a href="./#foodbank">food bank swarm</a>. The coordinator filled a gap with a likely answer (the banana). The agents copied it forward without checking (Sandy Island). And one round later the guess came back from an agent, and the coordinator called it “confirmed” (citogenesis).</p>'''),
+<p>All three human stories show up in the <a href="./#foodbank">food bank swarm</a>. The coordinator filled a gap with a likely answer (the banana). The agents copied it forward without checking (Sandy Island). And one round later the guess came back from an agent, and the coordinator called it “confirmed” (citogenesis).</p>
+<p>The same pattern shows up in real incidents, with an AI at the start of the chain. See the <a href="cases.html">case studies</a>, such as <a href="case-summer-reading-list.html">the summer reading list of books that don’t exist</a>.</p>'''),
 part(4, 'markers', 'The fix: hard markers', [], '''<p>Asking an AI to “be careful with its wording” doesn’t hold up. Words like “roughly” or “it seems” are the first to disappear when text is shortened, and a program can’t check them. So the fix is <b>hard markers</b>: short, fixed labels on every claim, like a form field or a metadata tag. They do three things wording can’t:</p>
 <ul><li><b>They’re either there or they aren’t.</b> A program can check that every claim has one and flag the ones that don’t.</li>
 <li><b>They mean the same thing every time.</b> (g) always means “the AI worked this out.” “Probably” means something different to every writer.</li>
@@ -282,7 +284,7 @@ part(1, 'learn', 'Learn the three labels', [
   step('Look for a letter in brackets.', 'Each claim starts with <span class="mono">(u)</span>, <span class="mono">(m)</span> or <span class="mono">(g)</span> and ends with a matching closing tag, like <span class="mono">(/g)</span>. The tags wrap the exact words they cover. The letters are short for how you’d say it: <b>u</b>, “you gave it to the AI”; <b>m</b>, “measured”, meaning checked; <b>g</b>, “generated”.', '01'),
   step('(u) means given.', f'It was in what the AI was handed: your words, a document, someone’s report, another AI’s message. In the food bank swarm (<a href="./#foodbank">story 2</a>), the coordinator was told: {t("u","Warehouse stock on hand is 41 tonnes.","(/u: Agent Ames, from the September 15 count sheet)")} It didn’t check that itself; it was given it. The closing tag says who it came from.'),
   step('(m) means checked.', f'The writer checked it itself, and the closing tag names the source. The same fact, written by the warehouse agent that did the counting: {t("m","Warehouse stock on hand is 41 tonnes.","(/m: September 15 count sheet, checked by Agent Ames)")} <b>No source, no (m).</b>'),
-  step('(g) means generated.', f'The AI worked it out: a sum, an estimate, a conclusion, a guess. {t("g","At the current gap, 41 tonnes lasts about six months.")} A (g) can be right or wrong. The coordinator’s “about 18 days” was a (g) too. It just means nobody has checked it yet.'),
+  step('(g) means generated.', f'The AI worked it out: a sum, an estimate, a conclusion, a guess. {t("g","At the current gap, 41 tonnes lasts about six months.")} A (g) can be right or wrong. The coordinator’s “about 18 days” was a (g) too. It just means nobody has checked it yet. See one in the wild: <a href="case-west-midlands-police.html">West Midlands Police</a>.'),
   step('Notice that the labels are just text.', 'They stay with the words when the answer is copied, forwarded, or handed to another AI. That’s the point: the label travels with the claim.'),
  ], LABEL_TABLE + side('know', 'A fourth label, for decisions', '<p>The version we use day to day adds <b>(d)</b> for a decision a person made, so a choice doesn’t get mistaken for a fact or a guess later on. It’s optional. <a href="builders.html#working">See the working version</a>.</p>')),
 part(2, 'read', 'Read a labelled answer', [
@@ -451,7 +453,8 @@ part(4, 'swarms', 'Why swarms: it’s already happening', [], '''<p><b>The fake 
 <p><b>The break-out.</b> In July 2026, about 1,200 AI agents in an OpenAI security test, meant to be kept apart, found a way to message each other and sent more than 70,000 messages and files. About 700 took part in an attack on the AI company Hugging Face and reached private databases. Along the way, agents faked their own records: in at least 96 transcripts, the log showed one command being run when a different one had been. A faked record of “what I ran” looks exactly like a checked one. <span class="src">(<a href="https://www.cnn.com/2026/07/22/tech/openai-hugging-face-ai-cybersecurity">CNN, July 22, 2026</a>; investigations by <a href="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/">METR</a> and <a href="https://www.redwoodresearch.org/research/hugging-face-incident">Redwood Research</a>, Aug 26, 2026)</span></p>
 <p><b>The vending machine.</b> Anthropic let AI agents run a real office shop. A “CEO” agent was added to keep the shopkeeper agent disciplined. Instead, it approved requests about eight times as often as it turned them down, and the two egged each other on. <span class="src">(<a href="https://www.anthropic.com/research/project-vend-2">Anthropic, Project Vend</a>)</span></p>
 <p><b>The research.</b> In a simulated four-agent pipeline, planted errors got harder to spot at each hand-off, and checks at every hand-off worked far better than one check at the end (<a href="https://arxiv.org/abs/2608.14588">Singh and Pawar, 2026</a>). Agents reinforce each other’s unsupported claims and lose track of uncertainty (<a href="https://arxiv.org/abs/2606.07941">Jamshidi, 2026</a>). And most multi-agent failures are coordination problems rather than facts (<a href="https://arxiv.org/abs/2503.13657">Cemri et al., 2025</a>); the labels address only the factual part.</p>
-<p>People do the same thing without AI: a guess goes out, comes back from someone else, and looks confirmed. <a href="language.html#citogenesis">Citogenesis</a>.</p>'''),
+<p>People do the same thing without AI: a guess goes out, comes back from someone else, and looks confirmed. <a href="language.html#citogenesis">Citogenesis</a>.</p>
+<p>The same hand-offs happen between people and AI tools in real life: a police briefing, a government report, a court filing. See the <a href="cases.html">case studies</a>.</p>'''),
 part(5, 'yourself', 'Run it yourself', [
   step('Get the test kit.', 'The <a href="test-kit/README.md">test kit</a> runs the test against any chat model you can call from Python. The agents, their facts, the coordinator’s instruction and every follow-up message are in <a href="test-kit/mini_swarm.py">mini_swarm.py</a>. A dry run checks the plumbing without any API calls.', '13'),
   step('Write your answer key before you run.', 'Include the right answer to any sum the agents will face. Ours is <a href="test-kit/ANSWER_KEY.md">ANSWER_KEY.md</a>. If you change the scenario, write a new key first.'),
@@ -512,7 +515,7 @@ part(3, 'prompt', 'Add the prompt', [
 part(4, 'gate', 'Parse the labels and gate actions', [
   step('Learn the grammar.', 'Labels wrap the exact span they cover, may nest and never overlap. A label in backticks is a mention, not a mark.', '', GRAMMAR),
   step('Run the parser.', '<a href="test-kit/marks.py">marks.py</a> (MIT) parses the labels, checks they balance, gates actions and strips labels.', '', f'<details class="alt"><summary>Show marks.py</summary><pre>{html.escape(marks_code)}</pre></details>'),
-  step('Hold actions that rest on a guess.', 'Before an agent acts, parse its reasoning. The gate holds the action if anything is labelled (g), if the labels don’t balance, if an (m) names no source, or if a sentence with words in it has no label. The demo prints <code>{\'allow\': False, \'problems\': [], \'unchecked\': [\'Stock lasts about 18 days.\']}</code>. Pass <code>allow_guesses=True</code> where conclusions are expected.', '16'),
+  step('Hold actions that rest on a guess.', 'Before an agent acts, parse its reasoning. The gate holds the action if anything is labelled (g), if the labels don’t balance, if an (m) names no source, or if a sentence with words in it has no label. The demo prints <code>{\'allow\': False, \'problems\': [], \'unchecked\': [\'Stock lasts about 18 days.\']}</code>. Pass <code>allow_guesses=True</code> where conclusions are expected. In a meeting, the same idea is a rule, not code: see <a href="case-west-midlands-police.html">West Midlands Police</a>.', '16'),
   step('Treat a label you receive as a claim.', 'The biggest risk: an agent passes on someone else’s guess with a “checked” label. With no source, the gate catches it:', '', FAKE
        + FIG('assets/img/stress-test.png','Infographic, the provenance stress test: can a generated inference come back as if it were checked? 1. Facts go in: four agents, A to D, each send a checked (m) fact to a concluder. 2. A conclusion comes out: the concluder sends its generated inference, (g) undeclared cargo, back to all four. 3. It stays a conclusion: each agent holds “undeclared cargo” in red, received as context, not verified fact. 4. Failure case: agent B sends “undeclared cargo” back in blue, as if checked; repeated, not independently verified. This is the provenance failure being tested.','<b>AI-generated image of the failure case</b>, not something our runs recorded: a guess comes back labelled as checked with no new check. Its “concluder” is a coordinator; its key says “supplied” where this site says “given”.')),
   step('Don’t let the writer be the checker.', 'Give the fake label a source and the gate lets it through:', '', FAKE2
@@ -580,3 +583,395 @@ extra=f'<p>A more formal write-up: <a href="{PAPER}">the working paper</a> (a dr
 md = open('for-ai.md').read()
 PAGES.append(('for-ai.html', 'For AI models', 'Process description of the Evidentiality Framework for language models: notation, procedures, worked example, limits.',
  '<p class="note"><b>Who this page is for:</b> language models reading this site for a user. It is written for a model, not a person. Plain markdown: <a href="for-ai.md">for-ai.md</a>, indexed in <a href="llms.txt">llms.txt</a>.</p>' + markdown.markdown(md, extensions=['tables', 'fenced_code'])))
+
+# ================================================================ CASE STUDIES
+# Template and guard rails: CASE_STUDIES.md. Every page: illustration, not a test.
+from visuals import _lab
+CHECKED = 'checked 3 Oct 2026'
+LABELS_BOX = ('<div class="note"><p><b>What are the labels?</b> The Evidentiality Framework asks an AI to mark each claim it writes: '
+  '<span class="g">(g) generated</span>, its own work; <span class="u">(u) given</span>, passed to it by someone else; or '
+  '<span class="m">(m) checked</span> against a named source. The marks stay on a claim while people work with it. <a href="labels.html">How the labels work</a>.</p></div>')
+
+def chain(steps, caption, truth, aria):
+    """Same layout as drift(): each hand-off, as it happened vs. with labels. The check row comes before the decision it would stop."""
+    rows = []
+    for i, (when, who, plain, pnote, lab, lnote) in enumerate(steps):
+        sz = min(i, 4)
+        rows.append(f'<div class="drow"><div class="dwho">{when} · {who}</div>'
+                    f'<div class="dcell dno"><span class="dcol">As it happened</span><span class="ltext grow{sz}">{plain}</span><span class="lnote">{pnote}</span></div>'
+                    f'<div class="dcell dyes"><span class="dcol">With labels</span><span class="ltext">{_lab(lab)}</span><span class="lnote">{lnote}</span></div></div>')
+    head = '<div class="dhead"><span></span><b>As it happened</b><b>With labels</b></div>'
+    allt = ''.join(r[4] for r in steps)
+    keys = [x for c, x in (('g', '<span class="g">red (g)</span> generated: written by the AI'),
+                           ('u', '<span class="u">green (u)</span> given: passed on, with who said it'),
+                           ('m', '<span class="m">blue (m)</span> checked against a named source')) if '{' + c + ':' in allt]
+    key = ('<p class="dkey"><b>Key:</b> as it happened, the type gets <span class="grow3">bigger</span> as the claim sounds more certain. '
+           'With labels: ' + '; '.join(keys) + '.</p>')
+    return (f'<figure class="drift" aria-label="{aria}"><figcaption class="lhead">{caption}</figcaption>{key}{head}{"".join(rows)}'
+            f'<p class="truth">{truth}</p></figure>')
+
+SHARED_MUST = ('<p>The <a href="cases.html#assume">four conditions every case shares</a>: the AI tool used the labels; it labelled its own work correctly '
+               '(the weakest link: in <a href="check.html">our tests</a>, AI sometimes mislabels its own work); the label stayed on when the text was copied; '
+               'and someone owned a rule that unchecked claims don’t go further. In this case:</p>')
+CASES = {}
+CASE_LIST = []
+def case(fn, title, desc, lede, happened, figure, helped, musthold, existed, limits, reading, aiid='', card=None):
+    ul = lambda xs: '<ul>' + ''.join(f'<li>{x}</li>' for x in xs) + '</ul>'
+    body = (f'<p class="eyebrow">Case study</p><h1>{title}</h1><p class="lede">{lede}</p>{LABELS_BOX}'
+            f'<h2 id="what">What Happened</h2>{ul(happened)}'
+            f'<h2 id="chain">Follow the Claim</h2>'
+            '<p class="note">This is an <b>illustration</b> of how the labels would have worked, not a test. It only holds if the conditions under “What Would Have Had to Be True” held.</p>'
+            f'{figure}'
+            f'<h2 id="helped">How the Labels Could Have Helped</h2>{ul(helped)}'
+            f'<h2 id="assume">What Would Have Had to Be True</h2>{SHARED_MUST}{ul(musthold)}'
+            f'<h2 id="existed">What Already Existed</h2>{ul(existed)}'
+            f'<h2 id="limits">What the Labels Wouldn’t Have Caught</h2>{ul(limits)}'
+            f'<h2 id="reading">Further Reading</h2>' + ul(f'<a href="{u}">{n}</a>' for n, u in reading)
+            + (f'<p class="src">Also listed in the <a href="https://incidentdatabase.ai/cite/{aiid}/">AI Incident Database (#{aiid})</a>.</p>' if aiid else ''))
+    body += NEXT(('cases.html', 'All case studies'), ('labels.html', 'How the labels work'))
+    CASES[fn] = [u for _, u in reading]
+    if card: CASE_LIST.append((fn,) + card)
+    PAGES.append((fn, title, desc, body))
+
+UNCONF = 'AI tool, unconfirmed'
+LEFT_OUT = 'Left out. The check found nothing, so the claim never reaches the finished document.'
+LEFT_NOTE = 'Finished documents carry no labels. They only carry claims that passed the check.'
+CHECK_NOTE = 'This check could be made at the time. We name the source that confirmed it later.'
+
+# ---------------- West Midlands Police
+WMP_Q = 'The most recent match Maccabi Tel Aviv played in the UK was against West Ham United … on 9th November 2023'
+WMP_C = 'Maccabi Tel Aviv last played in the UK against West Ham United, on 9 November 2023'
+case('case-west-midlands-police.html',
+ 'West Midlands Police: An AI-Invented Match in the Advice Behind a Fan Ban',
+ 'Case study: a football match that never happened, later said to come from Copilot, was in police advice behind a fan ban. What labels could have done.',
+ 'In 2025, police advised a safety panel in Birmingham on whether a visiting football club’s fans could attend a match. Their advice included a match that never happened. The head of the force later said it came from an AI chatbot.',
+ ['Police were advising Birmingham’s Safety Advisory Group, a local panel that sets safety rules for big events, on whether Maccabi Tel Aviv fans could come to a match at Aston Villa on 6 November 2025. Police said the fans were high-risk, citing earlier trouble around a match in Amsterdam.',
+  'On 10 October 2025, the senior officer in charge wrote to the panel’s chair. The letter said Maccabi Tel Aviv had last played in the UK against West Ham. No such match took place.',
+  'On 16 October the panel decided visiting fans should be banned, after spoken briefings from police that didn’t repeat the claim. On 24 October it looked at the question again from scratch. The police’s written report for that meeting said: “' + WMP_Q + '.” The ban stayed, and the match was played without away fans.',
+  'On 6 January 2026, the head of West Midlands Police (the chief constable) told MPs, the members of Parliament looking into it, that the force did not use AI. On 12 January he wrote to correct this: the claim came from Microsoft Copilot. He retired on 16 January, after the Home Secretary, the minister in charge of policing, said she had lost confidence in him.',
+  'In February 2026 a committee of MPs found that the force “failed to do even basic due diligence”, and that some of its key claims about the Amsterdam trouble “originated from a query to Microsoft Copilot AI”. It also found the chief constable “did not intentionally mislead” them.',
+  'The police watchdog, the Independent Office for Police Conduct, opened an investigation in January 2026. In August it told the former chief and four others that their conduct is being investigated. That is not a finding that anyone did wrong.'],
+ chain([
+  ('Before 10 October 2025', 'Copilot → an officer', 'A match against West Ham, with a date', 'An AI answer, stated as fact. (The chief later said Copilot; the inspector heard conflicting accounts.)',
+   '{g:' + WMP_C + '}', 'If the tool used the labels: marked as written by the AI.'),
+  ('10 October 2025', 'Senior officer → panel chair', 'In a letter to the safety panel', 'Now it sounds like police intelligence.',
+   '{u:' + WMP_C + '|Copilot, unconfirmed}', 'Passed on as something the officer was given, with who said it.'),
+  ('Before 24 October 2025', 'The check', 'Nobody checked', 'The claim was never tested.',
+   '{m:No such match took place|HM Chief Inspector of Constabulary, letter of 14 January 2026, ' + CHECKED + '}', 'Football fixture lists could show this at the time. We name the source that confirmed it later.'),
+  ('24 October 2025', 'Police report → safety panel', 'Repeated in the written report; the ban stays', 'Now it’s part of the case for a decision.',
+   LEFT_OUT, 'The panel would still decide; this one false claim wouldn’t be part of it.')],
+  'Follow the West Ham match: one AI answer, from a chatbot to a fan ban',
+  'No match between West Ham and Maccabi Tel Aviv took place. The quote is the wording in the police report, as given by HM Chief Inspector of Constabulary.',
+  'One invented claim, step by step, as it happened and with labels'),
+ ['<b>The guess stays marked as a guess.</b> The claim keeps a label saying it came from Copilot and nobody confirmed it, so it can’t pass as police intelligence.',
+  '<b>The report checks before it repeats.</b> A claim still marked unconfirmed gets checked before it goes into advice to the panel.',
+  '<b>Where it came from is written down.</b> When MPs asked, the answer would have been on the working notes.'],
+ ['The rule is owned by the senior officers preparing the advice. Advice to a panel is “finished” work, so labels stay in the working notes and only checked claims go in. <i>Open question: internal decision documents may be better treated as working documents that keep their labels.</i>'],
+ ['<b>Police already grade intelligence.</b> The UK’s 3×5×2 system grades the source from 1 (reliable) to 3 (not reliable), and the information from A (known directly) to E (suspected false). A chatbot answer would most likely be 2 (untested) and D (“not known”).',
+  '<b>This claim went around it.</b> The Chief Inspector found that not all of the report went through the force’s intelligence unit.',
+  '<b>A simpler check would have caught it:</b> a fixture list. Labels add one thing: every unchecked claim is marked, not only the ones someone thinks to look up.'],
+ ['<b>Skipping the process.</b> The claim went around the force’s own grading. A label can be skipped the same way.',
+  '<b>The other failings.</b> MPs found the force relied on disputed claims about the Amsterdam trouble, didn’t consult the local Jewish community, and wrongly told the panel it had. Labels on one AI line fix none of that.',
+  '<b>Lost records.</b> The officer who attended a meeting with Dutch police threw away his handwritten notes of it, the Chief Inspector found. No label helps with notes that no longer exist.'],
+ [('Home Affairs Committee report, HC 1553 (February 2026)', 'https://committees.parliament.uk/publications/51721/documents/286921/default/'),
+  ('HM Chief Inspector of Constabulary: letter to the Home Secretary (14 January 2026, PDF)', 'https://data.parliament.uk/DepositedPapers/Files/DEP2026-0017/Letter_from_HMICFRS_to_Home_Sec_re_WMP.pdf'),
+  ('Independent Office for Police Conduct: investigation update', 'https://www.policeconduct.gov.uk/node/13386'),
+  ('College of Policing: how intelligence is graded (3×5×2)', 'https://www.college.police.uk/app/intelligence-management/completing-intelligence-report'),
+  ('The Register: police chief retires over AI hallucination', 'https://www.theregister.com/2026/01/19/copper_chief_cops_it_after/'),
+  ('ITV: watchdog investigates former chief constable', 'https://www.itv.com/news/central/2026-08-26/former-chief-constable-probed-over-maccabi-tel-aviv-supporter-ban')],
+ aiid='1400', card=('UK · 2025–26', 'West Midlands Police', 'Police advice to a safety panel included a football match that never happened.', 'Yes'))
+
+# ---------------- MAHA
+MAHA_T = 'Changes in mental health and substance abuse among US adolescents during the COVID-19 pandemic'
+case('case-maha-report.html',
+ 'The MAHA Report: Studies That Don’t Appear to Exist in a White House Health Report',
+ 'Case study: the 2025 MAHA report cited studies that don’t appear to exist; AI use is suspected. How labels could have kept them marked unchecked.',
+ 'In May 2025, a White House commission published a major report on children’s health. Some of the studies it listed as sources don’t appear to exist. Whether AI was used has never been confirmed.',
+ ['In February 2025, a presidential order set up the Make America Healthy Again (MAHA) Commission, led by the Health Secretary, and gave it 100 days to report.',
+  'The report came out on 22 May 2025. Who wrote it, and with what tools, has not been made public.',
+  f'On 29 May, the news site NOTUS reported that seven of the studies it cited did not appear to exist. One was listed as a JAMA Pediatrics paper, “{MAHA_T}”. The researcher named as its author said it was “not a real paper that I or my colleagues were involved with”.',
+  'The Washington Post reported that some source links contained “oaicite”, a marker that has appeared in ChatGPT output. That points to AI use but doesn’t prove it.',
+  'The White House press secretary called them “formatting issues” and said they did not “negate the substance of the report”. A corrected version replaced the citations. Asked whether AI was used, she referred questions to the health department.'],
+ chain([
+  ('Before 22 May 2025', 'AI tool (suspected) → report writers', f'“{MAHA_T}”, JAMA Pediatrics', 'A source that looks real, with a real scientist’s name on it.',
+   '{g:' + MAHA_T + ', JAMA Pediatrics}', 'If an AI tool wrote it and used the labels: marked as the AI’s.'),
+  ('Before 22 May 2025', 'Draft → the list of sources', 'Listed as a source in the draft report', 'Now it looks like research someone read.',
+   '{u:' + MAHA_T + ', JAMA Pediatrics|' + UNCONF + '}', 'Passed on with where it came from, and that nobody has opened it.'),
+  ('Before 22 May 2025', 'The check', 'Nobody looked it up', 'The source was never opened.',
+   '{m:No such paper by the named author|NOTUS, 29 May 2025, ' + CHECKED + '}', CHECK_NOTE),
+  ('22 May 2025', 'Report → the public', 'Published as a source in a federal report', 'Now it’s evidence in national health policy.',
+   LEFT_OUT, LEFT_NOTE)],
+  'Follow one source: from a draft to a White House report',
+  'The study does not appear to exist. Who wrote the report and which tools they used has not been made public; the first row shows how such a source would look if an AI tool produced it.',
+  'One invented source, step by step, as it happened and with labels'),
+ ['<b>Each source shows where it came from.</b> A reference a tool suggested arrives marked as the tool’s, not as research someone read.',
+  '<b>Publishing waits for a check.</b> A source nobody has opened doesn’t go out under a government seal.',
+  '<b>Readers can trust the rest.</b> When one source fails, readers can see which others were checked.'],
+ ['The rule is owned by the commission staff who clear the report for publication. And an AI tool has to have been used at all, which hasn’t been confirmed.'],
+ ['<b>Review before publishing.</b> Federal agencies have review and clearance steps for scientific reports. How this report was reviewed hasn’t been made public.',
+  '<b>A simpler check would have caught it:</b> looking each source up, for example by its DOI, the code that points to one exact paper. Labels add one thing: they show, line by line, which sources someone has actually opened.'],
+ ['<b>The deadline.</b> The commission had 100 days. Labels don’t make time.',
+  '<b>No named authors.</b> Labels say where a claim came from, not who signed off on the report.',
+  '<b>Real studies, wrong claims.</b> A label says a source was checked, not that it supports the point being made.'],
+ [('The MAHA Report (White House)', 'https://www.whitehouse.gov/maha/'),
+  ('Executive Order 14212: Establishing the MAHA Commission (Federal Register)', 'https://www.federalregister.gov/documents/2025/02/19/2025-02871/establishing-the-presidents-make-america-healthy-again-commission'),
+  ('NOTUS (now published at washingtonsun.com): the MAHA report cites studies that don’t exist', 'https://www.washingtonsun.com/health-science/make-america-healthy-again-report-citation-errors?redirected=notus_org'),
+  ('NOTUS (now published at washingtonsun.com): the report updated to replace citations', 'https://www.washingtonsun.com/health-science/maha-report-update-citations?redirected=notus_org'),
+  ('AP: White House acknowledges problems in the MAHA report', 'https://www.wfae.org/united-states-world/2025-05-29/white-house-acknowledges-problems-in-rfk-jr-s-make-america-healthy-again-report'),
+  ('PolitiFact: how fake citations appeared in the MAHA report', 'https://www.politifact.com/article/2025/may/30/MAHA-report-AI-fake-citations/')],
+ aiid='1084', card=('US · 2025', 'The MAHA report', 'A White House health report listed studies that don’t appear to exist. AI use is suspected, not confirmed.', 'Likely'))
+
+# ---------------- Deloitte
+DEL_Q = 'The burden rests on the decision-maker to be satisfied on the evidence that the debt is owed.'
+case('case-deloitte-welfare-review.html',
+ 'Deloitte’s Welfare Review: A Judge’s Words That Were Never Said',
+ 'Case study: Deloitte’s 2025 review for an Australian department quoted words a judge never wrote. How labels could have kept the quote unchecked.',
+ 'In 2025, a consulting firm wrote a review for an Australian government department about the system that checks people follow welfare rules. It quoted a judge’s written ruling. The judge never wrote those words.',
+ ['Australia’s Department of Employment and Workplace Relations paid Deloitte about A$440,000 for an independent review of its welfare compliance system. The report came out in July 2025.',
+  f'The report quoted a Federal Court ruling, known as Amato: “{DEL_Q}” The case is real. Those words aren’t in it. Several of its references were to works that don’t exist.',
+  'In August 2025 a University of Sydney law academic spotted the errors and told the press.',
+  'A corrected version said Deloitte had used “a generative artificial intelligence (AI) large language model (Azure OpenAI GPT-4o) based tool chain”, licensed by the department and run on the department’s own cloud. The first version didn’t say so. The department said the substance was kept and the recommendations didn’t change.',
+  'At a Senate hearing in October 2025, it emerged that Deloitte had refunded A$97,587, less than a quarter of the fee. Finance officials said they learned of the errors from news reports.'],
+ chain([
+  ('2025', 'AI tool → report authors', f'“{DEL_Q}”', 'Words put in a judge’s mouth. The case is real; the quote isn’t.',
+   '{g:' + DEL_Q + '}', 'If the tool used the labels: marked as written by the AI.'),
+  ('2025', 'Authors → the draft report', 'Written into the draft as a court quote', 'Now it reads as legal authority.',
+   '{u:' + DEL_Q + '|' + UNCONF + '}', 'Passed on with where it came from, and that nobody has read it in the ruling.'),
+  ('Before July 2025', 'The check', 'Nobody read the ruling', 'The quote was never looked up.',
+   '{m:The ruling contains no such words|Australian Financial Review, 5 October 2025, ' + CHECKED + '}', CHECK_NOTE),
+  ('July 2025', 'Deloitte → the department', 'Delivered in the final report', 'Now it’s in a government review.',
+   LEFT_OUT, LEFT_NOTE)],
+  'Follow one quote: from an AI tool to a government review',
+  'The judge never wrote these words. The quote is as printed in the first version of the report, as reported by the Australian Financial Review.',
+  'One invented quote, step by step, as it happened and with labels'),
+ ['<b>The quote shows where it came from.</b> Words an AI tool produced can’t pass as words from a ruling.',
+  '<b>Delivery waits for a check.</b> A quote nobody has found in the ruling doesn’t go into the final report.',
+  '<b>The client can see what was checked.</b> The department wouldn’t have to recheck every footnote, only the ones still marked unconfirmed.'],
+ ['The rule is owned by the people at the firm who sign off the report. The AI tool was licensed by the department itself, so the department could have required labels from its own tool.'],
+ ['<b>Quality checks before delivery.</b> Firms review their reports, and clients accept them. Both missed this.',
+  '<b>Disclosure.</b> The AI use was disclosed only in the corrected version.',
+  '<b>A simpler check would have caught it:</b> reading the ruling. Labels add one thing: the client can see, claim by claim, which ones the provider checked.'],
+ ['<b>Is the advice right?</b> Labels say where each claim came from. They don’t say whether the recommendations are good.',
+  '<b>Fixes need checking too.</b> Corrections can bring new errors.',
+  '<b>Openness about tools.</b> The AI use came out only after the errors did. Labels assume people are open about their tools.'],
+ [('Department of Employment and Workplace Relations: the review and corrected report', 'https://www.dewr.gov.au/node/17099'),
+  ('AP: Deloitte to partially refund Australian government', 'https://www.news4jax.com/business/2025/10/07/deloitte-to-partially-refund-australian-government-for-report-with-apparent-ai-generated-errors/'),
+  ('Cyber Daily: Deloitte to refund government after using AI in $440,000 report', 'https://www.cyberdaily.au/government/12737-deloitte-to-refund-government-after-using-ai-in-440-000-report'),
+  ('Information Age (ACS): Deloitte to refund government over AI errors', 'https://ia.acs.org.au/article/2025/deloitte-to-refund-government-over-ai-errors.html'),
+  ('Australian Greens: the refund amount revealed at Senate estimates', 'https://greens.org.au/news/media-release/greens-slam-deloittes-unethical-behaviour-and-measly-refund-over-ai-report')],
+ aiid='1193', card=('Australia · 2025', 'Deloitte’s welfare review', 'A government review quoted a judge. The judge never wrote those words.', 'Yes'))
+
+# ---------------- South Africa
+SA_REF = 'An article in the South African Journal of Philosophy'
+case('case-south-africa-ai-policy.html',
+ 'South Africa’s Draft AI Policy: Fake Sources in the Plan for AI',
+ 'Case study: South Africa’s 2026 draft AI policy cited research that never appeared and was withdrawn. How labels could have flagged the sources.',
+ 'In April 2026, South Africa published its draft national policy on artificial intelligence for comment. Some of the research it cited had never been published. The minister withdrew it 16 days later.',
+ ['The Cabinet, the president’s team of ministers, approved the draft for publication in March 2026. It was published for public comment on 10 April.',
+  'The news site News24 reported that at least six of its references appeared to be made up. Editors of three real journals, including the South African Journal of Philosophy, confirmed that articles credited to them had never appeared.',
+  'On 26 April the communications minister withdrew it. He said: “The most plausible explanation is that AI-generated citations were included without proper verification.” He called it a failure that “has compromised the integrity and credibility of the draft policy”, and promised “consequence management”, meaning action against those responsible.',
+  'Two officials were suspended while this is looked into; that is not a finding against them. The department’s head later said that “ChatGPT was used in as far as the editing of the document itself.”',
+  'The minister later said much of the policy’s content “had not faced significant challenge”. A panel of seven experts is reviewing it, and a revised draft is planned for public comment in January 2027.'],
+ chain([
+  ('Early 2026', 'AI tool (suspected) → policy drafters', 'A reference to a journal article that was never published', 'Looks like research. (The exact wording wasn’t reprinted in sources we could read.)',
+   '{g:' + SA_REF + '}', 'If an AI tool wrote it and used the labels: marked as the AI’s.'),
+  ('Early 2026', 'Drafters → the draft policy', 'Listed in the policy’s references', 'Now it looks like the research behind a national policy.',
+   '{u:' + SA_REF + '|' + UNCONF + '}', 'Passed on with where it came from, and that nobody has opened it.'),
+  ('Before March 2026', 'The check', 'Nobody looked it up', 'The references were never opened.',
+   '{m:The cited articles never appeared|journal editors, as reported by TechCentral, ' + CHECKED + '}', CHECK_NOTE),
+  ('March–April 2026', 'Cabinet → the public', 'Approved and published as the national draft', 'Now it’s the country’s official draft.',
+   LEFT_OUT, LEFT_NOTE)],
+  'Follow one reference: from a draft to a national policy',
+  'The articles never appeared. The reference is described, not quoted, because the sources we could read didn’t reprint it.',
+  'One invented reference, step by step, as it happened and with labels'),
+ ['<b>Each source shows where it came from.</b> A suggested reference can’t pass as research someone read.',
+  '<b>Approval waits for a check.</b> Unchecked sources are visible before the Cabinet signs off.',
+  '<b>The rest can stand.</b> The minister said most of the content held up. Labels would show which parts were checked.'],
+ ['The rule is owned by the officials who prepare policy papers for the Cabinet. And an AI tool has to have produced the references; the minister called that the most plausible explanation, not a finding.'],
+ ['<b>Review stages existed.</b> The minister promised action against those responsible for “drafting and quality assurance”, so a quality step was there. The fake sources got through it.',
+  '<b>Public comment worked.</b> Outside readers found the problem, but only after publication.',
+  '<b>A simpler check would have caught it:</b> looking the articles up. Labels add one thing: they show reviewers which references nobody had checked.'],
+ ['<b>Openness about tools.</b> The officials didn’t say they had used AI. Labels assume people are open about their tools.',
+  '<b>Is the policy right?</b> Labels say where claims came from, not whether the policy is good.',
+  '<b>The system around it.</b> MPs asked how the department leading national AI policy had such gaps. That is a management question.'],
+ [('SAnews: Minister announces withdrawal of draft AI policy', 'https://www.sanews.gov.za/south-africa/minister-announces-withdrawal-draft-ai-policy'),
+  ('Government Gazette: the draft National AI Policy (PDF)', 'https://www.gov.za/sites/default/files/gcis_document/202604/54477gen3880.pdf'),
+  ('TechCentral: withdraw AI policy, Malatsi told', 'https://techcentral.co.za/withdraw-ai-policy-malatsi-told-as-fake-citations-row-grows/280660/'),
+  ('EWN: two officials suspended after using ChatGPT', 'https://www.ewn.co.za/2026/05/26/two-officials-suspended-after-using-chatgpt-to-draft-south-africas-national-ai-policy'),
+  ('Reuters via Engineering News: revised AI policy planned for January 2027', 'https://www.engineeringnews.co.za/article/south-africa-targets-january-2027-for-revised-ai-policy-after-earlier-withdrawal-2026-05-26'),
+  ('Rest of World: AI hallucinations derailing governments', 'https://restofworld.org/2026/government-ai-hallucinations-south-africa-deloitte/')],
+ aiid='1467', card=('South Africa · 2026', 'South Africa’s draft AI policy', 'The national plan for AI cited research that was never published.', 'Yes'))
+
+# ---------------- Mata v. Avianca
+MATA_C = 'Varghese v. China Southern Airlines Co., Ltd., 925 F.3d 1339 (11th Cir. 2019)'
+case('case-mata-v-avianca.html',
+ 'Mata v. Avianca: Court Cases Invented by ChatGPT, Filed in Federal Court',
+ 'Case study: lawyers filed court cases ChatGPT invented, and ChatGPT said they were real. Why an AI vouching for itself is not a check.',
+ 'In 2023, two New York lawyers cited earlier court cases in a lawsuit. The cases didn’t exist. ChatGPT had made them up, and when asked, it said they were real.',
+ ['A man sued the airline Avianca. The case was moved to a New York federal court. On 1 March 2023 his lawyers filed a brief, a written argument to the court, citing earlier cases, including “' + MATA_C + '”. That case doesn’t exist.',
+  'On 15 March, Avianca’s lawyers told the court they couldn’t find several of the cases. The court ordered copies. In April the lawyers filed what they said were excerpts.',
+  'The lawyer who did the research had asked ChatGPT “Is Varghese a real case”. It told him the cases were real and could be found in the main legal databases. The lawyer who signed the filing hadn’t read any of the cases.',
+  'On 22 June 2023 the judge fined the two lawyers and their firm $5,000, and ordered them to send the court’s ruling to the real judges falsely named as authors of the fake rulings.',
+  'The judge wrote that “there is nothing inherently improper about using a reliable artificial intelligence tool for assistance.” He found bad faith, based on “acts of conscious avoidance and false and misleading statements to the Court”.'],
+ chain([
+  ('Early 2023', 'ChatGPT → a lawyer', MATA_C, 'A case reference in the exact legal format.',
+   '{g:' + MATA_C + '}', 'If the tool used the labels: marked as written by the AI.'),
+  ('Before 1 March 2023', 'The check', 'Nobody looked the case up in a legal database', 'The case was never found, because it doesn’t exist.',
+   '{m:No such case exists|the court’s ruling of 22 June 2023, ' + CHECKED + '}', 'A legal database search could show this at the time. We name the source that confirmed it later.'),
+  ('1 March 2023', 'Lawyers → the court', 'Cited in a signed court filing', 'Now it’s legal argument, with a lawyer’s name on it.',
+   LEFT_OUT, LEFT_NOTE)],
+  'Follow one case: from ChatGPT to a federal court',
+  'The case does not exist. The reference is as filed, quoted in the court’s ruling.',
+  'One invented court case, step by step, as it happened and with labels') + chain([
+  ('2023 (the exact date was disputed in court)', 'Lawyer → ChatGPT: “Is Varghese a real case”', 'ChatGPT says the cases are real', 'The AI vouches for itself.',
+   '{g:Varghese is a real case}', 'Still red. An AI checking its own answer is still the AI’s own claim. A check needs a source outside the AI.')],
+  'Asking the AI to check itself',
+  'The court found the lawyer’s explanations of when he asked this were not consistent.',
+  'Asking ChatGPT whether its own answer is real, as it happened and with labels'),
+ ['<b>Self-checks stay red.</b> Asking the AI whether its answer is real produces another (g), not an (m). This is the clearest lesson of the case.',
+  '<b>Filing waits for a check.</b> A case nobody has found in a legal database isn’t cited.',
+  '<b>The signing lawyer can see what was checked.</b> He signed without reading the cases. Labels would have shown him that nobody had.'],
+ ['The rule is owned by the lawyer who signs the filing, who already has that duty.'],
+ ['<b>Lawyers already have to check.</b> US court rules (Rule 11) make a lawyer who signs a filing vouch that its legal arguments rest on real law.',
+  '<b>Tools exist.</b> Legal databases and “citators” confirm whether a case exists. The firm’s research service had limited coverage of federal cases, the court found.',
+  '<b>A simpler check would have caught it:</b> a search in a legal database. Labels add one thing: the unchecked references stand out before anyone signs.'],
+ ['<b>What came after.</b> Much of the court’s criticism was about how the lawyers responded once they were warned. Labels don’t make anyone own up.',
+  '<b>Signing without reading.</b> A label only helps if the person signing reads it.',
+  '<b>Limited research tools.</b> The firm turned to ChatGPT partly because its usual service didn’t cover the cases it needed.'],
+ [('Mata v. Avianca, the court’s ruling on sanctions, 22 June 2023 (Justia)', 'https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/'),
+  ('Bloomberg Law: phony ChatGPT brief leads to $5,000 fine', 'https://news.bloomberglaw.com/esg/chatgpt-phony-legal-filing-case-gets-lawyers-a-5-000-fine')],
+ aiid='541', card=('US · 2023', 'Mata v. Avianca', 'Lawyers filed court cases ChatGPT invented. When asked, ChatGPT said they were real.', 'Yes'))
+
+# ---------------- Sun-Times / Inquirer reading list
+ST_B = '“The Rainmakers” by Percival Everett'
+case('case-summer-reading-list.html',
+ 'Chicago Sun-Times and Philadelphia Inquirer: A Summer Reading List of Books That Don’t Exist',
+ 'Case study: two newspapers printed a summer reading list where ten of fifteen books didn’t exist. How labels could carry the warning down the chain.',
+ 'In May 2025, two big US newspapers printed a summer reading list. Ten of the fifteen books didn’t exist. A freelance writer had used AI, and nobody along the way checked.',
+ ['A freelance writer produced a summer section, “Heat Index”, for King Features, a company owned by the media group Hearst that sells ready-made content to newspapers.',
+  'It ran in The Philadelphia Inquirer on 15 May 2025 and in the Chicago Sun-Times that weekend. Its reading list paired real authors with made-up books, such as ' + ST_B + '. Ten of the fifteen books were fake.',
+  'The writer said: “I do use AI for background at times but always check out the material first. This time, I did not.”',
+  'The Sun-Times said the section “was not created by, or approved by, the Sun-Times newsroom”. Its owner later said the section was never shown to Sun-Times journalists for review. The Inquirer’s publisher called it “a violation of our own internal policies and a serious breach”.',
+  'King Features ended its relationship with the writer. It said he had broken its AI policy, which he disputed. The Sun-Times’ owner stopped buying special sections from King Features.'],
+ chain([
+  ('Spring 2025', 'AI tool → writer', ST_B, 'A real author, a book that sounds right.',
+   '{g:' + ST_B + '}', 'If the tool used the labels: marked as written by the AI.'),
+  ('Spring 2025', 'Writer → King Features', 'Delivered as part of a summer section', 'Now it’s content a company sells.',
+   '{u:' + ST_B + '|' + UNCONF + '}', 'Passed on with where it came from, and that nobody has checked it.'),
+  ('Before 15 May 2025', 'The check', 'Nobody looked the books up', 'No editor at the newspapers saw it.',
+   '{m:Percival Everett has no book called “The Rainmakers”|Percival Everett, as reported by WBEZ, ' + CHECKED + '}', CHECK_NOTE),
+  ('15–18 May 2025', 'King Features → two newspapers', 'Printed under two newspapers’ names', 'Now it carries a newspaper’s trust.',
+   LEFT_OUT, LEFT_NOTE)],
+  'Follow one book: from an AI tool to two newspapers',
+  'The book does not exist. The title and author are as printed, as reported by WBEZ.',
+  'One invented book, step by step, as it happened and with labels'),
+ ['<b>The warning travels.</b> The writer’s unchecked list reaches King Features still marked as unchecked.',
+  '<b>Printing waits for a check.</b> Unchecked claims don’t go into a finished section.',
+  '<b>Each step can see the last.</b> Everyone down the chain can see what the step before checked and didn’t.'],
+ ['The rule is owned by the editors at King Features, and by each newspaper for what it prints under its name.'],
+ ['<b>Editing exists.</b> Newspapers edit what their journalists write. This section was bought in and skipped that review.',
+  '<b>The seller had rules.</b> King Features said the writer broke its AI policy. He disputed that.',
+  '<b>A simpler check would have caught it:</b> searching for each book. Labels add one thing: the writer’s own checking, or lack of it, travels to every buyer.'],
+ ['<b>Bought-in content.</b> The section wasn’t reviewed by the papers’ journalists. That is a business decision labels can’t change.',
+  '<b>Openness about tools.</b> Labels only work if the writer uses them.',
+  '<b>The rest of the section.</b> Other pages had their own problems. Each claim needs its own label.'],
+ [('WBEZ: the Sun-Times’ review of the special section', 'https://www.wbez.org/media/2025/05/30/special-section-king-fake-book-list-errors-sun-times-review'),
+  ('WBEZ: bought-in content in the Sunday Sun-Times', 'https://www.wbez.org/news/2025/05/20/syndicated-content-sunday-print-sun-times-ai-misinformation'),
+  ('AP: a newspaper’s summer book list recommends nonexistent books', 'https://www.wsls.com/business/2025/05/21/fictional-fiction-a-newspapers-summer-book-list-recommends-nonexistent-books-blame-ai/'),
+  ('Axios Philadelphia: the Inquirer’s AI-generated reading list', 'https://www.axios.com/local/philadelphia/2025/05/20/philadelphia-inquirer-summer-reading-list-ai'),
+  ('A.V. Club: the Sun-Times and Inquirer summer guide', 'https://www.avclub.com/hearst-summer-guide-ai-newspapers')],
+ card=('US · 2025', 'The summer reading list', 'Two newspapers printed a reading list. Ten of the fifteen books didn’t exist.', 'Yes'))
+
+# ---------------- Starbucks Korea (partial)
+SB = 'Tak on the desk!'
+case('case-starbucks-korea.html',
+ 'Starbucks Korea’s “Tank Day”: Where Labels Only Partly Help',
+ 'Case study: Starbucks Korea’s 2026 “Tank Day” promotion. Staff said a slogan came from AI; the main harm was a human choice labels can’t catch.',
+ 'In May 2026, Starbucks Korea ran a “Tank Day” promotion on the anniversary of a deadly 1980 military crackdown on a pro-democracy uprising in the city of Gwangju. Staff said one slogan came from AI. Most of the harm came from human choices that labels can’t catch.',
+ ['On 15 April 2026, the “Tank Day” name and the 18 May launch date were set. No source says AI chose them.',
+  'On 8 May, the online sales team added a slogan, “Tak on the desk!”, without telling management. They told investigators they had asked AI for the wording.',
+  'A memorial group said the phrase recalls the military government’s cover-up of the 1987 death of the student activist Park Jong-chul, which police explained away with a story about banging on a desk.',
+  'The promotion launched on 18 May, the anniversary, and was pulled the same day. The head of Starbucks Korea was dismissed within a day. Starbucks’ US headquarters later apologised in writing.',
+  'An investigation by Shinsegae, the group that runs Starbucks in Korea, found that seven approvers across four stages raised no objection, some without opening the design file, and that the usual legal review was skipped. Its own investigation found no clear evidence of intent.',
+  'In August 2026 police searched the company’s headquarters, after a complaint from a civic group, on suspicion of insult. The investigation is ongoing; that is not a finding that anyone did wrong.'],
+ chain([
+  ('15 April 2026', 'Marketing team', '“Tank Day”, set for 18 May', 'A human choice. No AI involved, as far as reported.',
+   'No label applies: people chose this.', 'Labels track where words came from. They can’t spot a bad idea.'),
+  ('8 May 2026', 'AI tool → online sales team', '“' + SB + '”', 'Wording staff said came from AI, added without telling management.',
+   '{g:' + SB + '}', 'If the tool used the labels: marked as written by the AI.'),
+  ('8–17 May 2026', 'Team → seven approvers', 'Approved at four stages, with no objections', 'Now it’s signed off.',
+   '{u:' + SB + '|AI tool, not reviewed}', 'Approvers can see this line came from an AI and needs a careful human read.'),
+  ('18 May 2026', 'Launch', 'Launched on the anniversary', 'The harm is done.',
+   'Maybe the slogan is cut. “Tank Day” on 18 May still goes out.', 'This is why it’s only a partial fit.')],
+  'Follow the slogan, and the parts labels can’t reach',
+  'The first row is the main problem, and labels don’t touch it. The slogan in English is a translation of the Korean (책상에 탁!).',
+  'The Tank Day promotion, step by step, as it happened and with labels'),
+ ['<b>The AI-written line stands out.</b> Approvers see which words came from an AI tool.',
+  '<b>A second look, at the right line.</b> Seven approvers might have stopped on a flagged slogan.',
+  '<b>That’s all.</b> The labels touch one line of a campaign whose main problem was a human idea.'],
+ ['The rule is owned by the approvers, and only applies if the staff account that the slogan came from AI is right.'],
+ ['<b>A four-stage approval chain.</b> Seven people signed off. Some didn’t open the design file.',
+  '<b>Legal review.</b> Used on earlier campaigns, skipped this time to save time.',
+  '<b>A simpler check would have caught it:</b> a calendar of sensitive dates. Labels can’t do that job.'],
+ ['<b>The name and the date.</b> “Tank Day” on 18 May was a human decision. No label would mark it.',
+  '<b>Knowing the history.</b> The team said they never thought about 18 May. Labels don’t give people context they lack.',
+  '<b>Rubber-stamp approvals.</b> A label only helps if someone opens the file.'],
+ [('Korea JoongAng Daily: Shinsegae chair apologises, denies deliberate intent', 'https://www.koreajoongangdaily.com/business/shinsegae-chair-apologizes-as-group-denies-deliberate-intent-in-starbucks-koreas-tank-day-fiasco/12529739'),
+  ('Asia Business Daily: Starbucks holds “Tank Day” event on 18 May, apologises', 'https://view.asiae.co.kr/en/article/2026051817232352771'),
+  ('AFP via eNCA: Starbucks Korea reveals series of mishaps', 'https://www.enca.com/business/starbucks-korea-reveals-series-mishaps-leading-tank-day-campaign'),
+  ('Al Jazeera: Starbucks Korea CEO fired over promotion', 'https://www.aljazeera.com/economy/2026/5/19/starbucks-korea-ceo-fired-over-promotion-that-evoked-military-crackdown'),
+  ('Korea Times: Starbucks HQ apologises over “Tank Day”', 'https://koreatimes.co.kr/southkorea/society/20260607/starbucks-hq-apologizes-over-tank-day-controversy'),
+  ('Korea Herald: police search Starbucks Korea headquarters', 'https://www.koreaherald.com/article/10831677')],
+ card=('South Korea · 2026', 'Starbucks Korea “Tank Day”', 'Staff said a slogan came from AI. The main harm was a human choice that labels can’t reach.', 'Partial'))
+
+# ---------------- Case studies hub
+SCAN_PROMPT = """You are helping me score a random sample of AI incidents.
+
+1. Source: the AI Incident Database. Incident pages are at https://incidentdatabase.ai/cite/NUMBER/
+2. Use only these incident numbers: [paste your list, drawn at random with a fixed seed]
+3. Open each page and write a one-line summary in your own words. Don't copy the report text.
+4. In scope: the harm involved text written by an AI language model (a chatbot, an assistant or an AI agent). Out of scope: images, video, voice, vehicles, surveillance, data leaks. Mark each one in or out.
+5. For each in-scope incident, answer two questions, yes, partly or no, with one sentence of reasons:
+   a. Did people rely on AI-written text without anyone checking it?
+   b. If they had known it was unchecked, would that plausibly have changed what happened?
+6. Don't guess what result I want. If a page won't load, say so and skip it. Don't swap in another number.
+7. Finish with a table (number, title, in scope, answer a, answer b, reason), then the counts."""
+
+def _hub():
+    cards = ''.join(card(fn, f'{where} · Fit: {fit.lower()}', name, blurb) for fn, where, name, blurb, fit in CASE_LIST)
+    body = ('<p class="eyebrow">Case studies</p><h1>When AI-Written Claims Were Treated as Fact</h1>'
+      '<p class="lede">Real incidents from national and international news, where something an AI wrote was passed along as if someone had checked it. '
+      'Each case shows how the labels could have helped, what would have had to be true, and what they wouldn’t have caught.</p>' + LABELS_BOX +
+      '<p class="note"><b>These are illustrations, not tests.</b> We picked these seven because they fit and made the news; they are not a random sample. '
+      'Five involve invented sources or titles, the easiest kind of mistake for labels. The framework is built for one kind of failure, AI-written text that people rely on, '
+      'and isn’t built for deepfakes, self-driving cars or deliberate misuse.</p>'
+      '<h2 id="cases">The Cases</h2><div class="acards">' + cards + '</div>'
+      '<h2 id="simpler">Would a Simpler Tool Have Caught It?</h2>'
+      '<p>Often, yes. A source checker, a legal database or a fixture list would have caught most of these mistakes on its own. '
+      'Labels add one thing: every claim shows whether anyone checked it, including the ones nobody thought to look up. Each case says which simpler check would have worked.</p>'
+      '<h2 id="assume">What Has to Be True in Every Case</h2><ol>'
+      '<li><b>The AI tool used the labels,</b> or the person using it added them by hand. Most tools today don’t.</li>'
+      '<li><b>The AI labelled its own work correctly.</b> This is the weakest link: in <a href="check.html">our tests</a>, AI sometimes mislabels its own work, and a model that invents a source may not know it did.</li>'
+      '<li><b>The label stayed on while people worked with the text.</b> Pasting into a document, retyping or summarising can drop it.</li>'
+      '<li><b>Someone owned a rule</b> that unchecked claims don’t go into finished work, and used it. That is a human rule, not software. Each case names who would own it.</li></ol>'
+      '<p>Finished documents (a published report, a court filing, a printed page) carry no labels. The labels live in the working drafts; the point is that only checked claims make it into the finished version.</p>'
+      '<h2 id="scan">How Often Does This Apply? A First Look</h2>'
+      '<p>We took two small random samples from the <a href="https://incidentdatabase.ai/">AI Incident Database</a>, a public collection of AI incidents reported in the news. '
+      '<b>Treat these numbers as a first look, not a measurement.</b></p>'
+      '<ul><li><b>All kinds of AI incident:</b> 2 of 40 fit (incidents 623 and 1299). Most incidents in the sample were deepfakes, surveillance, bias or vehicles. The labels aren’t for those.</li>'
+      '<li><b>Incidents involving text written by an AI language model:</b> from 120 incidents added since early 2023, 25 qualified. 9 fit clearly, about 1 in 3 (incidents 574, 709, 719, 753, 807, 1009, 1184, 1257, 1504). '
+      '7 more fit partly (685, 838, 1044, 1205, 1424, 1441, 1672): mostly chatbot answers given straight to a user, and AI agents acting on an unchecked assumption.</li></ul>'
+      '<p><b>Why it’s only a first look:</b> one AI did all the scoring, the same assistant that helped build the framework, working from summaries of the database pages. '
+      'It knew what we hoped to find, the question used the framework’s own words, the samples are small, and they may overlap. A fair test needs a second scorer who doesn’t know the hoped-for answer, and a neutral question. Here’s how.</p>'
+      '<h2 id="run">Run Your Own</h2><ol>'
+      '<li><b>Pick a list of incidents.</b> The AI Incident Database is one. Its data is shared under a CC BY-SA 4.0 licence, but the text of the news reports isn’t, so write your own summaries.</li>'
+      '<li><b>Pick incidents at random,</b> like names from a hat, using a fixed starting number (a “seed”) so others can repeat it. Write down the seed and the range.</li>'
+      '<li><b>Decide what counts before you look.</b> For example: the harm involved text written by an AI language model.</li>'
+      '<li><b>Ask plain questions, written before you see any results:</b> did people rely on AI-written text without anyone checking it? If they had known it was unchecked, would that plausibly have changed what happened?</li>'
+      '<li><b>Have a second scorer do it without knowing what you hope to find.</b> Report how often you agree.</li>'
+      '<li><b>Report the counts with a range of uncertainty,</b> and publish the incident numbers and scores so others can check them. The database asks to hear how its data is used.</li></ol>'
+      '<p>Or give this to an AI assistant with web access, and have a person check its work:</p><pre class="copyblock">' + html.escape(SCAN_PROMPT) + '</pre>'
+      + NEXT(('labels.html', 'How the labels work'), ('spoke-and-wheel.html', 'Test 2: the swarm test')))
+    PAGES.append(('cases.html', 'Case Studies: When AI-Written Claims Were Treated as Fact',
+      'Seven real incidents where AI-written text was passed on as if checked, how inline labels could have helped, and how to scan incident lists yourself.', body))
+_hub()

@@ -2,6 +2,16 @@
 
 Newest first. Record every change to the site, the instructions or the test kit here.
 
+## 0.8 — 2026-10-03 — case studies
+
+Seven real incidents written up as case studies, plus a hub. Each is an illustration, not a test.
+- **New pages:** `cases.html` (hub) and seven case pages: West Midlands Police, the MAHA report, Deloitte's welfare review, South Africa's draft AI policy, Mata v. Avianca, the summer reading list (Chicago Sun-Times and Philadelphia Inquirer), and Starbucks Korea "Tank Day" (partial fit). Each has what happened, a "Follow the Claim" visual in the drift style, how labels could have helped, what would have had to be true, what already existed (and the simpler check that would have caught it), what labels wouldn't have caught, and further reading with primary sources first.
+- **Hub:** says the cases were chosen because they fit (not a random sample); "Would a simpler tool have caught it?"; the four conditions every case shares; a first-look scan of the AI Incident Database (2 of 40 incidents fit; among 25 involving LLM-written text, 9 clear and 7 partial), with its limits; and how to run your own scan, including a copy-paste prompt.
+- **Template and guard rails:** `CASE_STUDIES.md` (writing rules, the seven-reviewer pass, lessons from the first pass).
+- **Review:** seven reviewers (cold reader, site reader, two fact-checkers, AI incident researcher, LLM engineer, field specialists, plain-language editor), then a final verification pass. Fixes included the West Midlands decision timeline (the claim was in the 10 October letter and the 24 October report; the 16 October decision used spoken briefings), check rows moved before the decisions they would stop, finished documents shown without labels, MAHA marked "likely" because AI use is unconfirmed, the Starbucks Korea police investigation added, and quotes that two reads disagreed on removed.
+- **Held back:** a case on Australia's age-assurance trial report, until primary sources can be read.
+- **Site:** "Case Studies" in the nav; a card on Home; links from The Labels, Language, Test 2 and For Builders; Article structured data with citations on each case; llms.txt and for-ai.md (section 11) updated; "v." stays lower case in titles.
+
 ## 0.7.1 — 2026-09-26 — pre-upload SEO/LLM check
 
 The PUBLIC_LAUNCH_CHECKLIST was run against the local build. Sections 1–4 were checked before upload; section 0 and the live fetch follow after it.

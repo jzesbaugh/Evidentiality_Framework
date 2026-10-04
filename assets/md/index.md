@@ -1,6 +1,6 @@
 > When AI Guesses Look Like Facts: AI answers mix what was told, checked and guessed, and it all looks the same. A small label on each claim tells them apart. Two stories show why it matters.
 >
-> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://evidentiality-framework.org/. Text CC BY 4.0.
+> Evidentiality Framework for AI. Early findings, October 2026. Web version: https://evidentiality-framework.org/. Text CC BY 4.0.
 
 Evidentiality Framework for AI · early findings, September 2026
 
@@ -145,6 +145,7 @@ Some human languages already make speakers say how they know. English doesn’t,
 [Five minutes**How to Get Your AI to Label Its Answers**Copy, paste, ask. Results vary by model.](../../try.html)
 [Test 1 · one chat**Watch an AI Label Its Own Answer**One chat, the food bank note, and the labelled answer that came back.](../../check.html)
 [Test 2 · swarm**The Spoke and Wheel Test**How a guess spreads through an AI swarm, with and without labels.](../../spoke-and-wheel.html)
+[Case studies**When AI-Written Claims Were Treated as Fact**Seven real incidents, from a police fan ban to fake citations in government reports.](../../cases.html)
 [For builders**Building With the Labels**The version we use every day, the design choices, a parser and a gate.](../../builders.html)
 [Build on it**Take This and Build Something Better**It’s a framework. Make something with it.](../../contribute.html)
 

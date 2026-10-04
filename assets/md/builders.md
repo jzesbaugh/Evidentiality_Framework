@@ -1,6 +1,6 @@
 > Building With the Labels: The version we use every day, a fourth label for decisions, the design choices, and a parser and gate for agent pipelines, with their limits.
 >
-> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://evidentiality-framework.org/builders.html. Text CC BY 4.0.
+> Evidentiality Framework for AI. Early findings, October 2026. Web version: https://evidentiality-framework.org/builders.html. Text CC BY 4.0.
 
 For builders
 
@@ -314,7 +314,7 @@ Why plain text, not metadata?
                "(g)Stock lasts about 18 days.(/g)")
        print(gate(demo))
    ```
-3. **Hold actions that rest on a guess.** Before an agent acts, parse its reasoning. The gate holds the action if anything is labelled (g), if the labels don’t balance, if an (m) names no source, or if a sentence with words in it has no label. The demo prints `{'allow': False, 'problems': [], 'unchecked': ['Stock lasts about 18 days.']}`. Pass `allow_guesses=True` where conclusions are expected.
+3. **Hold actions that rest on a guess.** Before an agent acts, parse its reasoning. The gate holds the action if anything is labelled (g), if the labels don’t balance, if an (m) names no source, or if a sentence with words in it has no label. The demo prints `{'allow': False, 'problems': [], 'unchecked': ['Stock lasts about 18 days.']}`. Pass `allow_guesses=True` where conclusions are expected. In a meeting, the same idea is a rule, not code: see [West Midlands Police](../../case-west-midlands-police.html).
 4. **Treat a label you receive as a claim.** The biggest risk: an agent passes on someone else’s guess with a “checked” label. With no source, the gate catches it:
 
    Round 1 · coordinator  

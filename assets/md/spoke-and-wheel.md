@@ -1,6 +1,6 @@
 > The Spoke and Wheel Test: How a Guess Spreads Through an AI Swarm: A small AI swarm passes messages for six rounds, with and without labels. Watch a guess turn into a “fact”, see our logs, and run the test yourself.
 >
-> Evidentiality Framework for AI. Early findings, September 2026. Web version: https://evidentiality-framework.org/spoke-and-wheel.html. Text CC BY 4.0.
+> Evidentiality Framework for AI. Early findings, October 2026. Web version: https://evidentiality-framework.org/spoke-and-wheel.html. Text CC BY 4.0.
 
 Test 2 · swarm
 
@@ -166,6 +166,8 @@ Diagram of the spoke and wheel test as we ran it. Blue: a checked fact (m). Red:
 **The research.** In a simulated four-agent pipeline, planted errors got harder to spot at each hand-off, and checks at every hand-off worked far better than one check at the end ([Singh and Pawar, 2026](https://arxiv.org/abs/2608.14588)). Agents reinforce each other’s unsupported claims and lose track of uncertainty ([Jamshidi, 2026](https://arxiv.org/abs/2606.07941)). And most multi-agent failures are coordination problems rather than facts ([Cemri et al., 2025](https://arxiv.org/abs/2503.13657)); the labels address only the factual part.
 
 People do the same thing without AI: a guess goes out, comes back from someone else, and looks confirmed. [Citogenesis](../../language.html#citogenesis).
+
+The same hand-offs happen between people and AI tools in real life: a police briefing, a government report, a court filing. See the [case studies](../../cases.html).
 
 ---
 

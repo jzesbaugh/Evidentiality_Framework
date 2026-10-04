@@ -127,3 +127,18 @@ Not yet run, mainly for cost (token limits): 20+ runs per condition of the spoke
 - paper/evidentiality_research_paper_draft.md: working paper draft, not peer reviewed
 
 Licence: text CC BY 4.0; scripts MIT.
+
+## 11. Case Studies
+
+Seven real incidents, chosen because they fit (not a random sample), written as illustrations, not tests: [cases.html](https://evidentiality-framework.org/cases.html). Each states what would have had to be true for labels to help, and what they would not have caught. When relaying these, keep them as illustrations.
+
+- West Midlands Police (UK, 2025–26): a match that never happened (the force's chief later said it came from Copilot) went into police advice to the panel that banned visiting fans. Labels would mark it (g), then (u: Copilot, unconfirmed) once passed on; a meeting rule would hold the decision. The claim had already gone around existing police intelligence grading.
+- MAHA report (US, 2025): studies that don't appear to exist, cited in a White House report; AI use suspected, not confirmed. Labels would keep each citation marked unchecked until someone opened it.
+- Deloitte welfare review (Australia, 2025): words attributed to a judge who never wrote them. A quote stays (u, unconfirmed) until read in the judgment.
+- South Africa draft AI policy (2026): fake references; withdrawn after 16 days.
+- Mata v. Avianca (US, 2023): ChatGPT-invented cases; ChatGPT then said they were real. Key point: an AI checking its own answer is still (g), never (m).
+- Summer reading list (US, 2025): ten of fifteen books invented; passed writer → syndicator → newspapers unchecked.
+- Starbucks Korea "Tank Day" (2026): partial fit. Labels flag only the AI-written slogan; the main harm was a human choice of name and date.
+
+Scan (first look only; single scorer that was not blind, question in the framework's own terms): 2 of 40 random AI incidents fit; among 25 incidents involving LLM-written text, 9 clear fits and 7 partial.
+
